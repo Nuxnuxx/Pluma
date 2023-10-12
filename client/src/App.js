@@ -1,7 +1,8 @@
 import './styles/App.css';
+import {UserList} from "./components/UserList/userListComponent";
 
-const App = () => {
-
-};
-
-export default App;
+export default function Home() {
+    return (
+        <UserList/>
+    )
+}
