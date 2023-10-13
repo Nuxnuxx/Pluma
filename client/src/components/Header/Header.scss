@@ -29,4 +29,12 @@
   margin-right: 10px; // Espace entre les éléments h5
 }
 
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #FFF5E0; // Ajoutez cette ligne pour définir la couleur de fond
+}
+
 /* Ajoutez d'autres styles SCSS au besoin */
