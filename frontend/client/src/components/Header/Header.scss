@@ -1,18 +1,32 @@
 .header-container {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   padding: 10px;
+}
+
+.logo-and-text {
+  display: flex;
+  align-items: center;
 
   .logo {
     width: 100px; // Ajustez la largeur selon vos besoins
     height: auto; // Cela maintiendra les proportions de l'image
   }
 
-  .header-text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  h5 {
+    margin-left: 10px; // Espace entre l'image et le texte
   }
-
 }
+
+.menu {
+  display: flex;
+  align-items: center;
+}
+
+.menu h5 {
+  margin: 0; // Supprimez les marges par défaut des éléments h5
+  margin-right: 10px; // Espace entre les éléments h5
+}
+
+/* Ajoutez d'autres styles SCSS au besoin */
