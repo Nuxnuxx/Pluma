@@ -9,9 +9,9 @@ function Header() {
                 <h5>Pluma</h5>
             </div>
             <div className="menu">
-                <h5>Qui sommes nous</h5>
-                <h5>Accueil</h5>
-                <h5>Accéder à votre espace</h5>
+                <p>Accueil</p>
+                <p>Qui sommes nous</p>
+                <p>Accéder à votre espace</p>
             </div>
         </div>
     );
