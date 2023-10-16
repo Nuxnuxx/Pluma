@@ -3,7 +3,11 @@ const UserController = require('./controllers/userController');
 
 const router = express.Router();
 
-router.get('/api/user', UserController.getAllUsers);
-router.post('/api/user', UserController.addUser);
+router.get('/', UserController.getAllUsers);
+router.post('/', UserController.addUser);
+
+router.get('/api/mon-espace', (req, res) => {
+    // Gérer la route /api/mon-espace ici
+});
 
 module.exports = router;
