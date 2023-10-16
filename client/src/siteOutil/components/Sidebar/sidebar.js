@@ -18,12 +18,26 @@ const Sidebar = () => {
                 <ul>
                     <li>Accueil</li>
                     <li>> Projets</li>
+                    <div className="liste-projets">
+                        <li>Projet 1</li>
+                        <li>Projet 2</li>
+                    </div>
                     <li>Partagés avec moi</li>
                     <li>Corbeille</li>
                 </ul>
             </div>
             <div className="premium">
-                <h2>Coucou</h2>
+                <button className="btn-premium" type="button">
+                    <strong>WAOUH !</strong>
+                    <div id="container-stars">
+                        <div id="stars"></div>
+                    </div>
+
+                    <div id="glow">
+                        <div className="circle"></div>
+                        <div className="circle"></div>
+                    </div>
+                </button>
             </div>
         </div>
     );
