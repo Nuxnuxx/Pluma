@@ -11,11 +11,53 @@ body {
   height: 647.9px;
 }
 
+.plumaText {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 158px;
+  color: white;
+  z-index: 1;
+  text-shadow: 2px 2px 0 #D68E80, -2px -2px 0 #D68E80, 2px -2px 0 #D68E80, -2px 2px 0 #D68E80;
+  letter-spacing: 50px;
+}
+.slogan {
+  position: relative;
+  font-size: 24px;
+  color: #D68E80;
+  text-align: center;
+  margin-top: -10px;
+  font-weight: bold;
+}
+
+.slogan::before,
+.slogan::after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 2px;
+  background-color: #D68E80;
+  top: 50%;
+  left: -10px; /* Ajustez l'espace à gauche des traits */
+  right: -10px; /* Ajustez l'espace à droite des traits */
+  opacity: 0.7; /* Opacité pour adoucir les traits */
+}
+
+.slogan::before {
+  transform: translateX(-100%);
+}
+
+.slogan::after {
+  transform: translateX(100%);
+}
+
 .btnAccueil {
   transition: all 0.3s ease-in-out;
   font-family: 'Titillium Web', sans-serif;
   width: 120px;
   height: 40px;
+  margin-top: 10px;
   border-radius: 50px;
   background-image: linear-gradient(135deg, #FC8C79 20%, #FFAFA5 100%);
   outline: none;
@@ -23,16 +65,4 @@ body {
   border: none;
   font-size: 16px;
   color: white;
-}
-
-.plumaText {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 158px;
-  color: white;
-  z-index: 1;
-  text-shadow: 2px 2px 0 #D68E80, -2px -2px 0 #D68E80, 2px -2px 0 #D68E80, -2px 2px 0 #D68E80;
-  letter-spacing: 50px; /* Ajustez cette valeur pour l'espacement des lettres */
 }

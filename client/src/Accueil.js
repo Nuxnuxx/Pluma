@@ -10,7 +10,7 @@ export default function Home() {
             <div className="flex flex-wrap flex-col justify-center items-center">
                 <img src="/assets/logo_clair_1.png" alt="logo clair 1" className="logoaccueil" />
                 <h1 className="plumaText">Pluma</h1>
-                <h3>Laissez votre créativité prendre son envol.</h3>
+                <div className="slogan">Laissez votre créativité prendre son envol</div>
                 <div>
                     <button className="btnAccueil">S'inscrire</button>
                     <button className="btnAccueil">Se connecter</button>
