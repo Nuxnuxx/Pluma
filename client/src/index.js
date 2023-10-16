@@ -1,4 +1,5 @@
 import ReactDOM from "react-dom/client";
+import './styles/index.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./siteVitrine/pages/Layout";
 import Accueil from "./siteVitrine/pages/Accueil";
