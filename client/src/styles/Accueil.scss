@@ -5,9 +5,15 @@ body {
   font-family: 'Titillium Web', sans-serif;
 }
 
+.logoaccueil {
+  opacity: 0.67;
+  width: 647.9px;
+  height: 647.9px;
+}
+
 .btnAccueil {
   transition: all 0.3s ease-in-out;
-  font-family: 'Titillium Web', sans-serif; /* Ajout de la police pour le bouton */
+  font-family: 'Titillium Web', sans-serif;
   width: 120px;
   height: 40px;
   border-radius: 50px;
