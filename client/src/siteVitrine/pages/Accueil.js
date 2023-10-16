@@ -1,11 +1,9 @@
-import './styles/App.css';
-import Header from "./components/Header/Header";
-import './styles/Accueil.scss';
+import '../../styles/App.css';
+import '../styles/Accueil.scss';
 
-export default function Home() {
+export default function Accueil() {
     return (
         <div>
-            <Header />
             <h1>Pluma</h1>
             <h3>Laissez votre créativité prendre son envol.</h3>
             <button className="btnAccueil">S'inscrire</button>
