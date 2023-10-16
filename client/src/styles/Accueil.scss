@@ -1,19 +1,18 @@
 body {
   background-color: #FFF5E0;
 }
-
 .btnAccueil {
   transition: all 0.3s ease-in-out;
   font-family: "Dosis", sans-serif;
   width: 150px;
   height: 60px;
   border-radius: 50px;
-  background-image: linear-gradient(135deg, #feb692 0%, #ea5455 100%);
+  background-image: linear-gradient(135deg, #FC8C79 0%, #FFAFA5 100%); /* Utilisation des nouvelles couleurs */
   box-shadow: 0 20px 30px -6px rgba(238, 103, 97, 0.5);
   outline: none;
   cursor: pointer;
   border: none;
-  font-size: 16px; /* Réduire la taille de la police à 16px */
+  font-size: 16px;
   color: white;
 
   &:hover {
