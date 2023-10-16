@@ -1,6 +1,6 @@
 import React from 'react';
 import './Header.scss';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Header() {
     return (
@@ -9,9 +9,9 @@ function Header() {
                 <img src="/assets/plume-doie.png" alt="logo clair" className="logo" />
                 <h5>Pluma</h5>
             </div>
-            <div className="menu">
+            <div className="menu"> {/* Ajout d'une classe "menu" */}
                 <nav>
-                    <ul>
+                    <ul className="menu-ul"> {/* Ajout d'une classe "menu-ul" */}
                         <li>
                             <Link to="/">Accueil</Link>
                         </li>

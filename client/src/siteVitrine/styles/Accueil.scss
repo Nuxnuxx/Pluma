@@ -1,10 +1,5 @@
 @import 'tailwindcss/components';
 
-body {
-  background-color: #FFF5E0;
-  font-family: 'Titillium Web', sans-serif;
-}
-
 .logoaccueil {
   opacity: 0.67;
   width: 647.9px;
@@ -54,16 +49,20 @@ body {
 }
 
 .btnAccueil {
-  transition: all 0.3s ease-in-out;
   font-family: 'Titillium Web', sans-serif;
-  width: 120px;
-  height: 40px;
+  width: 150px;
+  height: 45px;
   margin-top: 20px;
   border-radius: 50px;
-  background-image: linear-gradient(135deg, #FC8C79 20%, #FFAFA5 100%);
+  background-color: #FC8C79;
+  transition: all 0.3s ease-in-out;
   outline: none;
   cursor: pointer;
   border: none;
   font-size: 16px;
   color: white;
+
+  &:hover{
+    background-color: #FFAFA5;
+  }
 }
