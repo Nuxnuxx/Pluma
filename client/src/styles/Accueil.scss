@@ -24,3 +24,15 @@ body {
   font-size: 16px;
   color: white;
 }
+
+.plumaText {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 158px;
+  color: white;
+  z-index: 1;
+  text-shadow: 2px 2px 0 #D68E80, -2px -2px 0 #D68E80, 2px -2px 0 #D68E80, -2px 2px 0 #D68E80;
+  letter-spacing: 50px; /* Ajustez cette valeur pour l'espacement des lettres */
+}
