@@ -37,7 +37,7 @@ export default function App() {
                     <Route path="numProjet" element={<ResumeProjet />} >
                         <Route path="edition" element={<EditionProjet />} >
                             <Route path="numChapitre" element={<EditionChapitre />} >
-                                <Route path="write" element={<EcritureChapitre />} />
+                                <Route path="ecriture" element={<EcritureChapitre />} />
                             </Route>
                             <Route path="elements" element={<Elements />} />
                         </Route>
