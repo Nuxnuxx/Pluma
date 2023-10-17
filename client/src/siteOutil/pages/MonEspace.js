@@ -1,7 +1,5 @@
-import Sidebar from "../components/Sidebar/sidebar";
+const MonEspace = () => {
+    return <h1>MonEspace</h1>;
+};
 
-export default function MonEspace() {
-    return (
-        <Sidebar></Sidebar>
-    );
-}
+export default MonEspace;

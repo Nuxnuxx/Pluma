@@ -8,7 +8,7 @@ import Accueil from "./siteVitrine/pages/Accueil";
 import QuiSommesNous from "./siteVitrine/pages/QuiSommesNous";
 import PlumaPremium from "./siteVitrine/pages/PlumaPremium";
 import ConnexionInscription from "./siteVitrine/pages/ConnexionInscription";
-import MonEspace from "./siteOutil/components/Sidebar/sidebar"
+import MonEspace from "./siteOutil/pages/MonEspace";
 import Page404 from "./404";
 import LayoutMonEspace from "./siteOutil/pages/LayoutMonEspace";
 import Corbeille from "./siteOutil/pages/Corbeille";

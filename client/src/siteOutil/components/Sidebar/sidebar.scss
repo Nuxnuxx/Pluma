@@ -90,11 +90,11 @@
         }
 
         .icone-depli {
-          transform: translateY(10%);
+          transform: translateY(20%);
 
           svg {
-            width: 20px;
-            height: 20px;
+            width: 15px;
+            height: 15px;
             cursor: pointer;
           }
 
@@ -103,6 +103,10 @@
               filter: brightness(0) invert(1) sepia(100%) saturate(10000%) hue-rotate(240deg);
             }
           }
+        }
+
+        .icone-depli.rotate svg {
+          transform: rotate(90deg);
         }
       }
     }

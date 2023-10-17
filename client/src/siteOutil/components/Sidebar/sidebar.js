@@ -1,8 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './sidebar.scss';
 import {Link} from "react-router-dom"
 
 const Sidebar = () => {
+    const [isProjectsOpen, setIsProjectsOpen] = useState(false);
+
+    const toggleProjects = () => {
+        setIsProjectsOpen(!isProjectsOpen);
+    };
+
     return (
         <div className="sidebar">
             <div className="sidebar-content">
@@ -19,27 +25,29 @@ const Sidebar = () => {
                     </div>
                 </div>
                 <ul>
-                        <Link to="/mon-espace">
-                            <li>Accueil</li>
-                        </Link>
-                    <li>
-                        <div className="icone-depli">
+                    <Link to="/mon-espace">
+                        <li>Accueil</li>
+                    </Link>
+                    <li onClick={toggleProjects}>
+                        <div className={`icone-depli ${isProjectsOpen ? 'rotate' : ''}`}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
-                                <path d="M7.293 4.707 14.586 12l-7.293 7.293 1.414 1.414L17.414 12 8.707 3.293 7.293 4.707z"/>
+                                <path d="M7.293 4.707 14.586 12l-7.293 7.293 1.414 1.414L17.414 12 8.707 3.293 7.293 4.707z" />
                             </svg>
                         </div>
                         Projets
                     </li>
-                    <div className="liste-projets">
-                        <li>Projet 1</li>
-                        <li>Projet 2</li>
-                    </div>
-                        <Link to="/mon-espace/partage-avec-moi">
-                            <li>Partagés avec moi</li>
-                        </Link>
-                        <Link to="/mon-espace/corbeille">
-                            <li>Corbeille</li>
-                        </Link>
+                    {isProjectsOpen && (
+                        <div className="liste-projets">
+                            <li>Projet 1</li>
+                            <li>Projet 2</li>
+                        </div>
+                    )}
+                    <Link to="/mon-espace/partage-avec-moi">
+                        <li>Partagés avec moi</li>
+                    </Link>
+                    <Link to="/mon-espace/corbeille">
+                        <li>Corbeille</li>
+                    </Link>
                 </ul>
             </div>
             <div className="premium">

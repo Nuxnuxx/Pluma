@@ -1,11 +1,14 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/Sidebar/sidebar";
+import {SidebarProvider} from "../context/sidebarContext";
 
 const LayoutMonEspace = () => {
     return (
         <>
-            <Sidebar />
-            <Outlet />
+            <SidebarProvider>
+                <Sidebar />
+                <Outlet />
+            </SidebarProvider>
         </>
     )
 };
