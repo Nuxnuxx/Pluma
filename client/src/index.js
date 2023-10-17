@@ -34,9 +34,12 @@ export default function App() {
                     <Route index element={<MonEspace />} />
                     <Route path="partage-avec-moi" element={<PartageAvecMoi />} />
                     <Route path="corbeille" element={<Corbeille />} />
-                    <Route path="numProjet" element={<ResumeProjet />} >
-                        <Route path="edition" element={<EditionProjet />} >
-                            <Route path="numChapitre" element={<EditionChapitre />} >
+                    <Route path="numProjet">
+                        <Route index element={<ResumeProjet />} />
+                        <Route path="edition">
+                            <Route index element={<EditionProjet />} />
+                            <Route path="numChapitre">
+                                <Route index element={<EditionChapitre />} />
                                 <Route path="ecriture" element={<EcritureChapitre />} />
                             </Route>
                             <Route path="elements" element={<Elements />} />
