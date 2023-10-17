@@ -3,7 +3,7 @@ import "../styles/QuiSommesNous.scss"
 
 const QuiSommesNous = () => {
     return (
-        <div className="container">
+        <div className="containerQuiSommesNous">
             <h1>Qui sommes-nous</h1>
             <p>
                 Bienvenue chez Pluma, votre partenaire créatif dans le monde de l'écriture. Pluma est bien plus qu'une simple application web ; c'est une communauté d'auteurs, de conteurs et de créateurs littéraires passionnés. Notre histoire, notre mission et notre passion se reflètent dans chaque aspect de ce que nous faisons.
