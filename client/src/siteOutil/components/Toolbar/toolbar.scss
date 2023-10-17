@@ -1,0 +1,40 @@
+.toolbar {
+  width: 65px;
+
+  .content {
+    padding: 10px;
+  }
+
+  .dndnode {
+    cursor: grab;
+  }
+
+  img{
+    width: 40px;
+    max-width: 50px;
+  }
+}
+
+.generateur-nom{
+  button{
+    margin-bottom: 12px;
+
+    img{
+      width: 27.5px;
+    }
+  }
+}
+
+.overlay {
+  position: fixed;
+  color: red;
+  top: 0;
+  right: 0;
+  width: calc(100% - 250px);
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
