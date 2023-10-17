@@ -1,7 +1,4 @@
 .sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
   height: 100%;
   width: 250px;
   background-color: #FFAFA5;
@@ -82,31 +79,29 @@
         padding: 10px;
         text-align: left;
         cursor: pointer;
-        border-radius: 25px;
         display: flex;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
 
         &:hover {
-          background-color: #FC8C79;
+          background-color: rgba(0, 0, 0, 0.1);
         }
 
         .icone-depli {
-          transform: translateY(20%);
+          transform: translateY(10%);
+          transition: transform 0.3s ease;
 
           svg {
-            width: 15px;
-            height: 15px;
-            cursor: pointer;
-          }
-
-          &:hover {
-            svg {
-              filter: brightness(0) invert(1) sepia(100%) saturate(10000%) hue-rotate(240deg);
-            }
+            transition: transform 0.3s ease;
           }
         }
 
         .icone-depli.rotate svg {
-          transform: rotate(90deg);
+          transform: translateY(0%) rotate(90deg);
+        }
+
+        .titre-menu {
+          margin-left: 5px;
         }
       }
     }
@@ -114,11 +109,19 @@
     .liste-projets {
       padding-left: 30px;
       font-size: 0.8em;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0s ease-in-out;
 
       li {
         &:hover {
-          background-color: rgba(252, 140, 121, 0.49);
+          background-color: rgba(0, 0, 0, 0.1);
         }
+      }
+
+      &.open {
+        max-height: 1000px;
+        transition: max-height 0s ease-in-out;
       }
     }
   }

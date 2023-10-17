@@ -28,20 +28,23 @@ const Sidebar = () => {
                     <Link to="/mon-espace">
                         <li>Accueil</li>
                     </Link>
-                    <li onClick={toggleProjects}>
+                    <li className="menu" onClick={toggleProjects}>
                         <div className={`icone-depli ${isProjectsOpen ? 'rotate' : ''}`}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
                                 <path d="M7.293 4.707 14.586 12l-7.293 7.293 1.414 1.414L17.414 12 8.707 3.293 7.293 4.707z" />
                             </svg>
                         </div>
-                        Projets
-                    </li>
-                    {isProjectsOpen && (
-                        <div className="liste-projets">
-                            <li>Projet 1</li>
-                            <li>Projet 2</li>
+                        <div className="titre-menu">
+                            Projets
                         </div>
-                    )}
+                    </li>
+                    <div className={`liste-projets ${isProjectsOpen ? 'open' : ''}`}>
+                        <li>Projet 1</li>
+                        <li>Projet 2</li>
+                        <li>Projet 2</li>
+                        <li>Projet 2</li>
+                        <li>Projet 2</li>
+                    </div>
                     <Link to="/mon-espace/partage-avec-moi">
                         <li>Partagés avec moi</li>
                     </Link>

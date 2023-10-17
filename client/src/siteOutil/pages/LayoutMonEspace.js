@@ -1,11 +1,14 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/Sidebar/sidebar";
+import "../styles/styleLayoutMonEspace.scss"
 
 const LayoutMonEspace = () => {
     return (
         <>
-            <Sidebar />
-            <Outlet />
+            <div className="div-principale">
+                <Sidebar />
+                <Outlet />
+            </div>
         </>
     )
 };
