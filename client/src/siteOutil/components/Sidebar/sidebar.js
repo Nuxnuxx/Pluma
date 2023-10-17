@@ -52,7 +52,7 @@ const Sidebar = () => {
             </div>
             <div className="premium">
                 <button className="btn-premium" type="button">
-                    <strong>WAOUH !</strong>
+                    <strong>PlumaPremium</strong>
                     <div id="container-stars">
                         <div id="stars"></div>
                     </div>

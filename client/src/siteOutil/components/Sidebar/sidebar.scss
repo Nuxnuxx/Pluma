@@ -126,10 +126,11 @@
   .premium {
     width: 100%;
     height: 10%;
-    background-color: #FC8C79;
+    background-color: #FF6969;
     display: flex;
     align-items: center;
     justify-content: center;
+
     .btn-premium {
       display: flex;
       justify-content: center;
@@ -137,12 +138,11 @@
       width: 100%;
       overflow: hidden;
       height: 100%;
-      background-size: 300% 300%;
       backdrop-filter: blur(1rem);
       transition: 0.5s;
       animation: gradient_301 5s ease infinite;
       border: double 4px transparent;
-      background-image: linear-gradient(#212121, #212121),  linear-gradient(137.48deg, #ffdb3b 10%,#FE53BB 45%, #8F51EA 67%, #0044ff 87%);
+      background-image: linear-gradient(137.48deg, #FFAFA5 10%, #FF6969 45%, #FC8C79 67%, #FF6969 87%);
       background-origin: border-box;
       background-clip: content-box, border-box;
     }
@@ -160,7 +160,7 @@
     strong {
       z-index: 2;
       font-family: 'Avalors Personal Use';
-      font-size: 12px;
+      font-size: 20px;
       letter-spacing: 5px;
       color: #FFFFFF;
       text-shadow: 0 0 4px white;
@@ -222,7 +222,7 @@
       left: -100rem;
       width: 100%;
       height: 100%;
-      animation: animStarRotate 90s linear infinite;
+      animation: animStarRotate 700s linear infinite;
     }
 
     #stars::after {
@@ -237,7 +237,7 @@
       left: -50%;
       width: 170%;
       height: 500%;
-      animation: animStar 60s linear infinite;
+      animation: animStar 700s linear infinite;
     }
 
     #stars::before {
