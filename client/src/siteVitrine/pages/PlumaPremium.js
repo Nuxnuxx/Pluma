@@ -1,5 +1,11 @@
+import React from "react";
+import "../styles/PlumaPremium.scss";
+
 const PlumaPremium = () => {
-    return <h1>PlumaPremium</h1>;
+    return (
+        <img src="/assets/pile-de-livre.png" alt="pile de livre" className="livre-de-livre"/>
+        
+    );
 };
 
 export default PlumaPremium;
