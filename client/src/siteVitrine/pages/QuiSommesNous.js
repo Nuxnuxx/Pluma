@@ -14,7 +14,7 @@ const QuiSommesNous = () => {
 
     const textStyle = {
         color: "#FFFFFF",
-        fontSize: "30px",
+        fontSize: "25px",
     };
 
     const bodyStyle = {
@@ -24,15 +24,22 @@ const QuiSommesNous = () => {
     return (
         <div style={bodyStyle}>
             <div style={rectangleStyle}>
-                <p style={textStyle}>L'art de la plume à portée de main.</p>
+                <p style={textStyle}>Qui sommes-nous ?</p>
             </div>
 
             <div className="decoQuiSommesNous">
                 <img src="/assets/livre-ouvert.png" alt="Livre ouvert" className="livre-ouvert"/>
+                <img src="/assets/livre-fermer1.png" alt="Livre fermer" className="livre-fermer"/>
+                <img src="/assets/livre-ouvert.png" alt="Livre ouvert" className="livre-ouvert"/>
+            </div>
+
+            <div className="decoQuiSommesNousDroite">
+                <img src="/assets/livre-fermer1.png" alt="Livre fermer" className="livre-fermer"/>
+                <img src="/assets/livre-ouvert.png" alt="Livre ouvert" className="livre-ouvert"/>
+                <img src="/assets/livre-fermer1.png" alt="Livre fermer" className="livre-fermer"/>
             </div>
 
             <div className="containerQuiSommesNous">
-                <h1>Qui sommes-nous</h1>
                 <p>
                     Bienvenue chez Pluma, votre partenaire créatif dans le monde de l'écriture. Pluma est bien plus qu'une simple application web ; c'est une communauté d'auteurs, de conteurs et de créateurs littéraires passionnés. Notre histoire, notre mission et notre passion se reflètent dans chaque aspect de ce que nous faisons.
                 </p>
@@ -56,9 +63,10 @@ const QuiSommesNous = () => {
                 <p>
                     Nous vous invitons à explorer tout ce que Pluma a à offrir. Transformez vos rêves d'écriture en œuvres abouties grâce à nos outils de structuration, de planification et de rédaction. Rejoignez notre communauté et partagez votre passion pour l'écriture avec d'autres créateurs comme vous. Nous sommes fiers de faire partie de votre voyage littéraire et de contribuer à l'épanouissement des talents littéraires du monde entier.
                 </p>
+                </div><div style={rectangleStyle}>
+                    <p style={textStyle}>Découvrez l'art de raconter des histoires avec Pluma.</p>
+                </div>
             </div>
-        </div>
     );
 };
-
 export default QuiSommesNous;
