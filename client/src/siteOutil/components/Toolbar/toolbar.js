@@ -30,13 +30,13 @@ const Toolbar = () => {
                     <img src="/assets/toolbar/personnage.png" alt="Icone personnage" onDragStart={(event) => onDragStart(event, 'personnage')} draggable />
                 </div>
                 <div className="dndnode lieu mb-6">
-                    <img src="/assets/toolbar/lieu.png" alt="Icone lieu" onDragStart={(event) => onDragStart(event, 'personnage')} draggable />
+                    <img src="/assets/toolbar/lieu.png" alt="Icone lieu" onDragStart={(event) => onDragStart(event, 'lieu')} draggable />
                 </div>
                 <div className="dndnode evenement mb-6">
                     <img src="/assets/toolbar/evenement.png" alt="Icone evenement" onDragStart={(event) => onDragStart(event, 'evenement')} draggable />
                 </div>
                 <div className="dndnode bloc-note">
-                    <img src="/assets/toolbar/bloc-note.png" alt="Icone bloc-note" title="Bloc-note" onDragStart={(event) => onDragStart(event, 'bloc-note')} draggable />
+                    <img src="/assets/toolbar/bloc-note.png" alt="Icone bloc-note" title="Bloc-note" onDragStart={(event) => onDragStart(event, 'blocnote')} draggable />
                 </div>
             </div>
 
