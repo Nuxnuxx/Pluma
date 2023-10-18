@@ -4,13 +4,15 @@ import "../styles/styleLayoutMonEspace.scss"
 
 const LayoutMonEspace = () => {
     return (
-        <>
-            <div className="div-principale">
+        <div className="div-principale">
+            <div className="sidebar">
                 <Sidebar />
+            </div>
+            <div className="contenu">
                 <Outlet />
             </div>
-        </>
-    )
+        </div>
+    );
 };
 
 export default LayoutMonEspace;

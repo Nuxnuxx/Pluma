@@ -44,6 +44,11 @@ const Sidebar = () => {
                         <li>Projet 2</li>
                         <li>Projet 2</li>
                         <li>Projet 2</li>
+                        <li>Projet 2</li>
+                        <li>Projet 2</li>
+                        <li>Projet 2</li>
+                        <li>Projet 2</li>
+                        <li>Projet 2</li>
                     </div>
                     <Link to="/mon-espace/partage-avec-moi">
                         <li>Partagés avec moi</li>

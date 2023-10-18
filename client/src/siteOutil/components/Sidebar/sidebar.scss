@@ -3,6 +3,7 @@
   width: 250px;
   background-color: #FFAFA5;
   overflow-x: hidden;
+  overflow-y: hidden;
   transition: 0.3s;
   display: inline-flex;
   flex-direction: column;
@@ -13,6 +14,7 @@
     display: flex;
     flex-direction: column;
     color: white;
+    overflow-y: auto;
 
     .titre {
       display: flex;
@@ -84,7 +86,7 @@
         transition: background-color 0.3s ease;
 
         &:hover {
-          background-color: rgba(0, 0, 0, 0.1);
+          background-color: rgba(0, 0, 0, 0.07);
         }
 
         .icone-depli {
@@ -115,7 +117,7 @@
 
       li {
         &:hover {
-          background-color: rgba(0, 0, 0, 0.1);
+          background-color: rgba(0, 0, 0, 0.05);
         }
       }
 
@@ -128,7 +130,7 @@
 
   .premium {
     width: 100%;
-    height: 10%;
+    height: fit-content;
     background-color: #FF6969;
     display: flex;
     align-items: center;
@@ -148,6 +150,7 @@
       background-image: linear-gradient(137.48deg, #FFAFA5 10%, #FF6969 45%, #FC8C79 67%, #FF6969 87%);
       background-origin: border-box;
       background-clip: content-box, border-box;
+      padding: 16px;
     }
 
     #container-stars {

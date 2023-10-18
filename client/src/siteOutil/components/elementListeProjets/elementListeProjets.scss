@@ -1,0 +1,17 @@
+.rectangle {
+  font-weight: bold;
+  font-size: 1.2rem;
+  position: relative;
+  margin-right: 1rem;
+  flex: 0 0 auto;
+  position: relative;
+}
+
+.affichage-statut {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #ffffff;
+  padding: 0.5rem;
+  font-size: 0.8em;
+}
