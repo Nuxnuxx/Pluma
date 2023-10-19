@@ -1,26 +1,11 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
-import ReactFlow, {
-    addEdge,
-    Background,
-    Controls,
-    MiniMap,
-    ReactFlowProvider,
-    useEdgesState,
-    useNodesState
-} from 'reactflow';
+import ReactFlow, {addEdge, updateEdge, Background, Controls, MiniMap, ReactFlowProvider, useEdgesState, useNodesState} from 'reactflow';
 import 'reactflow/dist/style.css';
 import '../styles/EditionProjet.scss'
 import Toolbar from '../components/Toolbar/toolbar';
-
-import CustomNode from '../components/ReactFlow/CustomNode';
-import FloatingEdge from '../components/ReactFlow/FloatingEdge';
-import CustomConnectionLine from '../components/ReactFlow/CustomConnectionLine';
-
-const initialNodes = [
-    { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } },
-    { id: '2', position: { x: 0, y: 100 }, data: { label: '2' } },
-];
-const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
+import FloatingEdge from "../components/ReactFlow/FloatingEdge";
+import CustomConnectionLine from "../components/ReactFlow/CustomConnectionLine";
+import ContextMenu from "../components/ReactFlow/ContextMenu";
 
 const idCounters = {
     chapitre: 1,
@@ -38,13 +23,63 @@ const getId = type => {
 }
 
 export default function EditionProjet() {
+    const initialNodes = [];
+
+    const initialEdges = [];
+
     const reactFlowWrapper = useRef(null);
+    const ref = useRef(null);
+    const edgeUpdateSuccessful = useRef(true);
+    const [menu, setMenu] = useState(null);
     const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
     const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
     const [reactFlowInstance, setReactFlowInstance] = useState(null);
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
     const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), [setEdges]);
+
+    const onEdgeUpdateStart = useCallback(() => {
+        edgeUpdateSuccessful.current = false;
+    }, []);
+
+    const onEdgeUpdate = useCallback((oldEdge, newConnection) => {
+        edgeUpdateSuccessful.current = true;
+        setEdges((els) => updateEdge(oldEdge, newConnection, els));
+    }, [setEdges]);
+
+    const onEdgeUpdateEnd = useCallback((_, edge) => {
+        if (!edgeUpdateSuccessful.current) {
+            setEdges((eds) => eds.filter((e) => e.id !== edge.id));
+        }
+
+        edgeUpdateSuccessful.current = true;
+    }, [setEdges]);
+
+    const onNodeContextMenu = useCallback(
+        (event, node) => {
+            event.preventDefault();
+
+            setMenu({
+                id: node.id,
+                top: event.clientY,
+                left: event.clientX - 240,
+                data: node.data,
+                type: node.type,
+            });
+        },
+        [setMenu]
+    );
+
+    const onPaneClick = useCallback(() => setMenu(null), [setMenu]);
+
+    const handleNodeDelete = useCallback((nodeId, type) => {
+        setNodes((nodes) => nodes.filter((node) => node.id !== nodeId));
+        setEdges((edges) => edges.filter((edge) => edge.source !== nodeId));
+
+        if (idCounters[type] > 1) {
+            idCounters[type]--;
+        }
+    }, [setNodes, setEdges]);
 
     const onDragOver = useCallback((event) => {
         event.preventDefault();
@@ -122,7 +157,7 @@ export default function EditionProjet() {
                                 <div className="contenu-blocnote">
                                     <p>Contenu du bloc-note</p>
                                 </div>
-                        </div> },
+                            </div> },
                     };
                     break;
                 default:
@@ -150,19 +185,15 @@ export default function EditionProjet() {
 
     const connectionLineStyle = {
         strokeWidth: 3,
-        stroke: 'black',
-    };
-
-    const nodeTypes = {
-        custom: CustomNode,
+        stroke: '#d6d6d6',
     };
 
     const edgeTypes = {
         floating: FloatingEdge,
     };
 
-    const defaultEdgeOptions = {
-        style: { strokeWidth: 2, stroke: 'black' },
+    const EdgeOptions = {
+        style: { strokeWidth: 2, stroke: '#b26b5d' },
         type: 'floating',
     };
 
@@ -174,19 +205,23 @@ export default function EditionProjet() {
                     <div className="reactflow-wrapper" ref={reactFlowWrapper}>
                         <div style={{ width: '87vw', height: '100vh' }}>
                         <ReactFlow
+                            ref={ref}
                             nodes={nodes}
                             edges={edges}
                             onNodesChange={onNodesChange}
                             onEdgesChange={onEdgesChange}
+                            onEdgeUpdate={onEdgeUpdate}
+                            onEdgeUpdateStart={onEdgeUpdateStart}
+                            onEdgeUpdateEnd={onEdgeUpdateEnd}
                             onConnect={onConnect}
                             onInit={setReactFlowInstance}
                             onDrop={onDrop}
                             onDragOver={onDragOver}
+                            onPaneClick={onPaneClick}
+                            onNodeContextMenu={onNodeContextMenu}
                             fitView
-
-                            nodeTypes={nodeTypes}
                             edgeTypes={edgeTypes}
-                            defaultEdgeOptions={defaultEdgeOptions}
+                            defaultEdgeOptions={EdgeOptions}
                             connectionLineComponent={CustomConnectionLine}
                             connectionLineStyle={connectionLineStyle}
                         >
@@ -194,6 +229,7 @@ export default function EditionProjet() {
                             <Controls position="top-right" />
                             <MiniMap />
                             <Background variant="dots" gap={10} size={0.5} />
+                            {menu && <ContextMenu onClick={onPaneClick} onDelete={handleNodeDelete} {...menu} />}
                         </ReactFlow>
                         </div>
                     </div>

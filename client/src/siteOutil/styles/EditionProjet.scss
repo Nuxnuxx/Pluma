@@ -1,3 +1,39 @@
+.context-menu {
+  background: white;
+  border-style: solid;
+  box-shadow: 10px 19px 20px rgba(0, 0, 0, 10%);
+  position: absolute;
+  z-index: 10;
+  border-radius: 10px;
+}
+
+.context-menu p {
+  font-weight: bold;
+  background-color: #ff6969;
+  border-radius: 10px 10px 0 0;
+  padding: 5px;
+  text-transform: capitalize;
+  line-height: 10px;
+}
+
+.context-menu button {
+  border: none;
+  display: block;
+  padding: 0.5em;
+  text-align: left;
+  width: 100%;
+}
+
+.context-menu button:hover {
+  background: #e1e1e1;
+}
+
+/// NODE DESIGN ///
+
+.react-flow__node-default.selectable.selected, .react-flow__node-default.selectable:focus, .react-flow__node-default.selectable:focus-visible, .react-flow__node-input.selectable.selected, .react-flow__node-input.selectable:focus, .react-flow__node-input.selectable:focus-visible, .react-flow__node-output.selectable.selected, .react-flow__node-output.selectable:focus, .react-flow__node-output.selectable:focus-visible, .react-flow__node-group.selectable.selected, .react-flow__node-group.selectable:focus, .react-flow__node-group.selectable:focus-visible {
+  box-shadow: none;
+}
+
 .chapitre-node{
   border-radius: 0;
   background-color: #ffafa5;
@@ -18,10 +54,6 @@
     font-style: italic;
     font-size: 10px;
   }
-}
-
-.react-flow__node-default.selectable.selected, .react-flow__node-default.selectable:focus, .react-flow__node-default.selectable:focus-visible, .react-flow__node-input.selectable.selected, .react-flow__node-input.selectable:focus, .react-flow__node-input.selectable:focus-visible, .react-flow__node-output.selectable.selected, .react-flow__node-output.selectable:focus, .react-flow__node-output.selectable:focus-visible, .react-flow__node-group.selectable.selected, .react-flow__node-group.selectable:focus, .react-flow__node-group.selectable:focus-visible {
-  box-shadow: none;
 }
 
 .acte-node{
