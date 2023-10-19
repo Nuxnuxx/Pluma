@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   margin-left: 2rem;
+  margin-right: 2rem;
 
   .titre {
     font-size: 2rem;
@@ -19,6 +20,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    padding: 2rem;
 
     .arrow-button {
       background: none;
@@ -34,37 +36,28 @@
       }
     }
 
-    .liste-recents, .liste-favoris {
+    .liste-globale, .liste-recents{
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      justify-items: center;
+      justify-content: space-between;
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+      gap: 1.5rem;
+    }
+
+    .liste-favoris {
+      width: 100%;
       display: flex;
-      padding: 1rem;
+      flex-direction: row;
       overflow-x: auto;
-      gap: calc(20% - 7rem);
-      transition: scroll 0.3s ease-in-out;
+      scroll-snap-type: x mandatory;
+      gap: calc(20% - 8rem);
 
-      .rectangle {
-        width: 7rem;
-        height: 10rem;
+      .element-liste-projet {
+        scroll-snap-align: start;
       }
-    }
-
-    .liste-recents {
-      overflow-x: hidden;
-      margin-left: 3.5em;
-      margin-right: 3.5em;
-    }
-  }
-
-  .liste-globale {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    row-gap: 3rem;
-    column-gap: 1rem;
-    justify-items: center;
-    padding: 2rem;
-
-    .rectangle {
-      width: 8rem;
-      height: 12rem;
     }
   }
 }

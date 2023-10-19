@@ -3,7 +3,7 @@ import "./elementListeProjets.scss"
 const ElementListeProjets = ({ id, color, onClick }) => {
     return (
         <div
-            className={`rectangle cursor-pointer ${color}`}
+            className={`element-liste-projet cursor-pointer`}
             onClick={() => onClick(id)}
         >
             <div className="nom-projet">Projet {id}</div>
