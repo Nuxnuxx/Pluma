@@ -53,7 +53,8 @@
       flex-direction: row;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
-      gap: calc(20% - 8rem);
+      gap: 3.4rem;
+      justify-content: space-between;
 
       .element-liste-projet {
         scroll-snap-align: start;
