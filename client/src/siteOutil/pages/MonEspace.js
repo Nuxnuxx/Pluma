@@ -43,6 +43,7 @@ const MonEspace = () => {
     return (
         <div className="mon-espace">
             <h1 className="titre">Mon Espace de Travail</h1>
+
             <h2 className="titre-section">Consultés récemment</h2>
             <div className="section">
                 <div className="liste-recents">
@@ -57,7 +58,7 @@ const MonEspace = () => {
             </div>
             <h2 className="titre-section">Favoris</h2>
             <div className="section">
-                <button onClick={() => handleScroll()} className="arrow-button left-arrow">←</button>
+                <button onClick={() => handleScroll(-1)} className="arrow-button left-arrow">←</button>
                 <div className="liste-favoris">
                     {listeFavoris.map((projet) => (
                         <ElementListeProjets
@@ -67,7 +68,7 @@ const MonEspace = () => {
                         />
                     ))}
                 </div>
-                <button onClick={() => handleScroll()} className="arrow-button right-arrow">→</button>
+                <button onClick={() => handleScroll(1)} className="arrow-button right-arrow">→</button>
             </div>
             <h2 className="titre-section">Projets</h2>
             <div className="section">
