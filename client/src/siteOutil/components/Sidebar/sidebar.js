@@ -59,17 +59,19 @@ const Sidebar = () => {
                 </ul>
             </div>
             <div className="premium">
-                <button className="btn-premium" type="button">
-                    <strong>PlumaPremium</strong>
-                    <div id="container-stars">
-                        <div id="stars"></div>
-                    </div>
+                <Link to="/premium">
+                    <button className="btn-premium" type="button">
+                        <strong>PlumaPremium</strong>
+                        <div id="container-stars">
+                            <div id="stars"></div>
+                        </div>
 
-                    <div id="glow">
-                        <div className="circle"></div>
-                        <div className="circle"></div>
-                    </div>
-                </button>
+                        <div id="glow">
+                            <div className="circle"></div>
+                            <div className="circle"></div>
+                        </div>
+                    </button>
+                </Link>
             </div>
         </div>
     );

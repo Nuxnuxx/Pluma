@@ -12,6 +12,10 @@ import 'reactflow/dist/style.css';
 import '../styles/EditionProjet.scss'
 import Toolbar from '../components/Toolbar/toolbar';
 
+import CustomNode from '../components/ReactFlow/CustomNode';
+import FloatingEdge from '../components/ReactFlow/FloatingEdge';
+import CustomConnectionLine from '../components/ReactFlow/CustomConnectionLine';
+
 const initialNodes = [
     { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } },
     { id: '2', position: { x: 0, y: 100 }, data: { label: '2' } },
@@ -144,6 +148,23 @@ export default function EditionProjet() {
 
     const isScreenTooSmall = screenWidth < 1023;
 
+    const connectionLineStyle = {
+        strokeWidth: 3,
+        stroke: 'black',
+    };
+
+    const nodeTypes = {
+        custom: CustomNode,
+    };
+
+    const edgeTypes = {
+        floating: FloatingEdge,
+    };
+
+    const defaultEdgeOptions = {
+        style: { strokeWidth: 2, stroke: 'black' },
+        type: 'floating',
+    };
 
     return (
         <div className="dndflow">
@@ -162,6 +183,12 @@ export default function EditionProjet() {
                             onDrop={onDrop}
                             onDragOver={onDragOver}
                             fitView
+
+                            nodeTypes={nodeTypes}
+                            edgeTypes={edgeTypes}
+                            defaultEdgeOptions={defaultEdgeOptions}
+                            connectionLineComponent={CustomConnectionLine}
+                            connectionLineStyle={connectionLineStyle}
                         >
                             <Toolbar />
                             <Controls position="top-right" />
