@@ -40,20 +40,23 @@
     .liste-recents{
       display: flex;
       flex-direction: row;
+      justify-content: space-between;
       gap: 2rem;
+      width: calc(100% - 7rem);
     }
 
     .liste-favoris {
       display: flex;
       flex-direction: row;
       overflow-x: auto;
-      max-width: 100%;
+      gap: 2rem;
     }
 
     .liste-globale {
-      width: 100%;
       display: grid;
       grid-template-columns: repeat(5, 1fr);
+      width: calc(100% - 7rem);
+      grid-column-gap: calc(20% - 8rem);
       justify-items: center;
     }
   }
