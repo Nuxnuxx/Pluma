@@ -47,7 +47,7 @@
   strong {
     z-index: 2;
     font-family: 'Avalors Personal Use', serif;
-    font-size: 20px;
+    font-size: 30px;
     letter-spacing: 5px;
     color: #FFFFFF;
     text-shadow: 0 0 4px white;
@@ -146,6 +146,10 @@
   font-size: 17px;
   color: #D68E80;
   font-weight: bold;
+}
+
+.custom-table {
+  background-color: #FFAFA5; /* Couleur de fond */
 }
 
 .btnEssaisPremium {

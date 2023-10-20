@@ -16,10 +16,9 @@ const PlumaPremium = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex mt-20 mx-40">
+            <div className="flex justify-center mt-4">
                 <img src="/assets/pile-de-livre.png" alt="pile de livre" className="pile-de-livre"/>
-
-                <div className={"sous-titre flex items-center justify-center m-5"}>
+                <div className="sous-titre mt-56">
                     <p>Soyez Organisé et créatif pour seulement 7,99€ par mois</p>
                 </div>
             </div>
@@ -34,9 +33,9 @@ const PlumaPremium = () => {
                     <strong>Vos notes sont partout et vos écrits sont baclés ? Rejoignez PlumaPremium afin de profiter de toute les fonctionnalités possible.</strong>
                 </div>
             </div>
-            <div className="w-1/2 mt-10">
-                <table className="table-auto">
-                    <thead>
+            <div className="w-1/2 mx-auto mt-10">
+                <table className="table-auto custom-table">
+                <thead>
                     <tr>
                         <th className="border px-4 py-2">Standard Gratuit</th>
                         <th className="border px-4 py-2">Étudiant Gratuit</th>
@@ -82,10 +81,9 @@ const PlumaPremium = () => {
                     </tbody>
                 </table>
             </div>
-            <div>
-                <button className="btnEssaisPremium items-center justify-center mr-4">Essayez PlumaPremium</button>
+            <div className="text-center mt-4">
+                <button className="btnEssaisPremium mx-auto">Essayez PlumaPremium</button>
             </div>
-
             <ComposantPremiumEffect />
         </div>
     );
