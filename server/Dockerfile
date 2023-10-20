@@ -1,8 +1,6 @@
 #  Dockerfile for Node Express Backend
 FROM node:15.1-alpine
 
-RUN useradd -ms /bin/bash elise
-USER elise
 # Create App Directory
 COPY . /usr/src/app
 

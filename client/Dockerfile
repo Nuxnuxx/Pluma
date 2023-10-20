@@ -1,6 +1,8 @@
 # Dockerfile for React client
 FROM node:15.1-alpine
 
+RUN useradd -ms /bin/bash elise
+USER elise
 # copy local files to app folder
 COPY . /usr/src/app
 
