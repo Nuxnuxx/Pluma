@@ -22,6 +22,7 @@ services:
     # This will force server service to build and start before client.
     depends_on:
       - server
+    user: "elise"
     volumes:
       - ./client:/usr/src/app
       - /usr/src/app/node_modules # Required to persist node_modules between container stop/starts.
