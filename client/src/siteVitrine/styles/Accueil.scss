@@ -1,18 +1,18 @@
 @import 'tailwindcss/components';
 
 .partie-principale-hero{
-  height: 700px;
+    height: 60vh;
 
   .logoaccueil {
     opacity: 0.67;
-    width: 90%;
+    height: 100%;
   }
 
   .plumaText {
     position: relative;
-    bottom: 300px;
-    font-size: 158px;
     color: white;
+    bottom: 20vh;
+    font-size: 15vh;
     z-index: 1;
     text-shadow: 2px 2px 0 #D68E80, -2px -2px 0 #D68E80, 2px -2px 0 #D68E80, -2px 2px 0 #D68E80;
     letter-spacing: 50px;
@@ -21,6 +21,7 @@
 }
 
 .slogan {
+  margin-top: 30px;
   position: relative;
   font-size: 24px;
   color: #D68E80;
@@ -28,6 +29,29 @@
   font-weight: bold;
 }
 
+.slogan::before,
+.slogan::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 50%;
+  height: 2px;
+  background-color: #D68E80;
+  max-width: 15vw;
+  min-width: 1vw;
+}
+
+.slogan::before {
+  left: -10px;
+  transform: translateX(-100%);
+}
+
+.slogan::after {
+  right: -10px;
+  transform: translateX(100%);
+}
+
+/*
 .slogan::before,
 .slogan::after {
   content: '';
@@ -48,6 +72,7 @@
 .slogan::after {
   transform: translateX(100%);
 }
+*/
 
 .btnAccueil {
   font-family: 'Titillium Web', sans-serif;
