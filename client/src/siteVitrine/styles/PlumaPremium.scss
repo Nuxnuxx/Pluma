@@ -1,15 +1,168 @@
 @import 'tailwindcss/components';
 
-.center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 25vh;
-  margin-top: 20vh;
+.anime-container {
+  height: 100%;
 }
 
-.livre-de-livre {
+.anime-container .dot{
+  position: absolute;
+  border-radius: 50%;
+  background-color: hsl(60, 100%, 80%);
+}
+
+.premium {
+  width: 80%;
+  height: 500px;
+  background-color: #FF6969;
+  margin-top: 30px;
+  border-radius: 50px;
+
+  .element-premium {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    backdrop-filter: blur(0.1rem);
+    transition: 0.5s;
+    animation: gradient_301 5s ease infinite;
+    border: double 4px transparent;
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    padding: 16px;
+    border-radius: 50px;
+  }
+
+  #container-stars {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transition: 0.5s;
+    backdrop-filter: blur(1rem);
+  }
+
+  strong {
+    z-index: 2;
+    font-family: 'Avalors Personal Use', serif;
+    font-size: 20px;
+    letter-spacing: 5px;
+    color: #FFFFFF;
+    text-shadow: 0 0 4px white;
+  }
+
+  #stars {
+    position: relative;
+    background: transparent;
+    width: 400rem;
+    height: 400rem;
+  }
+
+  #stars::after {
+    content: "";
+    position: absolute;
+    top: -100rem;
+    left: -100rem;
+    width: 100%;
+    height: 100%;
+    animation: animStarRotate 700s linear infinite;
+    background-image: radial-gradient(#ffffff 1px, transparent 1%);
+    background-size: 75px 75px;
+  }
+
+  #stars::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 170%;
+    height: 500%;
+    animation: animStar 700s linear infinite;
+    background-image: radial-gradient(#ffffff 1px, transparent 1%);
+    background-size: 75px 75px;
+    opacity: 0.5;
+  }
+
+  @keyframes animStar {
+    from {
+      transform: translateY(0);
+    }
+
+    to {
+      transform: translateY(-135rem);
+    }
+  }
+
+  @keyframes animStarRotate {
+    from {
+      transform: rotate(360deg);
+    }
+
+    to {
+      transform: rotate(0);
+    }
+  }
+
+  @keyframes gradient_301 {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes pulse_3011 {
+    0% {
+      transform: scale(0.75);
+      box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+    }
+
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    }
+
+    100% {
+      transform: scale(0.75);
+      box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+  }
+}
+
+.pile-de-livre {
   width: 700px;
   height: auto;
+}
+
+.sous-titre{
+  font-size: 17px;
+  color: #D68E80;
+  font-weight: bold;
+}
+
+.btnEssaisPremium {
+  font-family: 'Titillium Web', sans-serif;
+  width: 250px;
+  height: 45px;
+  margin-top: 20px;
+  border-radius: 50px;
+  background-color: #FC8C79;
+  transition: all 0.3s ease-in-out;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  color: white;
+
+  &:hover{
+    background-color: #FFAFA5;
+  }
 }
