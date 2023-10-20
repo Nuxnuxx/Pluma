@@ -1,20 +1,33 @@
 .element-liste-projet {
-  font-weight: bold;
-  font-size: 1.2rem;
-  position: relative;
   flex: 0 0 auto;
   position: relative;
-  border-radius: 5px;
-  background-color: rgba(255, 175, 165, 0.5);
-  width: 8rem;
-  height: 12rem;
-}
+  font-weight: bold;
+  font-size: 1.2rem;
 
-.affichage-statut {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  background-color: #ffffff;
-  padding: 0.5rem;
-  font-size: 0.8em;
+  .rectangle {
+    position: relative;
+    border-radius: 5px;
+    background-color: rgba(255, 175, 165, 0.5);
+    width: max(10vw, 5em);
+    height: max(15vw, 7.5em);
+    &:hover {
+      filter: brightness(0.8);
+    }
+  }
+
+  .nom-projet {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .affichage-statut {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #ffffff;
+    padding: 0.5rem;
+    font-size: 0.8em;
+  }
 }

@@ -1,8 +1,8 @@
 .mon-espace {
   display: flex;
   flex-direction: column;
-  margin-left: 2rem;
-  margin-right: 2rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
 
   .titre {
     font-size: 2rem;
@@ -42,6 +42,7 @@
       flex-direction: row;
       justify-content: space-between;
       width: calc(100% - 7rem);
+      gap: 1rem;
     }
 
     .liste-favoris {
@@ -50,7 +51,7 @@
       overflow-x: auto;
       width: 100%;
       justify-content: space-between;
-      gap: calc((100% - 40rem)/4);
+      gap: max(calc((100% - 50vw)/4), 1em);
     }
 
     .liste-globale {
@@ -58,68 +59,8 @@
       grid-template-columns: repeat(5, 1fr);
       width: calc(100% - 7rem);
       justify-items: center;
-      grid-column-gap: calc((100% - 40rem)/4);
+      grid-column-gap: calc((100% - 50vw)/4);
       grid-row-gap: 1rem;
     }
   }
 }
-
-/*
-.mon-espace {
-  display: flex;
-  flex-direction: column;
-  margin-left: 2rem;
-  margin-right: 2rem;
-
-  .titre {
-    font-size: 2rem;
-    font-weight: 100;
-    margin-bottom: 1rem;
-  }
-
-  .titre-section {
-    font-size: 1.2rem;
-    margin-top: 1rem;
-  }
-
-  .section {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-
-    .arrow-button {
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      font-weight: 100;
-      padding: 1rem;
-      height: fit-content;
-
-      &:hover {
-        color: #cccccc;
-      }
-    }
-
-    .liste-globale, .liste-recents{
-      width: 100%;
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      justify-items: center;
-      padding-left: 2.5rem;
-      padding-right: 2.5rem;
-      gap: 1.5rem;
-    }
-
-    .liste-favoris {
-      max-width: 100%;
-      overflow-x: scroll;
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-  }
-}
-*/

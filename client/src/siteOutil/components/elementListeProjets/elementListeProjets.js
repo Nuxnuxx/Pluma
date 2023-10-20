@@ -6,8 +6,10 @@ const ElementListeProjets = ({ id, color, onClick }) => {
             className={`element-liste-projet cursor-pointer`}
             onClick={() => onClick(id)}
         >
-            <div className="nom-projet">Projet {id}</div>
-            <div className="affichage-statut">Statut</div>
+            <div className="rectangle">
+                <div className="nom-projet">Projet {id}</div>
+                <div className="affichage-statut">Statut</div>
+            </div>
         </div>
     );
 };
