@@ -2,10 +2,10 @@
 FROM node:16-alpine
 
 # copy local files to app folder
-COPY . /usr/src/app
+COPY . /app
 
 # Working directory be app
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Installing dependencies, you'll most likely see warnings, you can ignore
 # most of these.
