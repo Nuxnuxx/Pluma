@@ -3,7 +3,6 @@ FROM node:16-alpine
 
 # copy local files to app folder
 COPY . /usr/src/app
-RUN chown 1001:node /usr/src/app
 
 # Working directory be app
 WORKDIR /usr/src/app
