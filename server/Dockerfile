@@ -2,10 +2,10 @@
 FROM node:15.1-alpine
 
 # Create App Directory
-COPY . /usr/src/app
+COPY . /app
 
 # Working directory be app
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Installing dependencies.
 RUN npm install cors
