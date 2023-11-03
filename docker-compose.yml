@@ -9,6 +9,7 @@ services:
   server:
     build:
       context: ./server
+    restart: always
     volumes:
       - ./server:/app
       - /app/node_modules # Required to persist node_modules between container stop/starts.
@@ -22,6 +23,7 @@ services:
     # This will force server service to build and start before client.
     depends_on:
       - server
+    restart: always
     volumes:
       - ./client:/app
       - /app/node_modules # Required to persist node_modules between container stop/starts.
