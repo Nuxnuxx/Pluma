@@ -14,7 +14,7 @@ COPY --chown=node:node package.json package-lock.json* ./
 RUN npm i
 
 # copy local files to app folder
-COPY . .
+COPY --chown=node:node . .
 
 #RUN npm install node-sass
 EXPOSE 3000
