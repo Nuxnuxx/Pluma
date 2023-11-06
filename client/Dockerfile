@@ -3,18 +3,20 @@ FROM node:16-alpine
 
 # Creating directory app with owner being node
 RUN mkdir /app && chown node:node /app
+USER node
+
 # Working directory be app
 WORKDIR /app
 
-USER node
-COPY --chown=node:node package.json package-lock.json* ./
+# copy local files to app folder
+COPY . /app/
+
+COPY package.json package-lock.json* /app/
 
 # Installing dependencies, you'll most likely see warnings, you can ignore
 # most of these.
 RUN npm i
 
-# copy local files to app folder
-COPY --chown=node:node . .
 
 #RUN npm install node-sass
 EXPOSE 3000
