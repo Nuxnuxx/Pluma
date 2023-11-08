@@ -1,11 +1,6 @@
 # Dockerfile for React client
 FROM node:16-alpine
 
-# Creating directory app with owner being node
-RUN mkdir /app && chown node:node /app
-
-USER root
-
 # Working directory be app
 WORKDIR /app
 
