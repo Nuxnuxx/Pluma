@@ -10,8 +10,6 @@ services:
     build:
       context: ./server
     restart: always
-    volumes:
-      - ./server:/app
     ports:
       - 5000:5000
     env_file: ./server/.env
@@ -23,8 +21,6 @@ services:
     depends_on:
       - server
     restart: always
-    volumes:
-      - ./client:/app
     ports:
       - 3000:3000
     environment:
