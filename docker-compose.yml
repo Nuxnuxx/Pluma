@@ -10,6 +10,7 @@ services:
   neo:
     # The image to use
     image: neo4j:latest
+    restart: always
     # map the ports so we can check the db server is up
     ports: 
         - 7474:7474
