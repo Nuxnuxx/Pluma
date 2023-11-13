@@ -6,16 +6,35 @@
 version: "3.7"
 
 services:
+  ## Defining the Neo4j Database Service        
+  neo:
+      # The image to use
+      image: neo4j:latest
+      # map the ports so we can check the db server is up
+      ports: 
+          - 7474:7474
+          - 7687:7687
+      # mounting a named volume to the container to track db data
+      volumes:
+          - neo4j_data:/data/
+      env_file:
+          - /etc/neo4j/neo4j.conf
+  
   server:
+    container_name: pluma-server
     build:
       context: ./server
     restart: always
     # Ne pas mettre de ports ici normalement
-    ports: 
-      - 5000:5000
+    #ports: 
+      #- 5000:5000
     env_file: ./server/.env
-
+    networks:
+      - neo4j-network
+      - mariadb-network
+    
   client:
+    container_name: pluma-client
     build:
       context: ./client
     # This will force server service to build and start before client.
@@ -26,3 +45,15 @@ services:
       - 3000:3000
     environment:
       CHOKIDAR_USEPOLLING: "true"
+    networks:
+      - neo4j-network
+      - mariadb-network
+    
+volumes:
+    neo4j_data:
+    
+networks:
+  neo4j-network:
+    driver: bridge
+  mariadb-network:
+    driver: bridge
