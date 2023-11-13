@@ -6,6 +6,17 @@
 version: "3.7"
 
 services:
+
+  bdd:
+    image: mariadb:10.6-focal
+    restart: always
+    volumes:
+      - ./bdd/:/var/lib/mysql 
+    env_file:
+      - ../../bdd/env.mariadb
+    networks:
+      - mariadb-network
+      
   ## Defining the Neo4j Database Service        
   neo:
     # The image to use
@@ -13,13 +24,13 @@ services:
     restart: always
     # map the ports so we can check the db server is up
     ports: 
-        - 7474:7474
-        - 7687:7687
+      - 7474:7474
+      - 7687:7687
     # mounting a named volume to the container to track db data
     volumes:
-        - neo4j_data:/data/
+      - neo4j_data:/data/
     env_file:
-        - ../../bdd/env.neo4j
+      - ../../bdd/env.neo4j
     networks:
       - neo4j-network
   
