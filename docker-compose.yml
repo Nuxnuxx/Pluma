@@ -18,7 +18,7 @@ services:
       volumes:
           - neo4j_data:/data/
       env_file:
-          - ../../bdd/env.neoj4
+          - ../../bdd/env.neo4j
   
   server:
     container_name: pluma-server
