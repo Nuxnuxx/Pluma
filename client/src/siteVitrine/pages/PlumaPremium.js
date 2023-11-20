@@ -16,61 +16,73 @@ const PlumaPremium = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex justify-center mt-4">
-                <img src="/assets/pile-de-livre.png" alt="pile de livre" className="pile-de-livre"/>
-                <div className="sous-titre mt-56">
-                    <p>Soyez Organisé et créatif pour seulement 7,99€ par mois</p>
-                </div>
+            <div className="pricingTable w-1/2 mx-auto mt-10">
+                <h2 className="pricingTable-title">Trouve la plume qui te convient.</h2>
+                <h3 className="pricingTable-subtitle">Soyez Organisé et créatif pour seulement 7,99€ par mois.</h3>
+
+                <ul className="pricingTable-firstTable">
+                    <li className="pricingTable-firstTable_table">
+                        <h1 className="pricingTable-firstTable_table__header">Standard</h1>
+                        <p className="pricingTable-firstTable_table__pricing">
+                            <span>$</span><span>0</span><span>Month</span></p>
+                        <ul className="pricingTable-firstTable_table__options">
+                            <li>Nombre de blocs illimités</li>
+                            <li>Limitation à 5 projets</li>
+                            <li>Personnalisation des lieux et personnages</li>
+                            <li>10 générations hebdomadaire de nom pour personnage</li>
+                            <li>Sauvegarde automatique</li>
+                            <li>Accès à 3 designs pour l’espace de travail</li>
+                            <li>Exportation des histoires</li>
+                            <li>Correcteur d’orthographe et de grammaire</li>
+                            <li>Possibilité de varier entre une unique police serif et sans-serif</li>
+                            <li>Panel d’image prédéfni pour les avatars des personnages et les lieux</li>
+                        </ul>
+                        <button className="pricingTable-firstTable_table__getstart">Essayez Maintenant !</button>
+                    </li>
+                    <li className="pricingTable-firstTable_table">
+                        <h1 className="pricingTable-firstTable_table__header">Étudiant</h1>
+                        <p className="pricingTable-firstTable_table__pricing">
+                            <span>$</span><span>0</span><span>Month</span></p>
+                        <ul className="pricingTable-firstTable_table__options">
+                            <li>Nombre de blocs illimités</li>
+                            <li>Limitation à 10 projets</li>
+                            <li>Personnalisation des lieux et personnages</li>
+                            <li>Génération de nom pour personnage illimité</li>
+                            <li>Sauvegarde automatique</li>
+                            <li>Accès à plus de 20 designs pour l’espace de travail</li>
+                            <li>Exportation des histoires</li>
+                            <li>Correcteur d’orthographe et de grammaire</li>
+                            <li>10 polices d’écritures différentes</li>
+                            <li>Panel d’image prédéfni pour les avatars des personnages et les lieux</li>
+                            <li>Accès au résumé par IA</li>
+                        </ul>
+                        <button className="pricingTable-firstTable_table__getstart">Essayez Maintenant !</button>
+                    </li>
+                    <li className="pricingTable-firstTable_table">
+                        <h1 className="pricingTable-firstTable_table__header">Premium</h1>
+                        <p className="pricingTable-firstTable_table__pricing">
+                            <span>$</span><span>7,99</span><span>Month</span></p>
+                        <ul className="pricingTable-firstTable_table__options">
+                            <li>Nombre de blocs illimités</li>
+                            <li>Création de projets en illimités</li>
+                            <li>Personnalisation des lieux et personnages</li>
+                            <li>Génération de nom pour personnage illimité</li>
+                            <li>Sauvegarde automatique</li>
+                            <li>Accès à plus de 20 designs pour l’espace de travail</li>
+                            <li>Exportation des histoires</li>
+                            <li>Correcteur d’orthographe et de grammaire</li>
+                            <li>Plus de 50 polices d’écritures différentes</li>
+                            <li>Panel d’image prédéfni pour les avatars des personnages et les lieux</li>
+                            <li>Accès au résumé par IA</li>
+                            <li>Génération d'image par IA pour les avatars des personnages et les lieux</li>
+                        </ul>
+                        <button className="pricingTable-firstTable_table__getstart">Essayez Maintenant !</button>
+                    </li>
+                </ul>
             </div>
-            <div className="w-1/2 mx-auto mt-10">
-                <table className="table-auto custom-table">
-                <thead>
-                    <tr>
-                        <th className="border px-4 py-2">Standard Gratuit</th>
-                        <th className="border px-4 py-2">Étudiant Gratuit</th>
-                        <th className="border px-4 py-2">Premium 7,99€/mois</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td className="border px-4 py-2">Nombre de blocs illimités<br />
-                                Limitation à 5 projets<br />
-                                Personnalisation des lieux et personnages<br />
-                                10 générations hebdomadaire de nom pour personnage<br />
-                                Sauvegarde automatique<br />
-                                Accès à 3 designs pour l’espace de travail<br />
-                                Exportation des histoires<br />
-                                Correcteur d’orthographe et de grammaire<br />
-                                Possibilité de varier entre une unique police serif et sans-serif<br />
-                                Panel d’image prédéfni pour les avatars des personnages et les lieux</td>
-                            <td className="border px-4 py-2">Nombre de blocs illimités<br />
-                                Limitation à 10 projets<br />
-                                Personnalisation des lieux et personnages<br />
-                                Génération de nom pour personnage illimité<br />
-                                Sauvegarde automatique<br />
-                                Accès à plus de 20 designs pour l’espace de travail<br />
-                                Exportation des histoires<br />
-                                Correcteur d’orthographe et de grammaire<br />
-                                Accès au résumé par IA<br />
-                                10 polices d’écritures différentes<br />
-                                Panel d’image prédéfini pour les avatars des personnages et les lieux</td>
-                            <td className="border px-4 py-2">Plus de publicité<br />
-                                Nombre de blocs illimités<br />
-                                Création de projets en illimités<br />
-                                Personnalisation des lieux et personnages<br />
-                                Génération de nom pour personnage illimité<br />
-                                Sauvegarde automatique<br />
-                                Accès à plus de 20 designs pour l’espace de travail<br />
-                                Exportation des histoires<br />
-                                Correcteur d’orthographe et de grammaire<br />
-                                Accès au résumé par IA<br />
-                                Plus de 50 polices d’écritures différentes<br />
-                                Générateur d’image par IA pour les avatars des personnages et les lieux</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-center items-center  mt-10">
+
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-center items-center  mt-20">
                 <div className="text-center">
                     <strong>Faite 37% d'économie sur l'année en prenant l'abbonnement PlumaPremium Annuel pour seulement 59,99€ par an</strong>
                 </div>
@@ -84,6 +96,7 @@ const PlumaPremium = () => {
             <div className="text-center mt-4">
                 <button className="btnEssaisPremium mx-auto">Essayez PlumaPremium</button>
             </div>
+
             <ComposantPremiumEffect />
         </div>
     );
