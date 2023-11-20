@@ -503,9 +503,7 @@ $bgfontcolor: #717787;
 }
 
 body{
-  font-family: 'Montserrat', sans-serif;
   font-size: 100%;
-  color: $bgfontcolor;
 
   @media screen and (max-width: 960px){
     font-size: 80%;
