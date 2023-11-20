@@ -17,6 +17,7 @@ services:
       - 3307:3306
     volumes:
       - mariadb_data:/var/lib/mysql
+      - ../../bdd/mymaria.cnf:/etc/mysql/conf.d/mymaria.cnf
     networks:
       - mariadb-network
 
