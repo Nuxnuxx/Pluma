@@ -184,13 +184,13 @@ $bgfontcolor: #717787;
     }
   }
 
-  &-firstTable{
+  &-firstTable {
     list-style: none;
     padding-left: 2em;
     padding-right: 2em;
     text-align: center;
 
-    &_table{
+    &_table {
       vertical-align: middle;
       width: $widthoftable;
       background-color: $bgctables;
@@ -523,4 +523,22 @@ body{
   padding:   0;
   margin: 0;
   box-sizing: border-box;
+}
+.rectangleBasdePagePP{
+  width: 100%;
+  height: 100px;
+  background-color: #FFAFA5;
+  bottom: 0;
+  left: 0;
+}
+
+.TextBasdePage{
+  color: #FFFFFF;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+  height: 100px;
 }

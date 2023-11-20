@@ -24,7 +24,7 @@ const PlumaPremium = () => {
                     <li className="pricingTable-firstTable_table">
                         <h1 className="pricingTable-firstTable_table__header">Standard</h1>
                         <p className="pricingTable-firstTable_table__pricing">
-                            <span>$</span><span>0</span><span>Month</span></p>
+                            <span>€</span><span>0</span><span>par mois</span></p>
                         <ul className="pricingTable-firstTable_table__options">
                             <li>Nombre de blocs illimités</li>
                             <li>Limitation à 5 projets</li>
@@ -40,28 +40,9 @@ const PlumaPremium = () => {
                         <button className="pricingTable-firstTable_table__getstart">Essayez Maintenant !</button>
                     </li>
                     <li className="pricingTable-firstTable_table">
-                        <h1 className="pricingTable-firstTable_table__header">Étudiant</h1>
-                        <p className="pricingTable-firstTable_table__pricing">
-                            <span>$</span><span>0</span><span>Month</span></p>
-                        <ul className="pricingTable-firstTable_table__options">
-                            <li>Nombre de blocs illimités</li>
-                            <li>Limitation à 10 projets</li>
-                            <li>Personnalisation des lieux et personnages</li>
-                            <li>Génération de nom pour personnage illimité</li>
-                            <li>Sauvegarde automatique</li>
-                            <li>Accès à plus de 20 designs pour l’espace de travail</li>
-                            <li>Exportation des histoires</li>
-                            <li>Correcteur d’orthographe et de grammaire</li>
-                            <li>10 polices d’écritures différentes</li>
-                            <li>Panel d’image prédéfni pour les avatars des personnages et les lieux</li>
-                            <li>Accès au résumé par IA</li>
-                        </ul>
-                        <button className="pricingTable-firstTable_table__getstart">Essayez Maintenant !</button>
-                    </li>
-                    <li className="pricingTable-firstTable_table">
                         <h1 className="pricingTable-firstTable_table__header">Premium</h1>
                         <p className="pricingTable-firstTable_table__pricing">
-                            <span>$</span><span>7,99</span><span>Month</span></p>
+                            <span>€</span><span>7,99</span><span>par mois</span></p>
                         <ul className="pricingTable-firstTable_table__options">
                             <li>Nombre de blocs illimités</li>
                             <li>Création de projets en illimités</li>
@@ -78,11 +59,30 @@ const PlumaPremium = () => {
                         </ul>
                         <button className="pricingTable-firstTable_table__getstart">Essayez Maintenant !</button>
                     </li>
+                    <li className="pricingTable-firstTable_table">
+                        <h1 className="pricingTable-firstTable_table__header">Étudiant</h1>
+                        <p className="pricingTable-firstTable_table__pricing">
+                            <span>€</span><span>0</span><span>par mois</span></p>
+                        <ul className="pricingTable-firstTable_table__options">
+                            <li>Nombre de blocs illimités</li>
+                            <li>Limitation à 10 projets</li>
+                            <li>Personnalisation des lieux et personnages</li>
+                            <li>Génération de nom pour personnage illimité</li>
+                            <li>Sauvegarde automatique</li>
+                            <li>Accès à plus de 20 designs pour l’espace de travail</li>
+                            <li>Exportation des histoires</li>
+                            <li>Correcteur d’orthographe et de grammaire</li>
+                            <li>10 polices d’écritures différentes</li>
+                            <li>Panel d’image prédéfni pour les avatars des personnages et les lieux</li>
+                            <li>Accès au résumé par IA</li>
+                        </ul>
+                        <button className="pricingTable-firstTable_table__getstart">Essayez Maintenant !</button>
+                    </li>
                 </ul>
             </div>
 
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-center items-center  mt-20">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-center items-center  mt-16">
                 <div className="text-center">
                     <strong>Faite 37% d'économie sur l'année en prenant l'abbonnement PlumaPremium Annuel pour seulement 59,99€ par an</strong>
                 </div>
@@ -95,6 +95,12 @@ const PlumaPremium = () => {
             </div>
             <div className="text-center mt-4">
                 <button className="btnEssaisPremium mx-auto">Essayez PlumaPremium</button>
+            </div>
+            <div className="rectangleBasdePagePP mt-8">
+                <div className="TextBasdePage">
+                    <p>Explorez de nouveaux sommets littéraires avec PlumaPremium, où chaque mot devient une invitation à l'excellence créative.</p>
+                </div>
+
             </div>
 
             <ComposantPremiumEffect />
