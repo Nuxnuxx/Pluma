@@ -22,17 +22,6 @@ const PlumaPremium = () => {
                     <p>Soyez Organisé et créatif pour seulement 7,99€ par mois</p>
                 </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-center items-center  mt-10">
-                <div className="text-center">
-                    <strong>Faite 37% d'économie sur l'année en prenant l'abbonnement PlumaPremium Annuel pour seulement 59,99€ par an</strong>
-                </div>
-                <div className="text-center">
-                    <strong>Profiter d'une expérience sans publicité pour que vous ne soyez plus intérompu</strong>
-                </div>
-                <div className="text-center">
-                    <strong>Vos notes sont partout et vos écrits sont baclés ? Rejoignez PlumaPremium afin de profiter de toute les fonctionnalités possible.</strong>
-                </div>
-            </div>
             <div className="w-1/2 mx-auto mt-10">
                 <table className="table-auto custom-table">
                 <thead>
@@ -80,6 +69,17 @@ const PlumaPremium = () => {
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-center items-center  mt-10">
+                <div className="text-center">
+                    <strong>Faite 37% d'économie sur l'année en prenant l'abbonnement PlumaPremium Annuel pour seulement 59,99€ par an</strong>
+                </div>
+                <div className="text-center">
+                    <strong>Profiter d'une expérience sans publicité pour que vous ne soyez plus intérompu</strong>
+                </div>
+                <div className="text-center">
+                    <strong>Vos notes sont partout et vos écrits sont baclés ? Rejoignez PlumaPremium afin de profiter de toute les fonctionnalités possible.</strong>
+                </div>
             </div>
             <div className="text-center mt-4">
                 <button className="btnEssaisPremium mx-auto">Essayez PlumaPremium</button>
