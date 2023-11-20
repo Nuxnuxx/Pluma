@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from "react-router-dom"
 import './sidebar.scss';
 
@@ -15,19 +15,39 @@ const Sidebar = () => {
     ];
 
     const [isProjectsOpen, setIsProjectsOpen] = useState(false);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     const toggleProjects = () => {
         setIsProjectsOpen(!isProjectsOpen);
     };
 
+    const toggleSidebar = () => {
+        setIsSidebarOpen(prevState => !prevState);
+    };
+
+    useEffect(() => {
+        const handleResize = () => {
+            const sidebarElement = document.querySelector('.sidebar');
+            const isSidebarClose = sidebarElement.classList.contains('close');
+
+            if (window.innerWidth < 768 && !isSidebarClose) {
+                toggleSidebar();
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     return (
-        <div className="sidebar">
-            <div className="sidebar-content">
-                <Link to="/">
-                    <div className="titre">
-                            <img src="/assets/logo_clair_1.png" alt="logo" className="logo" />
-                            <h2>Pluma</h2>
-                    </div>
+        <div className={`sidebar ${isSidebarOpen ? 'close' : ''}`}>
+            <div className={`sidebar-content ${isSidebarOpen ? 'close' : ''}`}>
+                <Link to="/mon-espace" className="titre">
+                    <img src="/assets/logo_clair_1.png" alt="logo" className="logo" />
+                    <h2>Pluma</h2>
                 </Link>
                 <div className="barre-de-recherche">
                     <input type="text" placeholder="Rechercher" />
@@ -52,11 +72,11 @@ const Sidebar = () => {
                         </div>
                     </li>
                     <div className={`liste-projets ${isProjectsOpen ? 'open' : ''}`}>
-                            {listeProjet.map((projet) => (
-                                <Link to={`/mon-espace/projet${projet.id}`}>
-                                    <li>Projet {projet.id}</li>
-                                </Link>
-                            ))}
+                        {listeProjet.map((projet) => (
+                            <Link key={projet.id} to={`/mon-espace/projet${projet.id}`}>
+                                <li>Projet {projet.id}</li>
+                            </Link>
+                        ))}
                     </div>
                     <Link to="/mon-espace/partage-avec-moi">
                         <li>Partagés avec moi</li>
@@ -66,7 +86,7 @@ const Sidebar = () => {
                     </Link>
                 </ul>
             </div>
-            <div className="premium">
+            <div className={`premium ${isSidebarOpen ? 'close' : ''}`}>
                 <Link to="/premium">
                     <button className="btn-premium" type="button">
                         <strong>PlumaPremium</strong>
@@ -80,6 +100,14 @@ const Sidebar = () => {
                         </div>
                     </button>
                 </Link>
+            </div>
+            <div className={`toggle-button ${isSidebarOpen ? 'close' : ''}`} onClick={toggleSidebar}>
+                <svg id="eQXyaThE5gd1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 500" shapeRendering="geometricPrecision" textRendering="geometricPrecision" width="100%" height="100%">
+                    <ellipse rx="237.58581" ry="214.427627" transform="matrix(.711193 0 0 1.000001 178.909992 250)" fill="#ffafa5" strokeWidth="0"/>
+                    <polygon points="0,-98.25934 93.450185,-30.363806 57.755391,79.493476 -57.755391,79.493476 -93.450185,-30.363806 0,-98.25934" transform="matrix(1.138413 1.360925-1.539158 1.287505 56.492851 165.484719)" fill="#ffafa5" strokeWidth="0"/>
+                    <polygon points="0,-98.25934 93.450185,-30.363806 57.755391,79.493476 -57.755391,79.493476 -93.450185,-30.363806 0,-98.25934" transform="matrix(.786197 1.590596-1.798908 0.889161 80.24744 339.908492)" fill="#ffafa5" strokeWidth="0"/>
+                    <path d="M20.972,95.594L78.577,49.643c.951-.76.951-2.367,0-3.127L20.968,0.56c-.689-.547-1.716-.709-2.61-.414-.186.061-.33.129-.436.186-.65.35-1.056,1.025-1.056,1.764v91.967c0,.736.405,1.414,1.056,1.762.109.06.253.127.426.185.903.295,1.933.134,2.624-.416Z" transform={isSidebarOpen ? "matrix(1.93752 0 0 1.93752 114.577189 156.84779)" : "matrix(-1.93752 0 0 -1.93752 300.881839 343.15225)"} fill="#fff" style={{ transition: 'transform 0.2s ease' }}/>
+                </svg>
             </div>
         </div>
     );

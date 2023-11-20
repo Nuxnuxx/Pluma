@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 import ReactFlow, {addEdge, updateEdge, Background, Controls, MiniMap, ReactFlowProvider, useEdgesState, useNodesState} from 'reactflow';
 import 'reactflow/dist/style.css';
 import '../styles/EditionProjet.scss'
@@ -34,7 +34,6 @@ export default function EditionProjet() {
     const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
     const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
     const [reactFlowInstance, setReactFlowInstance] = useState(null);
-    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
     const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), [setEdges]);
 
@@ -65,6 +64,21 @@ export default function EditionProjet() {
                 left: event.clientX - 240,
                 data: node.data,
                 type: node.type,
+            });
+        },
+        [setMenu]
+    );
+
+    const onEdgeContextMenu = useCallback(
+        (event, edge) => {
+            event.preventDefault();
+
+            setMenu({
+                id: edge.id,
+                top: event.clientY,
+                left: event.clientX - 240,
+                data: edge.data,
+                type: edge.type,
             });
         },
         [setMenu]
@@ -169,20 +183,6 @@ export default function EditionProjet() {
         [setNodes, reactFlowInstance]
     );
 
-    useEffect(() => {
-        const handleResize = () => {
-            setScreenWidth(window.innerWidth);
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
-    const isScreenTooSmall = screenWidth < 1023;
-
     const connectionLineStyle = {
         strokeWidth: 3,
         stroke: '#d6d6d6',
@@ -193,17 +193,15 @@ export default function EditionProjet() {
     };
 
     const EdgeOptions = {
-        style: { strokeWidth: 2, stroke: '#b26b5d' },
+        style: { strokeWidth: 4, stroke: '#b26b5d'},
         type: 'floating',
     };
 
     return (
         <div className="dndflow">
-            {isScreenTooSmall ? (
-                <p>La taille de l'écran n'est pas adaptée pour afficher cette page.</p>
-            ) : <ReactFlowProvider>
+            <ReactFlowProvider>
                     <div className="reactflow-wrapper" ref={reactFlowWrapper}>
-                        <div style={{ width: '87vw', height: '100vh' }}>
+                        <div style={{ width: '100%', height: '100%' }}>
                         <ReactFlow
                             ref={ref}
                             nodes={nodes}
@@ -219,6 +217,8 @@ export default function EditionProjet() {
                             onDragOver={onDragOver}
                             onPaneClick={onPaneClick}
                             onNodeContextMenu={onNodeContextMenu}
+                            onEdgeContextMenu={onEdgeContextMenu}
+                            attributionPosition="bottom-left"
                             fitView
                             edgeTypes={edgeTypes}
                             defaultEdgeOptions={EdgeOptions}
