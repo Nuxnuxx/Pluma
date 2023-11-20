@@ -6,7 +6,6 @@
 version: "3.7"
 
 services:
-  ## Conteneur de mariadb
   mariadb:
     image: mariadb:latest
     container_name: my-mariadb
@@ -60,7 +59,7 @@ services:
       - mariadb-network
 
   ## Conteneur proxy pour afficher pluma avec une url spécifique
-   nginx-proxy:
+  nginx-proxy:
     image: nginx:latest
     container_name: nginx-proxy
     restart: always
