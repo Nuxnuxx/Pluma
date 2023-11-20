@@ -6,7 +6,6 @@
 version: "3.7"
 
 services:
-
   ## Conteneur de mariadb
   mariadb:
     image: mariadb:latest
