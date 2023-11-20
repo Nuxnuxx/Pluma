@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import ElementListeProjets from "../components/elementListeProjets/elementListeProjets";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 import "../styles/StyleMonEspace.scss"
 import "../styles/StyleResumeProjet.scss"
 
@@ -12,17 +12,45 @@ const ResumeProjet = () => {
         dateCreation: '01/01/2023',
         genre: 'Genre',
         etat: 'en_cours',
-        description: '\n' +
-            '\n' +
+        description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed lorem nulla. Vestibulum iaculis nulla vel ipsum vestibulum ullamcorper. Fusce euismod purus eget nisi placerat vulputate. Nullam imperdiet ac dui ac mollis. Pellentesque nec tempus lectus, ullamcorper commodo mi. Nulla sollicitudin a purus ac scelerisque. Fusce feugiat non nisi nec rhoncus. Mauris a molestie sem. Sed ultrices semper tincidunt. Donec mollis quam tortor. Proin et velit id nulla hendrerit tincidunt et feugiat sem. Suspendisse vehicula sollicitudin sodales. Vivamus velit magna, posuere nec nunc consectetur, sollicitudin scelerisque sapien. Fusce sed nisl nec nulla rutrum dapibus.\n' +
             '\n' +
             'Nam sit amet laoreet dolor. Quisque pellentesque, ex vel gravida mattis, urna ante tempor lorem, nec maximus lectus nibh at elit. Cras iaculis metus ipsum. Quisque tempus tempus nibh. Sed fringilla elit sed libero tincidunt gravida. Vestibulum posuere semper metus nec tempor. Donec eu blandit purus. Ut id interdum lacus, id lobortis est. Donec dictum ex eget lacinia viverra. Suspendisse potenti. Maecenas nec dui suscipit, dictum arcu et, porttitor augue. Sed eget mollis nisl, non varius enim. Cras blandit justo nec neque cursus congue. Nulla quis tempor leo, in aliquam libero. Nam in semper justo, eu pharetra dolor. Fusce vehicula sem nec ligula mollis, vitae iaculis. ',
     };
 
     const [etatProjet, setEtatProjet] = useState(projet.etat);
+    const [editTitre, setEditTitre] = useState(false);
+    const [editDescription, setEditDescription] = useState(false);
+    const [nouveauTitre, setNouveauTitre] = useState(projet.titre);
+    const [nouvelleDescription, setNouvelleDescription] = useState(projet.description);
 
     const handleEtatChange = (nouvelEtat) => {
         setEtatProjet(nouvelEtat);
+    };
+
+    const handleTitreClick = () => {
+        setEditTitre(true);
+    };
+
+    const handleDescriptionClick = () => {
+        setEditDescription(true);
+    };
+
+    const handleTitreChange = (e) => {
+        setNouveauTitre(e.target.value);
+    };
+
+    const handleDescriptionChange = (e) => {
+        setNouvelleDescription(e.target.value);
+    };
+
+    const handleEditerClick = () => {
+        // Mettez en œuvre la logique pour éditer le projet avec les nouvelles valeurs
+        console.log('Éditer le projet avec le nouveau titre:', nouveauTitre);
+        console.log('Éditer le projet avec la nouvelle description:', nouvelleDescription);
+        // Réinitialisez les états d'édition après l'édition
+        setEditTitre(false);
+        setEditDescription(false);
     };
 
     return (
@@ -31,7 +59,17 @@ const ResumeProjet = () => {
                 <ElementListeProjets id={projet.id} color="blue" onClick={() => {}} />
 
                 <div className="info-projet">
-                    <h2>{projet.titre}</h2>
+                    {editTitre ? (
+                        <input
+                            type="text"
+                            value={nouveauTitre}
+                            onChange={handleTitreChange}
+                            onBlur={() => setEditTitre(false)}
+                        />
+                    ) : (
+                        <h2 onClick={handleTitreClick}>{projet.titre}</h2>
+                    )}
+
                     <p>Date de création: {projet.dateCreation}</p>
                     <p>Genre: {projet.genre}</p>
 
@@ -43,10 +81,18 @@ const ResumeProjet = () => {
                 </div>
             </div>
             <div className="paragraphe-resume">
-                <p className="description">{projet.description}</p>
+                {editDescription ? (
+                    <textarea
+                        value={nouvelleDescription}
+                        onChange={handleDescriptionChange}
+                        onBlur={() => setEditDescription(false)}
+                    />
+                ) : (
+                    <p className="description" onClick={handleDescriptionClick}>{projet.description}</p>
+                )}
             </div>
             <Link to={`./edition`}>
-                <button className="editer">
+                <button className="editer" onClick={handleEditerClick}>
                     Éditer
                 </button>
             </Link>

@@ -23,10 +23,12 @@ const Sidebar = () => {
     return (
         <div className="sidebar">
             <div className="sidebar-content">
-                <div className="titre">
-                    <img src="/assets/logo_clair_1.png" alt="logo" className="logo" />
-                    <h2>Pluma</h2>
-                </div>
+                <Link to="/">
+                    <div className="titre">
+                            <img src="/assets/logo_clair_1.png" alt="logo" className="logo" />
+                            <h2>Pluma</h2>
+                    </div>
+                </Link>
                 <div className="barre-de-recherche">
                     <input type="text" placeholder="Rechercher" />
                     <div className="icone-de-recherche">
