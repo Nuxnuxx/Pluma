@@ -82,7 +82,7 @@ const PlumaPremium = () => {
             </div>
 
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-center items-center  mt-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-center items-center  m-16">
                 <div className="text-center">
                     <strong>Faite 37% d'économie sur l'année en prenant l'abbonnement PlumaPremium Annuel pour seulement 59,99€ par an</strong>
                 </div>
@@ -93,10 +93,10 @@ const PlumaPremium = () => {
                     <strong>Vos notes sont partout et vos écrits sont baclés ? Rejoignez PlumaPremium afin de profiter de toute les fonctionnalités possible.</strong>
                 </div>
             </div>
-            <div className="text-center mt-4">
+            <div className="text-center">
                 <button className="btnEssaisPremium mx-auto">Essayez PlumaPremium</button>
             </div>
-            <div className="rectangleBasdePagePP mt-8">
+            <div className="rectangleBasdePagePP mt-10">
                 <div className="TextBasdePage">
                     <p>Explorez de nouveaux sommets littéraires avec PlumaPremium, où chaque mot devient une invitation à l'excellence créative.</p>
                 </div>
