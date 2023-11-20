@@ -16,7 +16,7 @@ const PlumaPremium = () => {
                     </div>
                 </div>
             </div>
-            <div className="pricingTable w-1/2 mx-auto mt-10">
+            <div className="pricingTable mx-auto mt-10">
                 <h2 className="pricingTable-title">Trouve la plume qui te convient.</h2>
                 <h3 className="pricingTable-subtitle">Soyez Organisé et créatif pour seulement 7,99€ par mois.</h3>
 
