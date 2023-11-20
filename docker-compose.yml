@@ -7,16 +7,37 @@ version: "3.7"
 
 services:
 
-  bdd:
-    image: mariadb:10.6-focal
+  #bdd:
+   # image: mariadb:10.6-focal
+   # restart: always
+    #volumes:
+    #  - ./bdd/:/var/lib/mysql 
+    #env_file:
+     # - ../../bdd/env.mariadb
+    #networks:
+     # - mariadb-network
+  mariadb:
+    image: mariadb:latest
+    container_name: my-mariadb
     restart: always
-    volumes:
-      - ./bdd/:/var/lib/mysql 
     env_file:
-      - ../../bdd/env.mariadb
-    networks:
-      - mariadb-network
-      
+      - .env
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+  adminer:
+    image: adminer:latest
+    container_name: my-adminer
+    restart: always
+    ports:
+      - "8080:8080"
+
+volumes:
+  mariadb_data:
+networks:
+      - mariadb-network  
   ## Defining the Neo4j Database Service        
   neo:
     # The image to use
