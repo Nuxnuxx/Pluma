@@ -12,7 +12,7 @@ services:
     container_name: my-mariadb
     restart: always
     env_file:
-      - ../../bdd/env.mariadb
+      - ../../bdd/mariadb.env
     ports:
       - 3307:3306
     volumes:
