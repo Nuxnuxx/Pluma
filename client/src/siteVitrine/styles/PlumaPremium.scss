@@ -156,7 +156,6 @@
   }
 }
 
-
 $h1color: #6e768d;
 $h3color: #b4bdc6;
 $widthoftable: 31%;
@@ -168,7 +167,6 @@ $bgfontcolor: #717787;
 
   &>&-title{
     text-align: center;
-    color: $h1color;
     font-size: 3em;
     font-size: 300%;
     margin-bottom: 20px;
@@ -504,7 +502,6 @@ $bgfontcolor: #717787;
 
   }
 }
-
 
 body{
   font-family: 'Montserrat', sans-serif;
