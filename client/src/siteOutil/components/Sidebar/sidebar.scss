@@ -135,6 +135,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 0;
 
     .btn-premium {
       display: flex;
@@ -273,7 +274,7 @@
 
     @keyframes gradient_301 {
       0% {
-        background-position: 0% 50%;
+        background-position: 0 50%;
       }
 
       50% {
@@ -281,7 +282,7 @@
       }
 
       100% {
-        background-position: 0% 50%;
+        background-position: 0 50%;
       }
     }
 

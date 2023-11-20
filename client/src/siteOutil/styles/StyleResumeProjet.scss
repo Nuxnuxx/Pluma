@@ -1,0 +1,53 @@
+.resume-projet {
+  display: flex;
+  align-items: center;
+
+  .info-projet {
+    margin-left: 20px;
+
+    h2 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 8px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    select {
+      padding: 8px;
+      margin-bottom: 16px;
+    }
+  }
+}
+
+.paragraphe-resume{
+  .description {
+    font-size: 0.9em;
+    line-height: 1.4;
+    margin-top: 50px;
+    text-align: justify;
+  }
+}
+
+.editer {
+  position: absolute;
+  width: 100px;
+  bottom: 15px;
+  right: 15px;
+  padding: 8px;
+  border-radius: 25px;
+  background-color: #FFAFA5;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #d68e80;
+  }
+}

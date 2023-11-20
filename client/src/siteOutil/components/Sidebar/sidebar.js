@@ -1,8 +1,19 @@
 import React, {useState} from 'react';
-import './sidebar.scss';
 import {Link} from "react-router-dom"
+import './sidebar.scss';
 
 const Sidebar = () => {
+    const listeProjet = [
+        { id: 1 },
+        { id: 2 },
+        { id: 3 },
+        { id: 4 },
+        { id: 5 },
+        { id: 6 },
+        { id: 7 },
+        { id: 8 }
+    ];
+
     const [isProjectsOpen, setIsProjectsOpen] = useState(false);
 
     const toggleProjects = () => {
@@ -39,16 +50,11 @@ const Sidebar = () => {
                         </div>
                     </li>
                     <div className={`liste-projets ${isProjectsOpen ? 'open' : ''}`}>
-                        <li>Projet 1</li>
-                        <li>Projet 2</li>
-                        <li>Projet 2</li>
-                        <li>Projet 2</li>
-                        <li>Projet 2</li>
-                        <li>Projet 2</li>
-                        <li>Projet 2</li>
-                        <li>Projet 2</li>
-                        <li>Projet 2</li>
-                        <li>Projet 2</li>
+                            {listeProjet.map((projet) => (
+                                <Link to={`/mon-espace/projet${projet.id}`}>
+                                    <li>Projet {projet.id}</li>
+                                </Link>
+                            ))}
                     </div>
                     <Link to="/mon-espace/partage-avec-moi">
                         <li>Partagés avec moi</li>

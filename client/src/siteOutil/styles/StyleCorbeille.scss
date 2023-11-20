@@ -1,0 +1,51 @@
+.corbeille {
+  margin-top: 20px;
+
+  h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: #555;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      padding: 8px;
+      border: 1px solid #FC8C79;
+      background-color: #FFAFA57F;
+
+      span {
+        font-weight: bold;
+      }
+
+      .boutons {
+        display: flex;
+
+        .bouton {
+          margin-left: 8px;
+          padding: 4px 8px;
+          cursor: pointer;
+        }
+
+        .bouton-supprimer {
+          background-color: #ff5555;
+          color: #fff;
+        }
+
+        .bouton-restaurer {
+          background-color: #55aa55;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
