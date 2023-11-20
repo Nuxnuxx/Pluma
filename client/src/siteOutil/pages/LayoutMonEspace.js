@@ -5,9 +5,7 @@ import "../styles/StyleLayoutMonEspace.scss"
 const LayoutMonEspace = () => {
     return (
         <div className="div-principale">
-            <div className="sidebar">
-                <Sidebar />
-            </div>
+            <Sidebar />
             <div className="contenu">
                 <Outlet />
             </div>

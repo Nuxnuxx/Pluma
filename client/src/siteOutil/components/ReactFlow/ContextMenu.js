@@ -14,23 +14,24 @@ export default function ContextMenu({ id, top, left, right, bottom, data, onDele
         addNodes({ ...node, id: `${node.id}-copy`, position});
     }, [id, getNode, addNodes]);
 
-    const deleteNode = useCallback(() => {
+    const deleteNodeOrEdge = useCallback(() => {
         setNodes((nodes) => nodes.filter((node) => node.id !== id));
         setEdges((edges) => edges.filter((edge) => edge.source !== id));
 
         if (type) {
             onDelete(id, type);
         }
+
     }, [id, setNodes, setEdges, onDelete, type]);
 
     return (
         <div style={{ top, left, right, bottom }} className="context-menu" {...props}>
             <p>
-                <small>{data.label}</small>
+                <small>greger</small>
             </p>
-            <button>Editer</button> {/* onClick={/* editNode */}
+            <button>Editer</button>
             <button onClick={duplicateNode}>Dupliquer</button>
-            <button onClick={deleteNode}>Supprimer</button>
+            <button onClick={deleteNodeOrEdge}>Supprimer</button>
         </div>
     );
 }

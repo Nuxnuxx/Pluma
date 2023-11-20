@@ -4,7 +4,7 @@
   background-color: #FFAFA5;
   overflow-x: hidden;
   overflow-y: hidden;
-  transition: 0.3s;
+  transition: width 0.3s ease;
   display: inline-flex;
   flex-direction: column;
   justify-content: space-between;
@@ -15,6 +15,12 @@
     flex-direction: column;
     color: white;
     overflow-y: auto;
+    transition: 0.1s ease;
+
+    &.close{
+      opacity: 0;
+      pointer-events: none;
+    }
 
     .titre {
       display: flex;
@@ -136,6 +142,12 @@
     align-items: center;
     justify-content: center;
     border-radius: 0;
+    transition: 0.1s ease;
+
+    &.close{
+      opacity: 0;
+      pointer-events: none;
+    }
 
     .btn-premium {
       display: flex;
@@ -165,7 +177,7 @@
 
     strong {
       z-index: 2;
-      font-family: 'Avalors Personal Use';
+      font-family: 'Avalors Personal Use', serif;
       font-size: 20px;
       letter-spacing: 5px;
       color: #FFFFFF;
@@ -304,8 +316,29 @@
     }
   }
 
+  &.close {
+    width: 10px;
+    transition: width 0.3s ease;
+  }
+
   @media (max-width: 768px) {
-    width: 0;
-    transition: 0.3s;
+    transition: width 0.3s ease;
+  }
+}
+
+.toggle-button {
+  position: absolute;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  left: 220px;
+  overflow: hidden;
+  bottom: 150px;
+  z-index: 999;
+  transition: 0.3s ease;
+  cursor: pointer;
+
+  &.close{
+    left: -20px;
   }
 }
