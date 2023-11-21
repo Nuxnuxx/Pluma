@@ -3,8 +3,9 @@ import "../styles/ConnexionInscription.scss";
 
 const LoginForm = () => (
     <form id="login-form" action="" method="post" role="form" className="active-form">
+        <p>Connecte-toi vite afin de reprendre ton chef-d'œuvre.</p>
         <div className="mb-4">
-            <input type="text" name="username" id="username" tabIndex="1" className="form-input" placeholder="Pseudo / Adresse Mail" value="" />
+            <input type="text" name="username" id="username" tabIndex="1" className="form-input" placeholder="Pseudo / Adresse Mail" />
         </div>
         <div className="mb-4">
             <input type="password" name="password" id="password" tabIndex="2" className="form-input" placeholder="Mot de passe" />
@@ -18,11 +19,12 @@ const LoginForm = () => (
 );
 const RegisterForm = () => (
     <form id="register-form" action="" method="post" role="form" className="active-form">
+        <p>Laisse ta plume te guider en rejoignant Pluma. </p>
         <div className="mb-4">
-            <input type="text" name="username" id="username" tabIndex="1" className="form-input" placeholder="Pseudo" value="" />
+            <input type="text" name="username" id="username" tabIndex="1" className="form-input" placeholder="Pseudo" />
         </div>
         <div className="mb-4">
-            <input type="email" name="email" id="email" tabIndex="1" className="form-input" placeholder="Adresse Mail" value="" />
+            <input type="email" name="email" id="email" tabIndex="1" className="form-input" placeholder="Adresse Mail" />
         </div>
         <div className="mb-4">
             <input type="password" name="password" id="password" tabIndex="2" className="form-input" placeholder="Mot de passe" />
@@ -37,7 +39,6 @@ const RegisterForm = () => (
         </div>
     </form>
 );
-
 const ConnexionInscription = () => {
     const [isLoginActive, setIsLoginActive] = useState(true);
 
