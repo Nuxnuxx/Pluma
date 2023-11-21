@@ -60,7 +60,7 @@ services:
 
   ## Conteneur proxy pour afficher pluma avec une url spécifique
   nginx-proxy:
-    image: nginx:latest
+    image: nginx:1.24-alpine
     container_name: nginx-proxy
     restart: always
     ports:
