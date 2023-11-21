@@ -36,7 +36,7 @@ const MonEspace = () => {
 
     return (
         <div className="mon-espace">
-            <h1 className="titre">Mon Espace de Travail</h1>
+            <h1 className="titre-general">Mon Espace de Travail</h1>
             <button type="button" className="button">
                 <span className="button__text">Nouveau Projet</span>
                 <span className="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24"

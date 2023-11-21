@@ -10,7 +10,7 @@ const PartageAvecMoi = () => {
 
     return (
         <div className="mon-espace">
-            <h1 className="titre">PartageAvecMoi</h1>
+            <h1 className="titre-general">Partagés avec moi</h1>
             <h2 className="titre-section">Projets</h2>
             <div className="section">
                 <div className="liste-globale">

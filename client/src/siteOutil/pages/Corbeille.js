@@ -33,7 +33,7 @@ const Corbeille = () => {
     return (
         <div className="mon-espace">
             <div className="corbeille">
-                <h1 className="titre">Corbeille</h1>
+                <h1 className="titre-general">Corbeille</h1>
                 {elementsDansCorbeille.length === 0 ? (
                     <p>Aucun élément dans la corbeille.</p>
                 ) : (
