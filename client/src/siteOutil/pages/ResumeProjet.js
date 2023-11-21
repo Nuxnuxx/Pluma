@@ -1,13 +1,17 @@
 import React, {useEffect, useRef, useState} from 'react';
 import ElementListeProjets from "../components/elementListeProjets/elementListeProjets";
-import {Link} from "react-router-dom"
+import {Link, useParams, useNavigate} from "react-router-dom"
 import "../styles/StyleMonEspace.scss"
 import "../styles/StyleResumeProjet.scss"
 
 const ResumeProjet = () => {
-    // Exemple de données du projet
+
+    const { id } = useParams();
+
+    const navigate = useNavigate();
+
     const projet = {
-        id: 1,
+        id: id,
         titre: 'Nom du Projet',
         dateCreation: '01/01/2023',
         genre: 'Genre',
@@ -19,33 +23,40 @@ const ResumeProjet = () => {
             'Nam sit amet laoreet dolor. Quisque pellentesque, ex vel gravida mattis, urna ante tempor lorem, nec maximus lectus nibh at elit. Cras iaculis metus ipsum. Quisque tempus tempus nibh. Sed fringilla elit sed libero tincidunt gravida. Vestibulum posuere semper metus nec tempor. Donec eu blandit purus. Ut id interdum lacus, id lobortis est. Donec dictum ex eget lacinia viverra. Suspendisse potenti. Maecenas nec dui suscipit, dictum arcu et, porttitor augue. Sed eget mollis nisl, non varius enim. Cras blandit justo nec neque cursus congue. Nulla quis tempor leo, in aliquam libero. Nam in semper justo, eu pharetra dolor. Fusce vehicula sem nec ligula mollis, vitae iaculis. ',
     };
 
+    const [editable, setEditable] = useState(false);
+    const [valeurTextAffiche, setValeurText] = useState(projet.titre);
     const [etatProjet, setEtatProjet] = useState(projet.etat);
-    const [titreEditable, setTitreEditable] = useState(false);
-    const [nouveauTitre, setNouveauTitre] = useState(projet.titre);
 
     const inputRef = useRef(null);
 
     useEffect(() => {
-        if (titreEditable) {
+        // Vérifier si l'ID est un nombre entier valide
+        const isValidId = /^\d+$/.test(id);
+
+        if (!isValidId) {
+            navigate('/404');
+        }
+
+        if (editable) {
             inputRef.current.focus();
         }
-    }, [titreEditable]);
+    }, [id, navigate, editable]);
 
     const handleEtatChange = (nouvelEtat) => {
         setEtatProjet(nouvelEtat);
     };
 
-    const handleTitreClick = () => {
-        setTitreEditable(true);
+    const handleTextClick = () => {
+        setEditable(true);
     };
 
-    const handleTitreChange = (e) => {
-        setNouveauTitre(e.target.value);
+    const handleTextChange = (e) => {
+        setValeurText(e.target.value);
     };
 
-    const handleTitreBlur = () => {
-        console.log(nouveauTitre)
-        setTitreEditable(false);
+    const handleTextBlur = () => {
+        setValeurText(valeurTextAffiche);
+        setEditable(false);
     };
 
     return (
@@ -54,17 +65,19 @@ const ResumeProjet = () => {
                 <ElementListeProjets id={projet.id} color="blue" onClick={() => {}} />
 
                 <div className="info-projet">
-                    {titreEditable ? (
-                        <input
-                            type="text"
-                            value={nouveauTitre}
-                            onChange={handleTitreChange}
-                            onBlur={handleTitreBlur}
-                            ref={inputRef}
-                        />
-                    ) : (
-                        <h2 onClick={handleTitreClick}>{projet.titre}</h2>
-                    )}
+                    <div className="titre">
+                        {editable ? (
+                            <input
+                                type="text"
+                                value={valeurTextAffiche}
+                                onChange={handleTextChange}
+                                onBlur={handleTextBlur}
+                                ref={inputRef}
+                            />
+                        ) : (
+                            <h2 onClick={handleTextClick}>{valeurTextAffiche}</h2>
+                        )}
+                    </div>
                     <p>Date de création: {projet.dateCreation}</p>
                     <p>Genre: {projet.genre}</p>
 
@@ -78,6 +91,7 @@ const ResumeProjet = () => {
             <div className="paragraphe-resume">
                 <p className="description">{projet.description}</p>
             </div>
+
             <Link to={`./edition`}>
                 <button className="editer">
                     Éditer

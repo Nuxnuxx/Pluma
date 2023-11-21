@@ -1,6 +1,6 @@
 .resume-projet {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 
   a {
     pointer-events: none;
@@ -9,9 +9,12 @@
   .info-projet {
     margin-left: 20px;
 
-    h2 {
-      font-size: 1.5em;
-      margin-bottom: 10px;
+    .titre{
+      height: 40px;
+      h2 {
+        font-size: 1em;
+        margin-bottom: 10px;
+      }
     }
 
     p {
@@ -31,14 +34,15 @@
     input,
     textarea {
       width: 100%;
+      height: 40px ;
       padding: 8px;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       border: 1px solid #ccc;
       border-radius: 4px;
-      font-size: 1em;
+      font-size: 0.75em;
 
       &:focus {
-        border-color: #007bff;
+        outline: 2px solid #FC8C79;
       }
     }
   }

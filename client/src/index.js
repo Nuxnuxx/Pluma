@@ -34,7 +34,7 @@ export default function App() {
                     <Route index element={<MonEspace />} />
                     <Route path="partage-avec-moi" element={<PartageAvecMoi />} />
                     <Route path="corbeille" element={<Corbeille />} />
-                    <Route path=":id">
+                    <Route path="projet/:id">
                         <Route index element={<ResumeProjet />} />
                         <Route path="edition">
                             <Route index element={<EditionProjet />} />

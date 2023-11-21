@@ -52,6 +52,7 @@
       display: flex;
       flex-flow: nowrap;
       overflow-x: auto;
+      width: 100%;
       justify-content: space-between;
       gap: max(calc((100% - 50vw) / 4), 1em);
     }
@@ -59,11 +60,10 @@
     .liste-globale {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      width: calc(100% - 6rem);
+      width: calc(100% - 7rem);
       justify-items: center;
-      grid-column-gap: calc((100% - 50vw) / 4);
+      grid-column-gap: max(1rem, calc((100% - 50vw) / 4));
       grid-row-gap: 1rem;
-      gap: 1rem;
     }
   }
 
