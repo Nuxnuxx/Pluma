@@ -33,7 +33,7 @@ services:
   ## Defining the Neo4j Database Service        
   neo:
     # The image to use
-    image: 5.13.0-enterprise-bullseye
+    image: neo4j:5.13.0-enterprise-bullseye
     restart: always
     # map the ports so we can check the db server is up
     ports: 
