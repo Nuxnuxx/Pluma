@@ -1,5 +1,36 @@
-const EcritureChapitre = () => {
-    return <h1>EcritureChapitre</h1>;
-};
+import React, { useRef } from 'react';
+import { Editor } from '@tinymce/tinymce-react';
 
-export default EcritureChapitre;
+export default function EcritureChapitre() {
+    const editorRef = useRef(null);
+    const log = () => {
+        if (editorRef.current) {
+            console.log(editorRef.current.getContent());
+        }
+    };
+    return (
+        <>
+            <Editor
+                onInit={(evt, editor) => editorRef.current = editor}
+                initialValue="<p>This is the initial content of the editor.</p>"
+                init={{
+                    height: 500,
+                    menubar: false,
+                    plugins: [
+                        'advlist autolink lists link image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount'
+                    ],
+                    toolbar: "aligncenter alignjustify alignleft alignright| anchor " +
+                        "| bold italic | " +
+                        "fontfamily fontsize forecolor " +
+                        "indent outdent | " +
+                        "copy cut paste pastetext | undo redo " +
+                        "| selectall | strikethrough | underline ",
+                    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+                }}
+            />
+            <button onClick={log}>Log editor content</button>
+        </>
+    );
+}
