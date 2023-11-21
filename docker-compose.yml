@@ -71,6 +71,8 @@ services:
       - neo4j-network
       - mariadb-network
       - pluma-network
+    extra_hosts:
+      - "pluma_meltak.fr:192.168.1.97"
 
   ## Conteneur du frontend de Pluma
   client:
