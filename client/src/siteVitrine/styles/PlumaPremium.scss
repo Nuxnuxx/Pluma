@@ -199,6 +199,7 @@ $bgfontcolor: #717787;
       max-width: 360px;
       transition: all 0.3s ease;
       border-radius: 5px;
+      min-height: 105vh;
 
       @media screen and (max-width: 767px){
         display: block;
@@ -208,6 +209,7 @@ $bgfontcolor: #717787;
         margin-bottom: 20px;
         padding: 10px;
         padding-left: 20px;
+        min-height: 0;
       }
 
       & > * {
@@ -373,11 +375,14 @@ $bgfontcolor: #717787;
         }
       }
 
+      .second_table, .third_table{
+        border-bottom: 2px solid #ebedec;
+      }
+
       &__options{
         list-style: none;
         padding: 15px;
         font-size: 0.9em;
-        border-bottom: 2px solid #ebedec;
         min-height: 650px;
 
         @media screen and (max-width: 1068px){
@@ -387,7 +392,9 @@ $bgfontcolor: #717787;
         @media screen and (max-width: 767px){
           border-bottom: none;
           padding: 0;
+          padding-bottom: 20px;
           margin-right: 10%;
+          min-height: 0;
         }
 
         @media screen and (max-width: 610px){
@@ -463,7 +470,7 @@ $bgfontcolor: #717787;
         }
 
         @media screen and (max-width: 767px){
-          margin-top: 0;
+          margin-block: 10px;
         }
 
         @media screen and (max-width: 610px){

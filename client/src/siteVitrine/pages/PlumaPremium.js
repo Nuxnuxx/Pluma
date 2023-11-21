@@ -25,7 +25,7 @@ const PlumaPremium = () => {
                         <h1 className="pricingTable-firstTable_table__header">Standard</h1>
                         <p className="pricingTable-firstTable_table__pricing">
                             <span>€</span><span>0</span><span>par mois</span></p>
-                        <ul className="pricingTable-firstTable_table__options">
+                        <ul className="pricingTable-firstTable_table__options first_table">
                             <li>Nombre de blocs illimités</li>
                             <li>Limitation à 5 projets</li>
                             <li>Personnalisation des lieux et personnages</li>
@@ -37,13 +37,12 @@ const PlumaPremium = () => {
                             <li>Possibilité de varier entre une unique police serif et sans-serif</li>
                             <li>Panel d’image prédéfni pour les avatars des personnages et les lieux</li>
                         </ul>
-                        <button className="pricingTable-firstTable_table__getstart">Essayez Maintenant !</button>
                     </li>
                     <li className="pricingTable-firstTable_table">
                         <h1 className="pricingTable-firstTable_table__header">Premium</h1>
                         <p className="pricingTable-firstTable_table__pricing">
                             <span>€</span><span>7,99</span><span>par mois</span></p>
-                        <ul className="pricingTable-firstTable_table__options">
+                        <ul className="pricingTable-firstTable_table__options second_table">
                             <li>Nombre de blocs illimités</li>
                             <li>Création de projets en illimités</li>
                             <li>Personnalisation des lieux et personnages</li>
@@ -63,7 +62,7 @@ const PlumaPremium = () => {
                         <h1 className="pricingTable-firstTable_table__header">Étudiant</h1>
                         <p className="pricingTable-firstTable_table__pricing">
                             <span>€</span><span>0</span><span>par mois</span></p>
-                        <ul className="pricingTable-firstTable_table__options">
+                        <ul className="pricingTable-firstTable_table__options third_table">
                             <li>Nombre de blocs illimités</li>
                             <li>Limitation à 10 projets</li>
                             <li>Personnalisation des lieux et personnages</li>
