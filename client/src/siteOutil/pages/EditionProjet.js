@@ -6,6 +6,12 @@ import Toolbar from '../components/Toolbar/toolbar';
 import FloatingEdge from "../components/ReactFlow/FloatingEdge";
 import CustomConnectionLine from "../components/ReactFlow/CustomConnectionLine";
 import ContextMenu from "../components/ReactFlow/ContextMenu";
+import ActeNodeComponent from "../components/ReactFlow/nodes/ActeNodeComponent";
+import ChapitreNodeComponent from "../components/ReactFlow/nodes/ChapitreNodeComponent";
+import PersonnageNodeComponent from "../components/ReactFlow/nodes/PersonnageNodeComponent";
+import LieuNodeComponent from "../components/ReactFlow/nodes/LieuNodeComponent";
+import EvenementNodeComponent from "../components/ReactFlow/nodes/EvenementNodeComponent";
+import BlocNoteNodeComponent from "../components/ReactFlow/nodes/BlocNoteNodeComponent";
 
 const idCounters = {
     chapitre: 1,
@@ -31,9 +37,9 @@ export default function EditionProjet() {
     const ref = useRef(null);
     const edgeUpdateSuccessful = useRef(true);
     const [menu, setMenu] = useState(null);
+    const [reactFlowInstance, setReactFlowInstance] = useState(null);
     const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
     const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-    const [reactFlowInstance, setReactFlowInstance] = useState(null);
 
     const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), [setEdges]);
 
@@ -84,7 +90,7 @@ export default function EditionProjet() {
         [setMenu]
     );
 
-    const onPaneClick = useCallback(() => setMenu(null), [setMenu]);
+    const onPaneClick = useCallback(() => {setMenu(null);}, [setMenu]);
 
     const handleNodeDelete = useCallback((nodeId, type) => {
         setNodes((nodes) => nodes.filter((node) => node.id !== nodeId));
@@ -100,88 +106,49 @@ export default function EditionProjet() {
         event.dataTransfer.dropEffect = 'move';
     }, []);
 
-    const onDrop = useCallback(
-        (event) => {
-            event.preventDefault();
+    const onDrop = useCallback((event) => {
+        event.preventDefault();
 
-            const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
-            const type = event.dataTransfer.getData('application/reactflow');
+        const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
+        const type = event.dataTransfer.getData('application/reactflow');
 
-            if (typeof type === 'undefined' || !type) {
+        if (!type) {
+            return;
+        }
+
+        const count = idCounters[type];
+
+        let newNode = {
+            id: getId(type),
+            type: type,
+            className: `${type}-node`
+        }
+
+        switch (type) {
+            case 'acte':
+                newNode = ActeNodeComponent(count, idCounters[type] - 1, reactFlowInstance, reactFlowBounds, event);
+                break;
+            case 'chapitre':
+                newNode = ChapitreNodeComponent(count, idCounters[type] - 1, reactFlowInstance, reactFlowBounds, event);
+                break;
+            case 'personnage':
+                newNode = PersonnageNodeComponent(count, idCounters[type] - 1, reactFlowInstance, reactFlowBounds, event);
+                break;
+            case 'lieu':
+                newNode = LieuNodeComponent(count, idCounters[type] - 1, reactFlowInstance, reactFlowBounds, event);
+                break;
+            case 'blocnote':
+                newNode = BlocNoteNodeComponent(count, idCounters[type] - 1, reactFlowInstance, reactFlowBounds, event);
+                break;
+            case 'evenement':
+                newNode = EvenementNodeComponent(count, idCounters[type] - 1, reactFlowInstance, reactFlowBounds, event);
+                break;
+            default:
                 return;
-            }
+        }
 
-            let newNode = {
-                id: getId(type),
-                type: type,
-                className: `${type}-node`
-            }
-
-            function getPosition(offset_x, offset_y){
-                return reactFlowInstance.project({
-                    x: (event.clientX - reactFlowBounds.left) - offset_x,
-                    y: (event.clientY - reactFlowBounds.top) - offset_y
-                });
-            }
-
-            switch (type){
-                case "chapitre":
-                    newNode = {
-                        ...newNode,
-                        position: getPosition(150, 150),
-                        data: { label: <div><p>{type + " " + (idCounters["chapitre"]-1)}</p><p>nomChapitre</p></div> }
-                    };
-                    break;
-                case "acte":
-                    newNode = {
-                        ...newNode,
-                        position: getPosition(150, 50),
-                        data: { label: <div><p>{type + " " + (idCounters["acte"]-1)} : "nomActe"</p></div> },
-                    };
-                    break;
-                case "personnage":
-                    newNode = {
-                        ...newNode,
-                        position: getPosition(40, 40),
-                        data: { label: <div><p>Prénom Nom</p></div> }
-                    };
-                    break;
-                case "lieu":
-                    newNode = {
-                        ...newNode,
-                        position: getPosition(50, 50),
-                        data: { label: <div><p>Nom du lieu</p></div> },
-                    };
-                    break;
-                case "evenement":
-                    newNode = {
-                        ...newNode,
-                        position: getPosition(50, 50),
-                        data: { label: <div><p>Résumé événement</p></div> }
-                    };
-                    break;
-                case "blocnote":
-                    newNode = {
-                        ...newNode,
-                        position: getPosition(120, 70),
-                        data: { label: <div>
-                                <div className="titre-blocnote">
-                                    <p>Idée {(idCounters["blocnote"]-1)}</p>
-                                </div>
-                                <div className="contenu-blocnote">
-                                    <p>Contenu du bloc-note</p>
-                                </div>
-                            </div> },
-                    };
-                    break;
-                default:
-                    return;
-            }
-
-            setNodes((nds) => nds.concat(newNode));
-        },
-        [setNodes, reactFlowInstance]
-    );
+        setNodes((nds) => nds.concat(newNode));
+    }, [setNodes, reactFlowInstance]);
 
     const connectionLineStyle = {
         strokeWidth: 3,
