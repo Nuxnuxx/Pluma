@@ -48,7 +48,7 @@ const ResumeProjet = () => {
 
                 <div className="info-projet">
                     <div className="titre">
-                        <TexteEditable initialValeur={projet.titre} onSave={handleTitreSave} />
+                        <TexteEditable initialValeur={projet.titre} onSave={handleTitreSave} valeurParDefaut={"Projet sans titre"} />
                     </div>
                     <p>Date de création: {projet.dateCreation}</p>
                     <ListeGenres />
@@ -62,7 +62,7 @@ const ResumeProjet = () => {
                 </div>
             </div>
             <div className="paragraphe-resume">
-                <TexteEditable initialValeur={projet.description} onSave={handleTitreSave} inputType="textarea" />
+                <TexteEditable initialValeur={projet.description} onSave={handleTitreSave} inputType="textarea" valeurParDefaut={"Ajouter une description ici..."} />
             </div>
 
             <Link to={`./edition`}>

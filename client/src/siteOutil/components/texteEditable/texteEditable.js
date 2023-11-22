@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import "./texteEditable.scss";
 
-const EditableText = ({ initialValeur, onSave, inputType = 'input'}) => {
+const EditableText = ({ initialValeur, onSave, inputType = 'input', valeurParDefaut = "..."}) => {
 
     const [editable, setEditable] = useState(false);
     const [valeur, setValeur] = useState(initialValeur);
@@ -23,7 +23,7 @@ const EditableText = ({ initialValeur, onSave, inputType = 'input'}) => {
     };
 
     const handleTextBlur = () => {
-        let nouvelleValeur = valeur.trim() === '' ? '' : valeur.trim(); //Si on vide le texte, il est mis à une valeur par défaut
+        let nouvelleValeur = valeur.trim() === '' ? valeurParDefaut : valeur.trim(); //Si on vide le texte, il est mis à une valeur par défaut
         onSave(nouvelleValeur)
         setValeur(nouvelleValeur);
         setEditable(false);
