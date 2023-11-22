@@ -7,6 +7,7 @@ const EditableText = ({ initialValeur, onSave, inputType = 'input'}) => {
     const [editable, setEditable] = useState(false);
     const [valeur, setValeur] = useState(initialValeur);
     const inputRef = useRef(null);
+    const textRef = useRef(null);
 
     useEffect(() => {
         if (editable) {
@@ -23,7 +24,7 @@ const EditableText = ({ initialValeur, onSave, inputType = 'input'}) => {
     };
 
     const handleTextBlur = () => {
-        let nouvelleValeur = valeur.trim() === '' ? 'Projet sans titre' : valeur; //Si on vide le texte, il est mis à une valeur par défaut
+        let nouvelleValeur = valeur.trim() === '' ? '' : valeur.trim(); //Si on vide le texte, il est mis à une valeur par défaut
         onSave(nouvelleValeur)
         setValeur(nouvelleValeur);
         setEditable(false);
@@ -40,13 +41,14 @@ const EditableText = ({ initialValeur, onSave, inputType = 'input'}) => {
                         ref={inputRef}
                     />
                 ) : (
-                    <div className="text" onClick={handleTextClick}>
+                    <div className="texte paragraphe" onClick={handleTextClick} ref={textRef}>
                         {diviserEnLignes(valeur)}
                     </div>
                 )
             ) : (
                 editable ? (
                     <input
+                        className="editable-input"
                         type={inputType}
                         value={valeur}
                         onChange={handleTextChange}
@@ -54,7 +56,7 @@ const EditableText = ({ initialValeur, onSave, inputType = 'input'}) => {
                         ref={inputRef}
                     />
                 ) : (
-                    <div className="text" onClick={handleTextClick}>
+                    <div className="texte champ" onClick={handleTextClick} ref={textRef}>
                         <span>{valeur}</span>
                     </div>
                 )

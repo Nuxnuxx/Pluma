@@ -73,7 +73,7 @@ const Sidebar = () => {
                     </li>
                     <div className={`liste-projets ${isProjectsOpen ? 'open' : ''}`}>
                         {listeProjet.map((projet) => (
-                            <Link key={projet.id} to={`/mon-espace/projet${projet.id}`}>
+                            <Link key={projet.id} to={`/mon-espace/projet/${projet.id}`}>
                                 <li>Projet {projet.id}</li>
                             </Link>
                         ))}
