@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import "./texteEditable.scss";
-import diviserEnLignes from "../utils";
 
 const EditableText = ({ initialValeur, onSave, inputType = 'input'}) => {
 
@@ -42,7 +41,7 @@ const EditableText = ({ initialValeur, onSave, inputType = 'input'}) => {
                     />
                 ) : (
                     <div className="texte paragraphe" onClick={handleTextClick} ref={textRef}>
-                        {diviserEnLignes(valeur)}
+                        {valeur}
                     </div>
                 )
             ) : (

@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import ElementListeProjets from "../components/elementListeProjets/elementListeProjets";
 import {Link, useParams, useNavigate} from "react-router-dom"
 import "../styles/StyleMonEspace.scss"
 import "../styles/StyleResumeProjet.scss"
 import TexteEditable from "../components/texteEditable/texteEditable";
+import ListeGenres from "../components/ListeGenres/ListeGenres";
 
 const ResumeProjet = () => {
 
@@ -16,7 +16,7 @@ const ResumeProjet = () => {
         titre: 'Nom du Projet',
         dateCreation: '01/01/2023',
         genre: 'Genre',
-        etat: 'en_cours',
+        etat: 'non_debute',
         description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed lorem nulla. Vestibulum iaculis nulla vel ipsum vestibulum ullamcorper. Fusce euismod purus eget nisi placerat vulputate. Nullam imperdiet ac dui ac mollis. Pellentesque nec tempus lectus, ullamcorper commodo mi. Nulla sollicitudin a purus ac scelerisque. Fusce feugiat non nisi nec rhoncus. Mauris a molestie sem. Sed ultrices semper tincidunt. Donec mollis quam tortor. Proin et velit id nulla hendrerit tincidunt et feugiat sem. Suspendisse vehicula sollicitudin sodales. Vivamus velit magna, posuere nec nunc consectetur, sollicitudin scelerisque sapien. Fusce sed nisl nec nulla rutrum dapibus.\n' +
             '\n' +
@@ -44,17 +44,18 @@ const ResumeProjet = () => {
     return (
         <div className="mon-espace">
             <div className="resume-projet">
-                <ElementListeProjets id={projet.id} color="blue" onClick={() => {}} />
+                <div className="couverture"></div>
 
                 <div className="info-projet">
                     <div className="titre">
                         <TexteEditable initialValeur={projet.titre} onSave={handleTitreSave} />
                     </div>
                     <p>Date de création: {projet.dateCreation}</p>
-                    <p>Genre: {projet.genre}</p>
+                    <ListeGenres />
 
                     <label>État du projet:</label>
                     <select value={etatProjet} onChange={(e) => handleEtatChange(e.target.value)}>
+                        <option value="non_debute">Non débuté</option>
                         <option value="en_cours">En cours</option>
                         <option value="termine">Terminé</option>
                     </select>

@@ -24,7 +24,7 @@ textarea {
   border-radius: 4px;
   width: fit-content;
   height: 100%;
-  cursor: default;
+  overflow-y: auto;
 
   &:hover {
     background-color: #fffcf4;
@@ -33,4 +33,5 @@ textarea {
 
 .paragraphe {
   padding: 8px;
+  white-space: pre-wrap;
 }

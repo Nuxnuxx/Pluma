@@ -1,6 +1,15 @@
 .resume-projet {
   display: flex;
   align-items: flex-start;
+  width: 100%;
+  margin-bottom: 25px;
+
+  .couverture {
+    width: 12em;
+    height: calc(12em / 0.7071);
+    border-radius: 4px;
+    background-color: #b4bdc6;
+  }
 
   a {
     pointer-events: none;
@@ -8,7 +17,7 @@
 
   .info-projet {
     margin-left: 20px;
-    width: 100%;
+    width: 55vw;
 
     .titre {
       height: 40px;
@@ -23,20 +32,15 @@
       display: block;
       margin-bottom: 8px;
     }
-
-    select {
-      padding: 8px;
-      margin-bottom: 16px;
-    }
   }
 }
 
 .paragraphe-resume{
   font-size: 0.9em;
   line-height: 1.4;
-  margin-top: 50px;
   text-align: justify;
-  height: 45vh;
+  height: 35vh;
+  max-height: 35vh;
 }
 
 .editer {
@@ -53,5 +57,17 @@
 
   &:hover {
     background-color: #d68e80;
+  }
+}
+
+
+
+select {
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: #ccc;
   }
 }
