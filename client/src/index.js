@@ -18,6 +18,7 @@ import EditionProjet from "./siteOutil/pages/EditionProjet";
 import EditionChapitre from "./siteOutil/pages/EditionChapitre";
 import EcritureChapitre from "./siteOutil/pages/EcritureChapitre";
 import Elements from "./siteOutil/pages/Elements";
+import Parametres from "./siteOutil/pages/Parametres";
 
 export default function App() {
     return (
@@ -45,6 +46,7 @@ export default function App() {
                             <Route path="elements" element={<Elements />} />
                         </Route>
                     </Route>
+                    <Route path="parametres" element={<Parametres />} />
                 </Route>
             </Routes>
         </BrowserRouter>
