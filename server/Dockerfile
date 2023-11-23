@@ -9,6 +9,7 @@ WORKDIR /app
 
 # Installing dependencies.
 RUN npm install cors
+RUN npm install mysql
 RUN npm i -g nodemon
 RUN npm i
 
