@@ -43,18 +43,49 @@
     .liste-recents {
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: flex-start;
       width: calc(100% - 7rem);
-      gap: 1rem;
+      gap: max(calc((100% - 50vw) / 4), 1em);
     }
 
     .liste-favoris {
-      display: flex;
-      flex-flow: nowrap;
-      overflow-x: auto;
+      overflow-x: hidden;
       width: 100%;
-      justify-content: space-between;
+      display: flex;
+      justify-content: flex-start;
       gap: max(calc((100% - 50vw) / 4), 1em);
+
+      .carousel-wrap {
+        margin: 90px auto;
+        padding: 0 5%;
+        width: 80%;
+        position: relative;
+      }
+
+      .owl-carousel .item {
+        position: relative;
+        z-index: 100;
+        -webkit-backface-visibility: hidden;
+      }
+
+      .owl-nav > div {
+        margin-top: -26px;
+        position: absolute;
+        top: 50%;
+        color: #cdcbcd;
+      }
+
+      .owl-nav i {
+        font-size: 52px;
+      }
+
+      .owl-nav .owl-prev {
+        left: -30px;
+      }
+
+      .owl-nav .owl-next {
+        right: -30px;
+      }
     }
 
     .liste-globale {

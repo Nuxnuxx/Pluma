@@ -1,21 +1,25 @@
 import React, {useState, useEffect} from 'react';
-import {Link} from "react-router-dom"
+import {Link, useLocation, useNavigate} from "react-router-dom"
 import './sidebar.scss';
 
-const Sidebar = () => {
+const Sidebar = ({ onRechercheChange }) => {
     const listeProjet = [
-        { id: 1 },
-        { id: 2 },
-        { id: 3 },
-        { id: 4 },
-        { id: 5 },
-        { id: 6 },
-        { id: 7 },
-        { id: 8 }
+        { id: 1, nom:"projet1" },
+        { id: 2, nom:"projet2" },
+        { id: 3, nom:"projet3" },
+        { id: 4, nom:"projet4" },
+        { id: 5, nom:"projet5" },
+        { id: 6, nom:"projet6" },
+        { id: 7, nom:"projet7" },
+        { id: 8, nom:"projet8" }
     ];
 
     const [isProjectsOpen, setIsProjectsOpen] = useState(false);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [recherche, setRecherche] = useState('');
+    const [estSurResultatRecherche, setEstSurResultatRecherche] = useState(false);
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const toggleProjects = () => {
         setIsProjectsOpen(!isProjectsOpen);
@@ -24,6 +28,27 @@ const Sidebar = () => {
     const toggleSidebar = () => {
         setIsSidebarOpen(prevState => !prevState);
     };
+
+    const handleRechercheChangeLocal = (e) => {
+        const nouvelleRecherche = e.target.value;
+        setRecherche(nouvelleRecherche);
+        onRechercheChange(nouvelleRecherche);
+        console.log(estSurResultatRecherche)
+
+        if (nouvelleRecherche.trim() !== '' && !estSurResultatRecherche) {
+            navigate('/mon-espace/resultat-recherche');
+            setEstSurResultatRecherche(prevState => true);
+        }
+    };
+
+    const viderRecherche = () => {
+        setRecherche('');
+    };
+
+    const resultatsFiltres = listeProjet.filter(item =>
+        item.nom.toLowerCase().includes(recherche.toLowerCase())
+    );
+
 
     useEffect(() => {
         const handleResize = () => {
@@ -35,12 +60,18 @@ const Sidebar = () => {
             }
         };
 
+        console.log(location.pathname)
+        if (location.pathname !== '/mon-espace/resultat-recherche') {
+            setEstSurResultatRecherche(prevState => false);
+            viderRecherche()
+        }
+
         window.addEventListener('resize', handleResize);
 
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, []);
+    }, [location.pathname]);
 
     return (
         <div className={`sidebar ${isSidebarOpen ? 'close' : ''}`}>
@@ -50,12 +81,17 @@ const Sidebar = () => {
                     <h2>Pluma</h2>
                 </Link>
                 <div className="barre-de-recherche">
-                    <input type="text" placeholder="Rechercher" />
-                    <div className="icone-de-recherche">
+                    <input
+                        type="text"
+                        placeholder="Rechercher"
+                        value={recherche}
+                        onChange={handleRechercheChangeLocal}
+                    />
+                    <button className="icone-de-recherche">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="20px" height="20px">
                             <path d="M 21 3 C 11.621094 3 4 10.621094 4 20 C 4 29.378906 11.621094 37 21 37 C 24.710938 37 28.140625 35.804688 30.9375 33.78125 L 44.09375 46.90625 L 46.90625 44.09375 L 33.90625 31.0625 C 36.460938 28.085938 38 24.222656 38 20 C 38 10.621094 30.378906 3 21 3 Z M 21 5 C 29.296875 5 36 11.703125 36 20 C 36 28.296875 29.296875 35 21 35 C 12.703125 35 6 28.296875 6 20 C 6 11.703125 12.703125 5 21 5 Z" />
                         </svg>
-                    </div>
+                    </button>
                 </div>
                 <ul>
                     <Link to="/mon-espace">

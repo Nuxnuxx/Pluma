@@ -19,6 +19,7 @@ import EditionChapitre from "./siteOutil/pages/EditionChapitre";
 import EcritureChapitre from "./siteOutil/pages/EcritureChapitre";
 import Elements from "./siteOutil/pages/Elements";
 import Parametres from "./siteOutil/pages/Parametres";
+import ResultatRecherche from "./siteOutil/pages/ResultatRecherche";
 
 export default function App() {
     return (
@@ -35,6 +36,7 @@ export default function App() {
                     <Route index element={<MonEspace />} />
                     <Route path="partage-avec-moi" element={<PartageAvecMoi />} />
                     <Route path="corbeille" element={<Corbeille />} />
+                    <Route path="resultat-recherche" element={<ResultatRecherche />} />
                     <Route path="projet/:id">
                         <Route index element={<ResumeProjet />} />
                         <Route path="edition">

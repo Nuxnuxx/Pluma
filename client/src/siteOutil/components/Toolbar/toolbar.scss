@@ -7,6 +7,10 @@
 
   .dndnode {
     cursor: grab;
+
+    &__disabled{
+      filter: grayscale(100%);
+    }
   }
 
   img{

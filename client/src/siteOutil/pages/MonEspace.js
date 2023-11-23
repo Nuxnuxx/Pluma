@@ -1,16 +1,17 @@
 import ElementListeProjets from "../components/elementListeProjets/elementListeProjets";
 import "../styles/StyleMonEspace.scss"
+import {useState} from "react";
 
 const MonEspace = () => {
     const listeProjet = [
-        { id: 1 },
-        { id: 2 },
-        { id: 3 },
-        { id: 4 },
-        { id: 5 },
-        { id: 6 },
-        { id: 7 },
-        { id: 8 }
+        { id: 1, nom:"projet1" },
+        { id: 2, nom:"projet2" },
+        { id: 3, nom:"projet3" },
+        { id: 4, nom:"projet4" },
+        { id: 5, nom:"projet5" },
+        { id: 6, nom:"projet6" },
+        { id: 7, nom:"projet7" },
+        { id: 8, nom:"projet8" }
     ];
 
     const listeRecents = [
@@ -30,9 +31,18 @@ const MonEspace = () => {
         { id: 8 }
     ];
 
-    function handleScroll() {
-        console.log("clic")
-    }
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    const handlePrev = () => {
+        setActiveIndex(Math.max(activeIndex - 1, 0));
+    };
+
+    const handleNext = () => {
+        const nextIndex = activeIndex + 1;
+        if (nextIndex < listeFavoris.length) {
+            setActiveIndex(nextIndex);
+        }
+    };
 
     return (
         <div className="mon-espace">
@@ -57,7 +67,7 @@ const MonEspace = () => {
             </div>
             <h2 className="titre-section">Favoris</h2>
             <div className="section">
-                <button onClick={() => handleScroll(-1)} className="arrow-button left-arrow">←</button>
+                <button onClick={handlePrev} className="arrow-button left-arrow">←</button>
                 <div className="liste-favoris">
                     {listeFavoris.map((projet) => (
                         <ElementListeProjets
@@ -66,7 +76,7 @@ const MonEspace = () => {
                         />
                     ))}
                 </div>
-                <button onClick={() => handleScroll(1)} className="arrow-button right-arrow">→</button>
+                <button onClick={handleNext} className="arrow-button right-arrow">→</button>
             </div>
             <h2 className="titre-section">Projets</h2>
             <div className="section">
