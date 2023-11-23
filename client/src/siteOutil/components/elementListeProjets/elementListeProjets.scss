@@ -6,10 +6,10 @@
 
   .rectangle {
     position: relative;
-    border-radius: 5px;
+    border-radius: 4px;
     background-color: rgba(255, 175, 165, 0.5);
-    height: max(15vw, 7.5em);
-    width: max(15vw * 0.7071, 7.5em * 0.7071);
+    width: max(10vw, 6em);
+    height: max(10vw / 0.7071, 6em / 0.7071);
     &:hover {
       filter: brightness(0.8);
     }

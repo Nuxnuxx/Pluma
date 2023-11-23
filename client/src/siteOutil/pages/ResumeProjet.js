@@ -11,6 +11,14 @@ const ResumeProjet = () => {
 
     const navigate = useNavigate();
 
+    useEffect(() => {
+        const isValidId = /^\d+$/.test(id);
+
+        if (!isValidId) {
+            navigate('/404');
+        }
+    }, [id, navigate]);
+
     const projet = {
         id: id,
         titre: 'Nom du Projet',
@@ -24,31 +32,28 @@ const ResumeProjet = () => {
     };
 
     const [etatProjet, setEtatProjet] = useState(projet.etat);
+    const [titre, setTitre] = useState(projet.titre);
 
-    useEffect(() => {
-        const isValidId = /^\d+$/.test(id);
 
-        if (!isValidId) {
-            navigate('/404');
-        }
-    }, [id, navigate]);
 
     const handleEtatChange = (nouvelEtat) => {
         setEtatProjet(nouvelEtat);
     };
 
-    const handleTitreSave = (nouveauTitre) => {
-        console.log("Titre mis à jour :", nouveauTitre);
+    const handleTitreSave = (nouveauTitre, idInput) => {
+        if (idInput == "titreProjet"){
+            setTitre(nouveauTitre);
+        }
     };
 
     return (
         <div className="mon-espace">
             <div className="resume-projet">
-                <div className="couverture"></div>
+                <div className="couverture">{titre}</div>
 
                 <div className="info-projet">
                     <div className="titre">
-                        <TexteEditable initialValeur={projet.titre} onSave={handleTitreSave} valeurParDefaut={"Projet sans titre"} />
+                        <TexteEditable initialValeur={projet.titre} onSave={handleTitreSave} idInput={"titreProjet"} valeurParDefaut={"Projet sans titre"} />
                     </div>
                     <p>Date de création: {projet.dateCreation}</p>
                     <ListeGenres />
