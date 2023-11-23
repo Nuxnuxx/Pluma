@@ -9,11 +9,10 @@ WORKDIR /app
 
 # Installing dependencies.
 RUN npm install cors
-RUN npm install mysql
+RUN npm install mariadb
 RUN npm i -g nodemon
 RUN npm i
 
-
-EXPOSE 5000
+EXPOSE 3001
 
 CMD ["npm","start"]

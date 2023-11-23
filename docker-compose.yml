@@ -11,12 +11,12 @@ services:
     container_name: my-mariadb
     restart: always
     env_file:
-      - ../../bdd/mariadb.env
+      - ../bdd/mariadb.env
     ports:
       - 3307:3306
     volumes:
       - mariadb_data:/var/lib/mysql
-      - ../../bdd/mymaria.cnf:/etc/mysql/conf.d/mymaria.cnf
+      - ../bdd/mymaria.cnf:/etc/mysql/conf.d/mymaria.cnf
     networks:
       - mariadb-network
 
@@ -43,7 +43,7 @@ services:
     volumes:
       - neo4j_data:/data/
     env_file:
-      - ../../bdd/env.neo4j
+      - ../bdd/env.neo4j
     networks:
       - neo4j-network
 
@@ -53,6 +53,8 @@ services:
     build:
       context: ./server
     restart: always
+    ports: 
+      - 3001:3001
     env_file: ./server/.env
     networks:
       - neo4j-network
@@ -69,6 +71,7 @@ services:
     restart: always
     ports:
       - 3000:3000
+    
     environment:
       CHOKIDAR_USEPOLLING: "true"
     networks:
