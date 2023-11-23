@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './toolbar.scss';
 
-const Toolbar = () => {
+const Toolbar = ({allOptions = true}) => {
     const [isOverlayOpen, setIsOverlayOpen] = useState(false);
 
     const openOverlay = () => {
@@ -17,15 +17,32 @@ const Toolbar = () => {
         event.dataTransfer.effectAllowed = 'move';
     };
 
+    const preventDrag = (e) => {
+        e.preventDefault ? e.preventDefault() : e.returnValue = false
+    }
+
     return (
         <div className="toolbar relative z-10 w-auto bg-white h-screen flex flex-col justify-between">
             <div className="content">
-                <div className="dndnode chapitre mb-6">
-                    <img src="/assets/toolbar/chapitre.png" alt="Icone chapitre" title="Chapitre" onDragStart={(event) => onDragStart(event, 'chapitre')} draggable />
-                </div>
-                <div className="dndnode acte mb-6">
-                    <img src="/assets/toolbar/acte.png" alt="Icone acte" title="Acte" onDragStart={(event) => onDragStart(event, 'acte')} draggable />
-                </div>
+                {allOptions ? (
+                    <>
+                        <div className="dndnode chapitre mb-6">
+                            <img src="/assets/toolbar/chapitre.png" alt="Icone chapitre" title="Chapitre" onDragStart={(event) => onDragStart(event, 'chapitre')} draggable />
+                        </div>
+                        <div className="dndnode acte mb-6">
+                            <img src="/assets/toolbar/acte.png" alt="Icone acte" title="Acte" onDragStart={(event) => onDragStart(event, 'acte')} draggable />
+                        </div>
+                    </>
+                    ) : (
+                    <>
+                        <div onMouseDown={preventDrag} className="dndnode__disabled chapitre mb-6">
+                            <img src="/assets/toolbar/chapitre.png" alt="Icone chapitre" title="Chapitre"/>
+                        </div>
+                        <div onMouseDown={preventDrag} className="dndnode__disabled acte mb-6">
+                            <img src="/assets/toolbar/acte.png" alt="Icone acte" title="Acte"/>
+                        </div>
+                    </>
+                )}
                 <div className="dndnode personnage mb-6">
                     <img src="/assets/toolbar/personnage.png" alt="Icone personnage" onDragStart={(event) => onDragStart(event, 'personnage')} draggable />
                 </div>

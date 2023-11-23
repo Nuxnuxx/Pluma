@@ -1,0 +1,191 @@
+.postitbar {
+  background: #ffafa5;
+  width: 350px;
+  height: 85vh;
+  margin-block: auto;
+  border-top: white solid 3px;
+  border-left: white solid 3px;
+  border-bottom: white solid 3px;
+  transition: width 0.3s ease;
+
+  /* ===== Scrollbar ===== */
+  /* Firefox */
+
+  scrollbar-width: thin;
+  scrollbar-color: #000000 #000000;
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #eea59d;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #886052;
+    border-radius: 10px;
+  }
+
+  &__content {
+    transition: 0.1s ease;
+    overflow-y: auto;
+    margin-block: 6px;
+
+    /* ===== Scrollbar ===== */
+    /* Firefox */
+
+    scrollbar-width: thin;
+    scrollbar-color: #000000 #000000;
+
+    /* Chrome, Edge, and Safari */
+    *::-webkit-scrollbar {
+      width: 3px;
+      left: 0;
+    }
+
+    *::-webkit-scrollbar-track {
+      background: none;
+    }
+
+    *::-webkit-scrollbar-thumb {
+      background-color: #886052;
+      border-radius: 10px;
+    }
+
+    h5{
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    &.close{
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .postit-container{
+      margin-inline: 20px;
+
+      .postit{
+        margin-block: 20px;
+
+        &:first-child {
+          margin-top:0;
+          margin-bottom: 20px;
+        }
+
+        .header-section{
+          position: relative;
+          background: #b26b5d;
+
+          h6{
+            color: white;
+            padding-block: 10px;
+            padding-left: 10px;
+            font-weight: bold;
+            font-style: italic;
+          }
+
+          svg{
+            position: absolute;
+            top: 15px;
+            right: 10px;
+            cursor: pointer;
+            transition: 0.1s ease;
+
+            &:hover{
+              stroke: #b70606;
+              scale: 1.4;
+            }
+
+            &:active{
+              stroke: #d90707;
+              scale: 1.2;
+            }
+          }
+        }
+
+        .content-section{
+          background: #d68e80;
+
+          p{
+            padding: 5px;
+            min-height: 100px;
+            max-height: 500px;
+            overflow-y: auto;
+            text-align: justify;
+            font-size: 14px;
+          }
+        }
+      }
+
+      .add-postit{
+        filter: grayscale(75%);
+        margin-inline: 48px;
+        transition: 0.2s ease;
+        cursor: pointer;
+
+        .header-section{
+          background: #a86255;
+          min-height: 30px;
+        }
+
+        .content-section{
+          min-height: 150px;
+          p{
+            min-height: 0;
+            text-align: center;
+            font-size: 16px;
+          }
+        }
+
+        svg{
+          transition: 0.2s ease;
+        }
+
+        &:hover{
+          scale: 1.05;
+          filter: grayscale(50%);
+
+          svg{
+            scale: 1.2;
+            stroke: #a0d680;
+          }
+        }
+
+      }
+
+      hr{
+        margin-block: 40px;
+        border-color: #d68e80;
+      }
+    }
+
+  }
+
+  &.close {
+    width: 10px;
+    transition: width 0.3s ease;
+  }
+}
+
+.toggle-button-right {
+  position: absolute;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  left: -25px;
+  overflow: hidden;
+  rotate: 180deg;
+  bottom: 50%;
+  z-index: 5;
+  transition: 0.3s ease;
+  cursor: pointer;
+  border-right: 3px solid white;
+
+  &.close{
+    left: -20px;
+  }
+}

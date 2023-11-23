@@ -1,0 +1,17 @@
+.write-chapter{
+  display: flex;
+  overflow: hidden;
+
+  .write-chapter-content{
+    margin-inline: auto;
+
+    .write-chapter-textarea{
+      width: 60vw;
+      height: 90vh;
+
+      .tox:not([dir=rtl]) .tox-statusbar__branding, .tox:not([dir=rtl]) .tox-statusbar__path>*{
+        display: none;
+      }
+    }
+  }
+}
