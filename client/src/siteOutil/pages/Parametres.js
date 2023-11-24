@@ -17,11 +17,21 @@ const Parametres = () => {
     };
 
     return (
-        <div className="parametres">
-            <h1 className="titre">Profil</h1>
-            <div>
-                <img src={image} alt="Profil" />
-                <input type="file" onChange={handleImageChange} accept="image/*" />
+        <div className="parametresSupp">
+            <div className="parametres">
+                <h1 className="titre">Profil</h1>
+                <div className="content-box" onClick={() => document.getElementById('file-input').click()}>
+                    <input
+                        type="file"
+                        id="file-input"
+                        style={{ display: 'none' }}
+                        onChange={handleImageChange}
+                        accept="image/*"
+                    />
+                    <div className="img-box">
+                        <img src={image} className="image-avatar" alt="avatar" />
+                    </div>
+                </div>
             </div>
         </div>
     );
