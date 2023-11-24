@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import "./texteEditable.scss";
 
-const EditableText = ({ initialValeur, onSave, inputType = 'input', idInput = "", valeurParDefaut = "..."}) => {
+const EditableText = ({ initialValeur, onSave, inputType = 'input', idInput = "", valeurParDefaut, placeholder}) => {
 
     const [editable, setEditable] = useState(false);
     const [valeur, setValeur] = useState(initialValeur);
@@ -23,10 +23,12 @@ const EditableText = ({ initialValeur, onSave, inputType = 'input', idInput = ""
     };
 
     const handleTextBlur = () => {
-        let nouvelleValeur = valeur.trim() === '' ? valeurParDefaut : valeur.trim(); //Si on vide le texte, il est mis à une valeur par défaut
-        onSave(nouvelleValeur, idInput)
-        setValeur(nouvelleValeur);
-        setEditable(false);
+        if(valeurParDefaut != null){
+            let nouvelleValeur = valeur.trim() === '' ? valeurParDefaut : valeur.trim(); //Si on vide le texte, il est mis à une valeur par défaut
+            onSave(nouvelleValeur, idInput)
+            setValeur(nouvelleValeur);
+            setEditable(false);
+        }
     };
 
     return (
@@ -38,6 +40,7 @@ const EditableText = ({ initialValeur, onSave, inputType = 'input', idInput = ""
                         onChange={handleTextChange}
                         onBlur={handleTextBlur}
                         ref={inputRef}
+                        placeholder={placeholder}
                     />
                 ) : (
                     <div className="texte paragraphe" onClick={handleTextClick} ref={textRef}>
@@ -53,6 +56,7 @@ const EditableText = ({ initialValeur, onSave, inputType = 'input', idInput = ""
                         onChange={handleTextChange}
                         onBlur={handleTextBlur}
                         ref={inputRef}
+                        placeholder={placeholder}
                     />
                 ) : (
                     <div className="texte champ" onClick={handleTextClick} ref={textRef}>

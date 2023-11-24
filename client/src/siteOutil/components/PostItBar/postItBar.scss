@@ -172,7 +172,7 @@
 }
 
 .overlay {
-  color: red;
+  color: black;
   top: 0;
   right: 0;
   width: 100%;
@@ -181,7 +181,60 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 100;
+
+  form{
+    width: 30vw;
+  }
+
+  .new-postit-form{
+    background: #ffafa5;
+    border-radius: 5px;
+    padding: 20px;
+
+    .header-section{
+      width: 100%;
+      position: relative;
+
+      input{
+        background: #b26b5d;
+        width: 100%;
+        color: white;
+        font-weight: bold;
+        font-style: italic;
+      }
+    }
+
+    .content-section{
+      width: 100%;
+      background: #d68e80;
+
+      textarea{
+        background: #d68e80;
+        overflow-y: auto;
+        text-align: justify;
+        font-size: 14px;
+      }
+    }
+  }
+
+  svg{
+    cursor: pointer;
+    transition: 0.1s ease;
+    background: #b26b5d;
+    border-radius: 50%;
+
+    &:hover{
+      stroke: #b70606;
+      scale: 1.2;
+    }
+
+    &:active{
+      stroke: #d90707;
+      scale: 1.1;
+    }
+  }
+
 }
 
 .toggle-button-right {

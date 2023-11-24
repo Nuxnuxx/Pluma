@@ -22,7 +22,7 @@ const Toolbar = ({allOptions = true}) => {
     }
 
     return (
-        <div className="toolbar relative z-10 w-auto bg-white h-screen flex flex-col justify-between">
+        <div className="toolbar relative z-20 w-auto bg-white h-screen flex flex-col justify-between">
             <div className="content">
                 {allOptions ? (
                     <>

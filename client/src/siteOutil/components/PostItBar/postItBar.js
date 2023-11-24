@@ -3,6 +3,8 @@ import './postItBar.scss';
 
 const PostItBar = () => {
     const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+    const [newPostitTitle, setNewPostitTitle] = useState('');
+    const [newPostitContent, setNewPostitContent] = useState('');
     const [postits, setPostits] = useState([
         { id: 1, titre: "Premier Post-it", contenu: "Contenu du premier Post-it" },
         { id: 2, titre: "Deuxième Post-it", contenu: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vehicula dolor nulla. Integer lacinia vulputate faucibus. Proin ac ipsum turpis. Aenean magna dui, euismod id lorem non, fermentum posuere ipsum. Quisque pretium tortor vel dui fermentum, et cursus neque scelerisque. Nullam sodales quam magna, non condimentum turpis viverra et. Ut non sollicitudin ante. Praesent vitae malesuada magna, ac vulputate nulla. Nulla volutpat interdum risus eu pharetra. Suspendisse ullamcorper libero sollicitudin ultricies vestibulum. Morbi tincidunt dignissim justo ac molestie.\n" +
@@ -28,6 +30,19 @@ const PostItBar = () => {
 
     const closeOverlay = () => {
         setIsOverlayOpen(false);
+        setNewPostitTitle('');
+        setNewPostitContent('');
+    };
+
+    const addNewPostit = (e) => {
+        e.preventDefault();
+        const newPostit = {
+            id: postits.length + 1,
+            titre: newPostitTitle,
+            contenu: newPostitContent,
+        };
+        setPostits((prevPostits) => [...prevPostits, newPostit]);
+        closeOverlay();
     };
 
     useEffect(() => {
@@ -48,7 +63,7 @@ const PostItBar = () => {
     }, []);
 
     return (
-        <div className={`postitbar relative w-auto z-0 h-screen flex flex-col justify-between ${isPostItBarOpen ? 'close' : ''}`}>
+        <div className={`postitbar relative w-auto z-5 h-screen flex flex-col justify-between ${isPostItBarOpen ? 'close' : ''}`}>
             <div className={`postitbar__content z-10 h-full ${isPostItBarOpen ? 'close' : ''}`}>
                 <h5 className="text-center py-5">Post-Its</h5>
                 <div className={`postit-container ${postits.length === 0 ? 'h-4/5 flex items-center justify-center' : ''}`}>
@@ -91,7 +106,36 @@ const PostItBar = () => {
             </div>
             {isOverlayOpen && (
                 <div className="overlay">
-                    <button onClick={closeOverlay} className="button">X</button>
+                    <form onSubmit={addNewPostit}>
+                        <div className="w-full flex justify-end mb-5 ms-10">
+                            <svg onClick={closeOverlay} width="30" height="30" fill="none" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 6 6 18"></path>
+                                <path d="m6 6 12 12"></path>
+                            </svg>
+                        </div>
+                        <div className="new-postit-form">
+                            <div className="header-section">
+                                <label>
+                                    <input
+                                        type="text"
+                                        value={newPostitTitle}
+                                        onChange={(e) => setNewPostitTitle(e.target.value)}
+                                        placeholder="Titre..."
+                                    />
+                                </label>
+                            </div>
+                            <div className="content-section">
+                                <label>
+                                    <textarea
+                                        value={newPostitContent}
+                                        onChange={(e) => setNewPostitContent(e.target.value)}
+                                        placeholder="Contenu..."
+                                    />
+                                </label>
+                            </div>
+                            <button type="submit">Ajouter Post-it</button>
+                        </div>
+                    </form>
                 </div>
             )}
         </div>
