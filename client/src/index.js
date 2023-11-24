@@ -41,7 +41,7 @@ export default function App() {
                         <Route index element={<ResumeProjet />} />
                         <Route path="edition">
                             <Route index element={<EditionProjet />} />
-                            <Route path="numChapitre">
+                            <Route path=":id">
                                 <Route index element={<EditionChapitre />} />
                                 <Route path="ecriture" element={<EcritureChapitre />} />
                             </Route>

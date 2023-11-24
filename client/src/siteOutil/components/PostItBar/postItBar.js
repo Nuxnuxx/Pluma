@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './postItBar.scss';
 
 const PostItBar = () => {
+    const [isOverlayOpen, setIsOverlayOpen] = useState(false);
     const [postits, setPostits] = useState([
         { id: 1, titre: "Premier Post-it", contenu: "Contenu du premier Post-it" },
         { id: 2, titre: "Deuxième Post-it", contenu: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vehicula dolor nulla. Integer lacinia vulputate faucibus. Proin ac ipsum turpis. Aenean magna dui, euismod id lorem non, fermentum posuere ipsum. Quisque pretium tortor vel dui fermentum, et cursus neque scelerisque. Nullam sodales quam magna, non condimentum turpis viverra et. Ut non sollicitudin ante. Praesent vitae malesuada magna, ac vulputate nulla. Nulla volutpat interdum risus eu pharetra. Suspendisse ullamcorper libero sollicitudin ultricies vestibulum. Morbi tincidunt dignissim justo ac molestie.\n" +
@@ -21,9 +22,17 @@ const PostItBar = () => {
         setIsPostItBarOpen(prevState => !prevState);
     };
 
+    const openOverlay = () => {
+        setIsOverlayOpen(true);
+    };
+
+    const closeOverlay = () => {
+        setIsOverlayOpen(false);
+    };
+
     useEffect(() => {
         const handleResize = () => {
-            const postItBarElement = document.querySelector('.sidebar');
+            const postItBarElement = document.querySelector('.postitbar');
             const isPostItbarClose = postItBarElement.classList.contains('close');
 
             if (window.innerWidth < 768 && !isPostItbarClose) {
@@ -58,7 +67,7 @@ const PostItBar = () => {
                         </div>
                     ))}
                     {postits.length > 0 && <hr />}
-                    <div className={`postit add-postit ${postits.length === 0 ? 'w-full' : ''}`}>
+                    <div className={`postit add-postit ${postits.length === 0 ? 'w-full' : ''}`} onClick={openOverlay}>
                         <div className="header-section">
                             <h6> </h6>
                         </div>
@@ -80,6 +89,11 @@ const PostItBar = () => {
                     <path d="M20.972,95.594L78.577,49.643c.951-.76.951-2.367,0-3.127L20.968,0.56c-.689-.547-1.716-.709-2.61-.414-.186.061-.33.129-.436.186-.65.35-1.056,1.025-1.056,1.764v91.967c0,.736.405,1.414,1.056,1.762.109.06.253.127.426.185.903.295,1.933.134,2.624-.416Z" transform={isPostItBarOpen ? "matrix(1.93752 0 0 1.93752 114.577189 156.84779)" : "matrix(-1.93752 0 0 -1.93752 300.881839 343.15225)"} fill="#fff" style={{ transition: 'transform 0.2s ease' }}/>
                 </svg>
             </div>
+            {isOverlayOpen && (
+                <div className="overlay">
+                    <button onClick={closeOverlay} className="button">X</button>
+                </div>
+            )}
         </div>
     );
 };
