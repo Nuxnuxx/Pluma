@@ -6,7 +6,7 @@ function Header() {
     const url = useLocation();
 
     return (
-        <div className="header-container z-50">
+        <div className="header-container">
             <div className="logo-et-texte">
                 <Link to="/" className={url.pathname === '/' ? 'active' : ''}>
                     <img src="/assets/plume-doie.png" alt="logo clair" className="logo" />
