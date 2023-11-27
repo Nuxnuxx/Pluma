@@ -1,5 +1,6 @@
 import React from 'react';
 import "./styles/404.scss";
+import {Link} from "react-router-dom";
 const Page404 = () => {
     return (
         <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center -z-10">
@@ -27,7 +28,10 @@ const Page404 = () => {
                     </svg>
                 </div>
                 <div className="error-code">404</div>
-                <div className="error-desc">Désolée, votre page n'existe pas. <br />Merci de revenir à l'accueil ou toute page connue.</div>
+                <div className="error-desc">Désolée, votre page n'existe pas.</div>
+                <Link to={"/"}>
+                    <button className="btn404">Retour Accueil</button>
+                </Link>
             </div>
         </div>
     );
