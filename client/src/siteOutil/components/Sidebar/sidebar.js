@@ -60,7 +60,6 @@ const Sidebar = ({ onRechercheChange }) => {
             }
         };
 
-        console.log(location.pathname)
         if (location.pathname !== '/mon-espace/resultat-recherche') {
             setEstSurResultatRecherche(prevState => false);
             viderRecherche()

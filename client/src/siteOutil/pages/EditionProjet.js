@@ -12,6 +12,34 @@ import PersonnageNodeComponent from "../components/ReactFlow/nodes/PersonnageNod
 import LieuNodeComponent from "../components/ReactFlow/nodes/LieuNodeComponent";
 import EvenementNodeComponent from "../components/ReactFlow/nodes/EvenementNodeComponent";
 import BlocNoteNodeComponent from "../components/ReactFlow/nodes/BlocNoteNodeComponent";
+import {useNavigate} from "react-router-dom";
+
+const initialNodes = [];
+const initialEdges = [];
+
+/*
+const nodeTypes = {
+    acte: ActeNodeComponent,
+    chapitre: ChapitreNodeComponent,
+    personnage: PersonnageNodeComponent,
+    lieu: LieuNodeComponent,
+    evenement: EvenementNodeComponent,
+    blocnote: BlocNoteNodeComponent,
+}; */
+
+const edgeTypes = {
+    floating: FloatingEdge,
+};
+
+const connectionLineStyle = {
+    strokeWidth: 3,
+    stroke: '#d6d6d6',
+};
+
+const EdgeOptions = {
+    style: { strokeWidth: 4, stroke: '#b26b5d'},
+    type: 'floating',
+};
 
 const idCounters = {
     chapitre: 1,
@@ -29,10 +57,6 @@ const getId = type => {
 }
 
 export default function EditionProjet() {
-    const initialNodes = [];
-
-    const initialEdges = [];
-
     const reactFlowWrapper = useRef(null);
     const ref = useRef(null);
     const edgeUpdateSuccessful = useRef(true);
@@ -41,7 +65,18 @@ export default function EditionProjet() {
     const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
     const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
+    const onInit = useCallback((reactFlowInstance) => {
+        setReactFlowInstance(reactFlowInstance);
+    }, [setReactFlowInstance]);
+
+
     const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), [setEdges]);
+
+    const navigate = useNavigate();
+    const onNodeDoubleClickHandler = (id) => {
+        console.log(id);
+        // navigate(`./${id}`);
+    };
 
     const onEdgeUpdateStart = useCallback(() => {
         edgeUpdateSuccessful.current = false;
@@ -129,7 +164,7 @@ export default function EditionProjet() {
                 newNode = ActeNodeComponent(count, idCounters[type] - 1, reactFlowInstance, reactFlowBounds, event);
                 break;
             case 'chapitre':
-                newNode = ChapitreNodeComponent(count, idCounters[type] - 1, reactFlowInstance, reactFlowBounds, event);
+                newNode = ChapitreNodeComponent(count, idCounters[type] - 1, reactFlowInstance, reactFlowBounds, event, onNodeDoubleClickHandler);
                 break;
             case 'personnage':
                 newNode = PersonnageNodeComponent(count, idCounters[type] - 1, reactFlowInstance, reactFlowBounds, event);
@@ -148,21 +183,7 @@ export default function EditionProjet() {
         }
 
         setNodes((nds) => nds.concat(newNode));
-    }, [setNodes, reactFlowInstance]);
-
-    const connectionLineStyle = {
-        strokeWidth: 3,
-        stroke: '#d6d6d6',
-    };
-
-    const edgeTypes = {
-        floating: FloatingEdge,
-    };
-
-    const EdgeOptions = {
-        style: { strokeWidth: 4, stroke: '#b26b5d'},
-        type: 'floating',
-    };
+    }, [setNodes, reactFlowInstance, onNodeDoubleClickHandler]);
 
     return (
         <div className="dndflow">
@@ -171,26 +192,28 @@ export default function EditionProjet() {
                         <div style={{ width: '100%', height: '100%' }}>
                         <ReactFlow
                             ref={ref}
+                            onInit={onInit}
                             nodes={nodes}
                             edges={edges}
+                           // nodeTypes={nodeTypes}
                             onNodesChange={onNodesChange}
+                            onNodeDoubleClick={onNodeDoubleClickHandler}
                             onEdgesChange={onEdgesChange}
                             onEdgeUpdate={onEdgeUpdate}
                             onEdgeUpdateStart={onEdgeUpdateStart}
                             onEdgeUpdateEnd={onEdgeUpdateEnd}
+                            edgeTypes={edgeTypes}
+                            defaultEdgeOptions={EdgeOptions}
                             onConnect={onConnect}
-                            onInit={setReactFlowInstance}
                             onDrop={onDrop}
                             onDragOver={onDragOver}
                             onPaneClick={onPaneClick}
                             onNodeContextMenu={onNodeContextMenu}
                             onEdgeContextMenu={onEdgeContextMenu}
-                            attributionPosition="bottom-left"
-                            fitView
-                            edgeTypes={edgeTypes}
-                            defaultEdgeOptions={EdgeOptions}
                             connectionLineComponent={CustomConnectionLine}
                             connectionLineStyle={connectionLineStyle}
+                            attributionPosition="bottom-left"
+                            fitView
                         >
                             <Toolbar />
                             <Controls position="top-right" />

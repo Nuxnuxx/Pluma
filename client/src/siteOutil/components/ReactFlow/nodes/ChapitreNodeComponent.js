@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ChapitreNodeComponent = (id, count, reactFlowInstance, reactFlowBounds, event) => {
+const ChapitreNodeComponent = (id, count, reactFlowInstance, reactFlowBounds, event, onNodeDoubleClick) => {
     const position = reactFlowInstance.project({
         x: (event.clientX - reactFlowBounds.left) - 150,
         y: (event.clientY - reactFlowBounds.top) - 150,
@@ -13,7 +13,7 @@ const ChapitreNodeComponent = (id, count, reactFlowInstance, reactFlowBounds, ev
         position,
         data: {
             label: (
-                <div>
+                <div onDoubleClick={() => onNodeDoubleClick(id)}>
                     <p>{`chapitre ${count} : "nomChapitre"`}</p>
                 </div>
             ),

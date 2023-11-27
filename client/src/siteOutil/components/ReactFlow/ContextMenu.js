@@ -1,8 +1,11 @@
 import React, { useCallback } from 'react';
 import { useReactFlow } from 'reactflow';
+import {Link} from "react-router-dom";
 
 export default function ContextMenu({ id, top, left, right, bottom, data, onDelete, type, ...props }) {
     const { getNode, setNodes, addNodes, setEdges } = useReactFlow();
+
+    const numId = id.match(/(\d+)$/)?.[1] || null;
 
     const duplicateNode = useCallback(() => {
         const node = getNode(id);
@@ -27,9 +30,13 @@ export default function ContextMenu({ id, top, left, right, bottom, data, onDele
     return (
         <div style={{ top, left, right, bottom }} className="context-menu" {...props}>
             <p>
-                <small>greger</small>
+                <small>{type + " " + numId}</small>
             </p>
-            <button>Editer</button>
+            {type === 'chapitre' && (
+                <Link to={`./${numId}`}>
+                    <button>Éditer</button>
+                </Link>
+            )}
             <button onClick={duplicateNode}>Dupliquer</button>
             <button onClick={deleteNodeOrEdge}>Supprimer</button>
         </div>
