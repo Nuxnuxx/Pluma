@@ -28,6 +28,12 @@ const MonEspace = () => {
         { id: 4 },
         { id: 5 },
         { id: 7 },
+        { id: 8 },
+        { id: 5 },
+        { id: 7 },
+        { id: 8 },
+        { id: 5 },
+        { id: 7 },
         { id: 8 }
     ];
 
@@ -39,10 +45,19 @@ const MonEspace = () => {
 
     const handleNext = () => {
         const nextIndex = activeIndex + 1;
-        if (nextIndex < listeFavoris.length) {
+        const maxIndex = Math.floor((listeFavoris.length - 5)) + 1;
+
+        if (nextIndex < maxIndex) {
             setActiveIndex(nextIndex);
         }
     };
+
+    const calcWidth = (index) => {
+        let result = `calc(calc(10vw + calc((100% - 50vw) / 4)) * ${index})`
+        console.log(result)
+        return result;
+    };
+
 
     return (
         <div className="mon-espace">
@@ -68,12 +83,14 @@ const MonEspace = () => {
             <h2 className="titre-section">Favoris</h2>
             <div className="section">
                 <button onClick={handlePrev} className="arrow-button left-arrow">←</button>
-                <div className="liste-favoris">
-                    {listeFavoris.map((projet) => (
-                        <ElementListeProjets
-                            key={projet.id}
-                            id={projet.id}
-                        />
+                <div className="liste-favoris" style={{ transform: `translateX(${calcWidth(-activeIndex)})` }}>
+                    {listeFavoris.map((projet, index) => (
+                        <div className={`element ${index < activeIndex || index >= activeIndex + 5 ? 'element-hidden' : ''}`}>
+                            <ElementListeProjets
+                                key={projet.id}
+                                id={projet.id}
+                            />
+                        </div>
                     ))}
                 </div>
                 <button onClick={handleNext} className="arrow-button right-arrow">→</button>

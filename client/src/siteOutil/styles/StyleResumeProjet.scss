@@ -1,73 +1,78 @@
-.resume-projet {
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-  margin-bottom: 7vh;
+.mon-espace {
+  overflow-y: hidden;
 
-  .couverture {
-    width: 12em;
-    height: calc(12em / 0.7071);
+  .resume-projet {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 4vh;
+    margin-top: 1vh;
+
+    .couverture {
+      width: 13em;
+      height: calc(13em / 0.7071);
+      border-radius: 4px;
+      background-color: #b4bdc6;
+    }
+
+    a {
+      pointer-events: none;
+    }
+
+    .info-projet {
+      margin-left: 20px;
+      width: 55vw;
+
+      .titre {
+        height: 40px;
+        font-size: 1.5em;
+      }
+
+      .titre, p {
+        margin-bottom: 8px;
+      }
+
+      label {
+        margin-bottom: 4px;
+        display: block;
+      }
+    }
+  }
+
+  .paragraphe-resume{
+    font-size: 0.9em;
+    line-height: 1.4;
+    text-align: justify;
+    height: 35vh;
+    max-height: 35vh;
+  }
+
+  .editer {
+    position: absolute;
+    width: 100px;
+    bottom: 15px;
+    right: 15px;
+    padding: 8px;
+    border-radius: 25px;
+    background-color: #FFAFA5;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #d68e80;
+    }
+  }
+
+
+
+  select {
+    padding: 8px;
+    font-size: 16px;
     border-radius: 4px;
-    background-color: #b4bdc6;
-  }
 
-  a {
-    pointer-events: none;
-  }
-
-  .info-projet {
-    margin-left: 20px;
-    width: 55vw;
-
-    .titre {
-      height: 40px;
-      font-size: 1.5em;
+    &:hover {
+      background-color: #ccc;
     }
-
-    .titre, p {
-      margin-bottom: 8px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 8px;
-    }
-  }
-}
-
-.paragraphe-resume{
-  font-size: 0.9em;
-  line-height: 1.4;
-  text-align: justify;
-  height: 35vh;
-  max-height: 35vh;
-}
-
-.editer {
-  position: absolute;
-  width: 100px;
-  bottom: 15px;
-  right: 15px;
-  padding: 8px;
-  border-radius: 25px;
-  background-color: #FFAFA5;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #d68e80;
-  }
-}
-
-
-
-select {
-  padding: 8px;
-  font-size: 16px;
-  border-radius: 4px;
-
-  &:hover {
-    background-color: #ccc;
   }
 }

@@ -8,9 +8,9 @@
     list-style: none;
     padding: 0;
     flex-wrap: wrap;
-    align-items: center;
-    max-height: 7em;
+    align-content: flex-start;
     overflow-y: auto;
+    max-height: 7em;
 
     li {
       height: 2em;
