@@ -18,7 +18,7 @@ import EditionProjet from "./siteOutil/pages/EditionProjet";
 import EditionChapitre from "./siteOutil/pages/EditionChapitre";
 import EcritureChapitre from "./siteOutil/pages/EcritureChapitre";
 import Elements from "./siteOutil/pages/Elements";
-import Parametres from "./siteOutil/pages/Parametres";
+import Compte from "./siteOutil/pages/Compte";
 import ResultatRecherche from "./siteOutil/pages/ResultatRecherche";
 
 export default function App() {
@@ -48,7 +48,7 @@ export default function App() {
                             <Route path="elements" element={<Elements />} />
                         </Route>
                     </Route>
-                    <Route path="compte" element={<Parametres />} />
+                    <Route path="compte" element={<Compte />} />
                 </Route>
             </Routes>
         </BrowserRouter>

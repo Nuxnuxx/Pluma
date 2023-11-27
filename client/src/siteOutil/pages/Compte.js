@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import "../styles/Parametres.scss";
+import "../styles/Compte.scss";
 import TexteEditable from "../components/texteEditable/texteEditable";
 
-const Parametres = () => {
+const Compte = () => {
     const [image, setImage] = useState("../assets/profil.png");
 
     const user = {
@@ -147,4 +147,4 @@ const Parametres = () => {
     );
 };
 
-export default Parametres;
+export default Compte;
