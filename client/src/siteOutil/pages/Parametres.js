@@ -47,7 +47,7 @@ const Parametres = () => {
     return (
         <div className="parametres-container h-full">
             <div className="parametres h-full">
-                <h1 className="titre">Profil</h1>
+                <h1 className="titre">Mon profil</h1>
 
                 <div className="lg:flex mt-8 lg:ms-6">
                     <div className="avatar flex justify-center">
