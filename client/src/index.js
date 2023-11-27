@@ -20,6 +20,7 @@ import EcritureChapitre from "./siteOutil/pages/EcritureChapitre";
 import Elements from "./siteOutil/pages/Elements";
 import Compte from "./siteOutil/pages/Compte";
 import ResultatRecherche from "./siteOutil/pages/ResultatRecherche";
+import BDD from "./testsBDD/testsBDD";
 
 export default function App() {
     return (
@@ -31,6 +32,7 @@ export default function App() {
                     <Route path="premium" element={<PlumaPremium />} />
                     <Route path="inscription-connexion" element={<ConnexionInscription />} />
                     <Route path="*" element={<Page404 />} />
+                    <Route path="BDD" element={<BDD />} />
                 </Route>
                 <Route path="mon-espace" element={<LayoutMonEspace />}>
                     <Route index element={<MonEspace />} />

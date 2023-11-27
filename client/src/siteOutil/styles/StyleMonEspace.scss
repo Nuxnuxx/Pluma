@@ -1,8 +1,8 @@
 .mon-espace {
   display: flex;
   flex-direction: column;
-  padding-right: 2rem;
-  padding-left: 2rem;
+  padding-right: 4vw;
+  padding-left: 4vw;
   margin-top: 20px;
   overflow-x: hidden;
 
@@ -74,7 +74,7 @@
       width: calc(100% - 7rem);
       justify-items: center;
       grid-column-gap: max(1rem, calc((100% - 50vw) / 4));
-      grid-row-gap: 1rem;
+      grid-row-gap: 2rem;
     }
   }
 

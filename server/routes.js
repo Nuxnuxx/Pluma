@@ -1,24 +1,59 @@
 const express = require('express');
 const UserController = require('./controllers/userController');
-const pool = require('./models/BDD');
+const pool = require('./models/db');
 
 const router = express.Router();
 
-router.get('/', UserController.getAllUsers);
-router.post('/', UserController.addUser);
+// Routes pour le CRUD
+router.post('/create/:table', async (req, res) => {
+  const nomTable = req.params.table;
 
-router.get('/api/mon-espace', (req, res) => {
-    // Gérer la route /api/mon-espace ici
+  try {
+    // Il faudra voir comment gérer les paramètres de la requète
+    const { nom, description } = req.body;
+    const result = await pool.query(`INSERT INTO ${nomTable} (nom, description) VALUES (?, ?)`, [nom, description]);
+    res.json({ success: true, data: result });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, error: 'Internal Server Error' });
+  }
 });
 
-router.get('/bdd', async (req, res) => {
+router.get('/read/:table', async (req, res) => {
+  const nomTable = req.params.table;
+
   try {
-    const rows = await query("SELECT * FROM abonnement");
-    console.log(rows);
-    res.status(200).json(rows);  // Envoyer les données JSON à la réponse HTTP
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Erreur lors de la requête à la base de données');
+    const result = await pool.query(`SELECT * FROM ${nomTable}`);
+    res.json({ success: true, data: result });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, error: 'Internal Server Error' });
+  }
+});
+
+router.put('/update/:table/:id', async (req, res) => {
+  const nomTable = req.params.table;
+
+  try {
+    // Il faudra voir comment gérer les paramètres de la requète
+    const { nom, description } = req.body;
+    const result = await pool.query(`UPDATE ${nomTable} SET nom = ?, description = ? WHERE id = ?`, [nom, description, req.params.id]);
+    res.json({ success: true, data: result });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, error: 'Internal Server Error' });
+  }
+});
+
+router.delete('/delete/:table/:id', async (req, res) => {
+  const nomTable = req.params.table;
+
+  try {
+    const result = await pool.query(`DELETE FROM ${nomTable} WHERE id = ?`, [req.params.id]);
+    res.json({ success: true, data: result });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, error: 'Internal Server Error' });
   }
 });
 
