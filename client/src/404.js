@@ -2,7 +2,7 @@ import React from 'react';
 import "./styles/404.scss";
 const Page404 = () => {
     return (
-        <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center">
+        <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center -z-10">
             <div className="error-container">
                 <div className="animate-404">
                     <svg id="cogs" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 225 184" xmlSpace="preserve">
