@@ -2,43 +2,54 @@ import React, { useState } from 'react';
 import "../styles/ConnexionInscription.scss";
 
 const LoginForm = () => (
-    <form id="login-form" action="" method="post" role="form" className="active-form">
-        <p>Connecte-toi vite afin de reprendre ton chef-d'œuvre.</p>
-        <div className="mb-4">
-            <input type="text" name="username" id="username" tabIndex="1" className="form-input" placeholder="Pseudo / Adresse Mail" />
+    <>
+        <form id="login-form" action="" method="post" role="form" className="active-form">
+            <p>Connecte-toi vite afin de reprendre ton chef-d'œuvre.</p>
+            <div className="mb-4">
+                <input type="text" name="username" id="username" tabIndex="1" className="form-input" placeholder="Pseudo / Adresse Mail" />
+            </div>
+            <div className="mb-4">
+                <input type="password" name="password" id="password" tabIndex="2" className="form-input" placeholder="Mot de passe" />
+            </div>
+            <div className="mb-4">
+                <button type="submit" name="login-submit" id="login-submit" tabIndex="4" className="btn btn-login">
+                    Se connecter
+                </button>
+            </div>
+        </form>
+        <div className="bg-white w-full login-tips">
+            <span>Laissez votre créativitez s’exprimer avec pluma</span>
         </div>
-        <div className="mb-4">
-            <input type="password" name="password" id="password" tabIndex="2" className="form-input" placeholder="Mot de passe" />
-        </div>
-        <div className="mb-4">
-            <button type="submit" name="login-submit" id="login-submit" tabIndex="4" className="btn btn-login">
-                Se connecter
-            </button>
-        </div>
-    </form>
+    </>
 );
 const RegisterForm = () => (
-    <form id="register-form" action="" method="post" role="form" className="active-form">
-        <p>Laisse ta plume te guider en rejoignant Pluma. </p>
-        <div className="mb-4">
-            <input type="text" name="username" id="username" tabIndex="1" className="form-input" placeholder="Pseudo" />
+    <>
+        <div className="bg-white w-full register-tips">
+            <p>Laissez votre créativitez s’exprimer avec pluma</p>
         </div>
-        <div className="mb-4">
-            <input type="email" name="email" id="email" tabIndex="1" className="form-input" placeholder="Adresse Mail" />
-        </div>
-        <div className="mb-4">
-            <input type="password" name="password" id="password" tabIndex="2" className="form-input" placeholder="Mot de passe" />
-        </div>
-        <div className="mb-4">
-            <input type="password" name="confirm-password" id="confirm-password" tabIndex="2" className="form-input" placeholder="Confirmation du mot de passe" />
-        </div>
-        <div className="mb-4">
-            <button type="submit" name="register-submit" id="register-submit" tabIndex="4" className="btn btn-register">
-                Nous rejoindre
-            </button>
-        </div>
-    </form>
+        <form id="register-form" action="" method="post" role="form" className="active-form">
+            <p>Laisse ta plume te guider en rejoignant Pluma. </p>
+            <div className="mb-4">
+                <input type="text" name="username" id="username" tabIndex="1" className="form-input" placeholder="Pseudo" />
+            </div>
+            <div className="mb-4">
+                <input type="email" name="email" id="email" tabIndex="1" className="form-input" placeholder="Adresse Mail" />
+            </div>
+            <div className="mb-4">
+                <input type="password" name="password" id="password" tabIndex="2" className="form-input" placeholder="Mot de passe" />
+            </div>
+            <div className="mb-4">
+                <input type="password" name="confirm-password" id="confirm-password" tabIndex="2" className="form-input" placeholder="Confirmation du mot de passe" />
+            </div>
+            <div className="mb-4">
+                <button type="submit" name="register-submit" id="register-submit" tabIndex="4" className="btn btn-register">
+                    Nous rejoindre
+                </button>
+            </div>
+        </form>
+    </>
 );
+
 const ConnexionInscription = () => {
     const [isLoginActive, setIsLoginActive] = useState(true);
 
@@ -58,24 +69,15 @@ const ConnexionInscription = () => {
                 <div className="row">
                     <div className="col-md-6 col-md-offset-3">
                         <div className="panel panel-login">
-                            <div className="panel-heading flex justify-between items-center">
-                                <a
-                                    href="#"
-                                    className={`text-lg ${isLoginActive ? 'text-green-500' : 'text-gray-500'}`}
-                                    onClick={handleLoginClick}
-                                >
+                            <div className="panel-heading pb-1">
+                                <a className={isLoginActive ? "z-20" : "z-0"} onClick={handleLoginClick}>
                                     Connexion
                                 </a>
-                                <a
-                                    href="#"
-                                    className={`text-lg ${!isLoginActive ? 'text-green-500' : 'text-gray-500'}`}
-                                    onClick={handleRegisterClick}
-                                >
+                                <a className={isLoginActive ? "z-0" : "z-20"} onClick={handleRegisterClick}>
                                     Inscription
                                 </a>
                             </div>
-                            <hr className="my-2" />
-                            <div className="panel-body">
+                            <div className="panel-body flex">
                                 {isLoginActive ? <LoginForm /> : <RegisterForm />}
                             </div>
                         </div>

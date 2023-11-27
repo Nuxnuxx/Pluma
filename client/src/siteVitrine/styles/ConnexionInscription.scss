@@ -2,40 +2,71 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 
   .panel-login {
-    border-color: #ccc;
-    box-shadow: 10px 10px 5px 0px rgba(77, 64, 77, 0.75);
-    width: 50%;
+    width: 75%;
     margin: auto;
 
-    > .panel-heading {
-      color: #00415d;
-      background-color: #fff;
-      border-color: #fff;
-      text-align:center;
+    .panel-heading {
+      color: #ffffff;
+      position: relative;
+      text-align: center;
+      height: 52px;
 
       a {
         text-decoration: none;
-        color: #666;
+        background-color: #fc8c79;
+        padding-inline: 50px;
+        padding-block: 15px;
+        letter-spacing: 5px;
         font-weight: bold;
-        font-size: 15px;
+        font-size: 16px;
+        cursor: pointer;
         transition: all 0.1s linear;
+        border-radius: 40px 40px 0 0;
+        position: absolute;
+        top: 0;
+        right: 48.5%;
+
+        &:last-child{
+          background-color: #bf5748;
+          left: 48.5%;
+          right: auto;
+        }
 
         &.active {
           color: #029f5b;
           font-size: 18px;
         }
       }
+    }
 
-      hr {
-        margin-top: 10px;
-        margin-bottom: 0px;
-        clear: both;
-        border: 0;
-        height: 1px;
-        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+    .panel-body{
+      min-height: 50vh;
+
+      #login-form{
+        background-color: #fc8c79;
+        width: 106%;
+        border-radius: 50px 0 0 50px;
+      }
+
+      #register-form{
+        background-color: #bf5748;
+        width: 106%;
+        border-radius: 0 50px 50px 0;
+      }
+
+      .login-tips{
+        border-radius: 0 50px 50px 0;
+      }
+
+      .register-tips{
+        border-radius: 50px 0 0 50px;
       }
     }
 
