@@ -48,7 +48,7 @@ export default function App() {
                             <Route path="elements" element={<Elements />} />
                         </Route>
                     </Route>
-                    <Route path="mon-profil" element={<Parametres />} />
+                    <Route path="compte" element={<Parametres />} />
                 </Route>
             </Routes>
         </BrowserRouter>
