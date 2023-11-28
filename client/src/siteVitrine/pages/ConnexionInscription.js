@@ -33,21 +33,21 @@ const RegisterForm = () => (
             <div className="Paragraphe1 p-14 ">
                 <p>Laisse ta plume te guider en rejoignant Pluma. </p>
             </div>
-            <div className="mb-4">
+            <div className="pseudo mb-4">
                 <input type="text" name="username" id="username" tabIndex="1" className="form-input" placeholder="Pseudo" />
             </div>
-            <div className="mb-4">
+            <div className="email mb-4">
                 <input type="email" name="email" id="email" tabIndex="1" className="form-input" placeholder="Adresse Mail" />
             </div>
-            <div className="mb-4">
+            <div className="motdepasse mb-4">
                 <input type="password" name="password" id="password" tabIndex="2" className="form-input" placeholder="Mot de passe" />
             </div>
-            <div className="mb-4">
+            <div className="motdepasse mb-4">
                 <input type="password" name="confirm-password" id="confirm-password" tabIndex="2" className="form-input" placeholder="Confirmation du mot de passe" />
             </div>
-            <div className="mb-4">
+            <div className="btninscription m-10">
                 <button type="submit" name="register-submit" id="register-submit" tabIndex="4" className="btn btn-register">
-                    Nous rejoindre
+                    <b>Nous rejoindre</b>
                 </button>
             </div>
         </form>
