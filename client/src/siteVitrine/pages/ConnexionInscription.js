@@ -19,8 +19,11 @@ const LoginForm = () => (
                 </button>
             </div>
         </form>
-        <div className="sloganconnexion bg-white w-full login-tips">
-            <span><b>Laissez votre créativitez s’exprimer avec pluma</b></span>
+        <div className="sloganconnexion bg-white w-full login-tips flex items-center">
+            <span>
+                <img className="imgtest m-10" src="assets/ARemplacer/Test.png" alt="Image de test"/>
+                <b>Laissez votre créativitez s’exprimer avec pluma</b>
+            </span>
         </div>
     </>
 );
@@ -28,7 +31,7 @@ const RegisterForm = () => (
     <>
         <div className="sloganinscription bg-white w-full register-tips flex items-center">
             <span>
-                <img className="imgtestinscription m-10" src="assets/ARemplacer/Test.png" alt="Image de test"/>
+                <img className="imgtest m-10" src="assets/ARemplacer/Test.png" alt="Image de test"/>
                 <b>Laissez votre créativitez s’exprimer avec pluma</b>
             </span>
         </div>
