@@ -71,7 +71,20 @@ services:
     restart: always
     ports:
       - 3000:3000
-    
+  
+  portainer:
+    image: portainer/portainer-ce
+    container_name: my-portainer
+    restart: always
+    ports:
+      - 9000:9000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - mariadb-network
+      - neo4j-network
+      - pluma-network
+   
     environment:
       CHOKIDAR_USEPOLLING: "true"
     networks:
