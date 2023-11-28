@@ -4,7 +4,7 @@ import "../styles/ConnexionInscription.scss";
 const LoginForm = () => (
     <>
         <form id="login-form" action="" method="post" role="form" className="active-form">
-            <div className="Paragraphe1 p-16">
+            <div className="Paragraphe1 p-20">
                 <p>Connecte-toi vite afin de reprendre ton chef-d'œuvre.</p>
             </div>
             <div className="pseudo mb-4">
@@ -13,7 +13,7 @@ const LoginForm = () => (
             <div className="motdepasse mb-4">
                 <input type="password" name="password" id="password" tabIndex="2" className="form-input" placeholder="Mot de passe" />
             </div>
-            <div className="btnconnexion m-12">
+            <div className="btnconnexion m-16">
                 <button type="submit" name="login-submit" id="login-submit" tabIndex="3" className="btn btn-login">
                     <b>Se connecter</b>
                 </button>
@@ -45,7 +45,7 @@ const RegisterForm = () => (
             <div className="motdepasse mb-4">
                 <input type="password" name="confirm-password" id="confirm-password" tabIndex="2" className="form-input" placeholder="Confirmation du mot de passe" />
             </div>
-            <div className="btninscription m-10">
+            <div className="btninscription m-11">
                 <button type="submit" name="register-submit" id="register-submit" tabIndex="4" className="btn btn-register">
                     <b>Nous rejoindre</b>
                 </button>
