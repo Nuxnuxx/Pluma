@@ -41,7 +41,6 @@
         }
 
         &.active {
-          color: #029f5b;
           font-size: 18px;
         }
       }
@@ -341,4 +340,26 @@
       background-size: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
     }
   }
+}
+
+.sloganconnexion{
+  color: #fc8c79;
+  font-size: 24px;
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+.sloganinscription{
+  color: #bf5748;
+  font-size: 24px;
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+.imgtestinscription{
+  width: 85% ;
+  height: auto;
+  border: 2px;
+  solid: #bf5748;
+  borderRadius: 8px;
 }

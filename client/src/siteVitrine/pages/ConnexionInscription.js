@@ -19,15 +19,18 @@ const LoginForm = () => (
                 </button>
             </div>
         </form>
-        <div className="bg-white w-full login-tips">
-            <span>Laissez votre créativitez s’exprimer avec pluma</span>
+        <div className="sloganconnexion bg-white w-full login-tips">
+            <span><b>Laissez votre créativitez s’exprimer avec pluma</b></span>
         </div>
     </>
 );
 const RegisterForm = () => (
     <>
-        <div className="bg-white w-full register-tips">
-            <p>Laissez votre créativitez s’exprimer avec pluma</p>
+        <div className="sloganinscription bg-white w-full register-tips flex items-center">
+            <span>
+                <img className="imgtestinscription m-10" src="assets/ARemplacer/Test.png" alt="Image de test"/>
+                <b>Laissez votre créativitez s’exprimer avec pluma</b>
+            </span>
         </div>
         <form id="register-form" action="" method="post" role="form" className="active-form">
             <div className="Paragraphe1 p-14 ">
