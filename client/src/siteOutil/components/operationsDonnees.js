@@ -1,8 +1,7 @@
-// hooks/useFetchData.js
 import { useState, useEffect } from 'react';
 
-const useFetchData = (url) => {
-    const [data, setData] = useState([]);
+const useFetchData = (url, isSingleRecord = false) => {
+    const [data, setData] = useState(isSingleRecord ? null : []);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -11,7 +10,8 @@ const useFetchData = (url) => {
             try {
                 const response = await fetch(url);
                 const result = await response.json();
-                setData(result.data);
+
+                setData(isSingleRecord ? result.data[0] : result.data);
             } catch (error) {
                 setError(error);
             } finally {
@@ -20,7 +20,7 @@ const useFetchData = (url) => {
         };
 
         fetchData();
-    }, [url]);
+    }, [url, isSingleRecord]);
 
     return { data, loading, error };
 };

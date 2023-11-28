@@ -1,18 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import {Link, useLocation, useNavigate} from "react-router-dom"
 import './sidebar.scss';
+import useFetchData from "../operationsDonnees";
 
 const Sidebar = ({ onRechercheChange }) => {
-    const listeProjet = [
-        { id: 1, nom:"projet1" },
-        { id: 2, nom:"projet2" },
-        { id: 3, nom:"projet3" },
-        { id: 4, nom:"projet4" },
-        { id: 5, nom:"projet5" },
-        { id: 6, nom:"projet6" },
-        { id: 7, nom:"projet7" },
-        { id: 8, nom:"projet8" }
-    ];
+    const { data: listeProjet } = useFetchData('http://localhost:3001/api/readTable/projet');
 
     const [isProjectsOpen, setIsProjectsOpen] = useState(false);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -44,10 +36,6 @@ const Sidebar = ({ onRechercheChange }) => {
     const viderRecherche = () => {
         setRecherche('');
     };
-
-    const resultatsFiltres = listeProjet.filter(item =>
-        item.nom.toLowerCase().includes(recherche.toLowerCase())
-    );
 
 
     useEffect(() => {
@@ -107,9 +95,9 @@ const Sidebar = ({ onRechercheChange }) => {
                         </div>
                     </li>
                     <div className={`liste-projets ${isProjectsOpen ? 'open' : ''}`}>
-                        {listeProjet.map((projet) => (
-                            <Link key={projet.id} to={`/mon-espace/projet/${projet.id}`}>
-                                <li>Projet {projet.id}</li>
+                        {listeProjet.map((projet, index) => (
+                            <Link key={index} to={`/mon-espace/projet/${projet.id_projet}`}>
+                                <li>{projet.titre}</li>
                             </Link>
                         ))}
                     </div>

@@ -1,5 +1,4 @@
 const express = require('express');
-const UserController = require('./controllers/userController');
 const pool = require('./models/db');
 
 const router = express.Router();
@@ -9,7 +8,6 @@ router.post('/create/:table', async (req, res) => {
   const nomTable = req.params.table;
 
   try {
-    // Il faudra voir comment gérer les paramètres de la requète
     const { nom, description } = req.body;
     const result = await pool.query(`INSERT INTO ${nomTable} (nom, description) VALUES (?, ?)`, [nom, description]);
     res.json({ success: true, data: result });
@@ -19,7 +17,9 @@ router.post('/create/:table', async (req, res) => {
   }
 });
 
-router.get('/read/:table', async (req, res) => {
+
+//READ
+router.get('/readTable/:table', async (req, res) => {
   const nomTable = req.params.table;
 
   try {
@@ -31,11 +31,49 @@ router.get('/read/:table', async (req, res) => {
   }
 });
 
+// Route pour récupérer les projets récents
+router.get('/read-projets-recents', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM projet ORDER BY date_creation DESC');
+    res.json({ success: true, data: result });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, error: 'Internal Server Error' });
+  }
+});
+
+// Route pour récupérer les projets favoris
+router.get('/read-projets-favoris', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM projet WHERE favori = true');
+    res.json({ success: true, data: result });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, error: 'Internal Server Error' });
+  }
+});
+
+// Route pour récupérer les informations d'un seul projet
+router.get('/readElement/projet/:id', async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    const result = await pool.query(`SELECT * FROM projet WHERE id_projet = ${id}`);
+    res.json({ success: true, data: result });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, error: 'Internal Server Error' });
+  }
+});
+
+
+
+
+
 router.put('/update/:table/:id', async (req, res) => {
   const nomTable = req.params.table;
 
   try {
-    // Il faudra voir comment gérer les paramètres de la requète
     const { nom, description } = req.body;
     const result = await pool.query(`UPDATE ${nomTable} SET nom = ?, description = ? WHERE id = ?`, [nom, description, req.params.id]);
     res.json({ success: true, data: result });

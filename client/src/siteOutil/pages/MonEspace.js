@@ -4,30 +4,11 @@ import {useState} from "react";
 import useFetchData from "../components/operationsDonnees";
 
 const MonEspace = () => {
-    const { data: listeProjet, loading, error } = useFetchData('http://localhost:3001/api/read/projet');
+    const { data: listeProjet } = useFetchData('http://localhost:3001/api/readTable/projet');
 
-    const listeRecents = [
-        { id: 1 },
-        { id: 2 },
-        { id: 3 },
-        { id: 4 },
-        { id: 5 }
-    ];
+    const { data: listeRecents } = useFetchData('http://localhost:3001/api/read-projets-recents');
 
-    const listeFavoris = [
-        { id: 1 },
-        { id: 3 },
-        { id: 4 },
-        { id: 5 },
-        { id: 7 },
-        { id: 8 },
-        { id: 9 },
-        { id: 10 },
-        { id: 11 },
-        { id: 12 },
-        { id: 13 },
-        { id: 14 }
-    ];
+    const { data: listeFavoris } = useFetchData('http://localhost:3001/api/read-projets-favoris');
 
     const [activeIndex, setActiveIndex] = useState(0);
 
@@ -45,8 +26,7 @@ const MonEspace = () => {
     };
 
     const calcWidth = (index) => {
-        let result = `calc(calc(10vw + calc((100% - 50vw) / 4)) * ${index})`
-        return result;
+        return`calc(calc(10vw + calc((100% - 50vw) / 4)) * ${index})`
     };
 
 
@@ -63,11 +43,12 @@ const MonEspace = () => {
             <h2 className="titre-section">Consultés récemment</h2>
             <div className="section">
                 <div className="liste-recents">
-                    {listeRecents.map((projet) => (
+                    {listeRecents.map((projet, index) => (
                         <ElementListeProjets
-                            key={projet.id}
-                            titre={projet.id}
-                            statut="statut"
+                            key={index}
+                            id={projet.id_projet}
+                            titre={projet.titre}
+                            statut={projet.id_statut}
                         />
                     ))}
                 </div>
@@ -77,10 +58,11 @@ const MonEspace = () => {
                 <button onClick={handlePrev} className="arrow-button left-arrow">←</button>
                 <div className="liste-favoris" style={{ transform: `translateX(${calcWidth(-activeIndex)})` }}>
                     {listeFavoris.map((projet, index) => (
-                        <div key={projet.id} className={`element ${index < activeIndex || index >= activeIndex + 5 ? 'element-hidden' : ''}`}>
+                        <div key={index} className={`element ${index < activeIndex || index >= activeIndex + 5 ? 'element-hidden' : ''}`}>
                             <ElementListeProjets
-                                titre={projet.id}
-                                statut="statut"
+                                id={projet.id_projet}
+                                titre={projet.titre}
+                                statut={projet.id_statut}
                             />
                         </div>
                     ))}
