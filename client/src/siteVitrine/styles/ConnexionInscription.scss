@@ -71,69 +71,188 @@
       }
     }
 
-    input[type="text"],
-    input[type="email"],
-    input[type="password"] {
+    input {
       height: 45px;
-      border: 1px solid #ddd;
-      font-size: 16px;
-      transition: all 0.1s linear;
+      width: 65%;
+      line-height: 30px;
+      border: 2px solid transparent;
+      border-radius: 10px;
+      outline: none;
+      background-color: #f8fafc;
+      color: #0d0c22;
+      transition: .5s ease;
 
-      &:hover,
-      &:focus {
+      &::placeholder {
+        color: #94a3b8;
+      }
+
+      &:focus, &:hover {
         outline: none;
-        box-shadow: none;
-        border-color: #ccc;
+        border-color: #FFFFFF;
+        background-color: #FFFFFF;
+        box-shadow: 0 0 0 5px #FFFFFF;
       }
     }
 
-    .btn-login {
-      background-color: #59B2E0;
-      outline: none;
-      color: #fff;
-      font-size: 14px;
-      height: auto;
-      font-weight: normal;
-      padding: 14px 0;
-      text-transform: uppercase;
-      border-color: #59B2E6;
 
-      &:hover,
-      &:focus {
-        color: #fff;
-        background-color: #53A3CD;
-        border-color: #53A3CD;
-      }
-    }
+  }
 
-    .forgot-password {
+  .forgot-password {
+    text-decoration: underline;
+    color: #888;
+
+    &:hover,
+    &:focus {
       text-decoration: underline;
-      color: #888;
-
-      &:hover,
-      &:focus {
-        text-decoration: underline;
-        color: #666;
-      }
+      color: #666;
     }
+  }
 
-    .btn-register {
-      background-color: #1CB94E;
-      outline: none;
+  .btn-register {
+    background-color: #1CB94E;
+    outline: none;
+    color: #fff;
+    font-size: 14px;
+    height: auto;
+    font-weight: normal;
+    padding: 14px 0;
+    text-transform: uppercase;
+    border-color: #1CB94A;
+
+    &:hover,
+    &:focus {
       color: #fff;
-      font-size: 14px;
-      height: auto;
-      font-weight: normal;
-      padding: 14px 0;
-      text-transform: uppercase;
-      border-color: #1CB94A;
-
-      &:hover,
-      &:focus {
-        color: #fff;
-        background-color: #1CA347;
-        border-color: #1CA347;
-      }
+      background-color: #1CA347;
+      border-color: #1CA347;
     }
+  }
+}
+
+.Paragraphe1 {
+  color: #FFFFFF;
+  font-size: 24px;
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+.pseudo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.btnconnexion{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.motdepasse {
+  display: flex;
+  justify-content: center;
+  line-height: 30px;
+  position: relative;
+
+  .icon {
+    position: absolute;
+    left: 1rem;
+    fill: none;
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+.btn-login {
+  z-index: 1;
+  position: relative;
+  padding: 10px 22px;
+  border-radius: 6px;
+  border: none;
+  color: #fc8c79;
+  cursor: pointer;
+  background-color: #FFFFFF;
+  transition: all 0.2s ease;
+
+  &:active {
+    transform: scale(0.96);
+  }
+
+  &:before,
+  &:after {
+    position: absolute;
+    content: "";
+    width: 150%;
+    left: 50%;
+    height: 100%;
+    transform: translateX(-50%);
+    z-index: -1000;
+    background-repeat: no-repeat;
+  }
+
+  &:hover::before {
+    top: -70%;
+    background-image: radial-gradient(circle, #FFFFFF 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, #FFFFFF 20%, transparent 30%),
+    radial-gradient(circle, #FFFFFF 20%, transparent 20%),
+    radial-gradient(circle, #FFFFFF 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #FFFFFF 15%, transparent 20%),
+    radial-gradient(circle, #FFFFFF 20%, transparent 20%),
+    radial-gradient(circle, #FFFFFF 20%, transparent 20%),
+    radial-gradient(circle, #FFFFFF 20%, transparent 20%),
+    radial-gradient(circle, #FFFFFF 20%, transparent 20%);
+    background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+    background-position: 50% 120%;
+    animation: greentopBubbles 0.6s ease;
+  }
+
+  &:hover::after {
+    bottom: -70%;
+    background-image: radial-gradient(circle, #FFFFFF 20%, transparent 20%),
+    radial-gradient(circle, #FFFFFF 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #FFFFFF 15%, transparent 20%),
+    radial-gradient(circle, #FFFFFF 20%, transparent 20%),
+    radial-gradient(circle, #FFFFFF 20%, transparent 20%),
+    radial-gradient(circle, #FFFFFF 20%, transparent 20%),
+    radial-gradient(circle, #FFFFFF 20%, transparent 20%);
+    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+    background-position: 50% 0;
+    animation: greenbottomBubbles 0.6s ease;
+  }
+}
+
+@keyframes greentopBubbles {
+  0% {
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+    40% 90%, 55% 90%, 70% 90%;
+  }
+
+  50% {
+    background-position: 0 80%, 0 20%, 10% 40%, 20% 0, 30% 30%, 22% 50%,
+    50% 50%, 65% 20%, 90% 30%;
+  }
+
+  100% {
+    background-position: 0 70%, 0 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
+    50% 40%, 65% 10%, 90% 20%;
+    background-size: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+  }
+}
+
+@keyframes greenbottomBubbles {
+  0% {
+    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
+    70% -10%, 70% 0%;
+  }
+
+  50% {
+    background-position: 0 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
+    105% 0;
+  }
+
+  100% {
+    background-position: 0 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
+    110% 10%;
+    background-size: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
   }
 }

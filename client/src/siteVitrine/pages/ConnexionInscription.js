@@ -4,16 +4,18 @@ import "../styles/ConnexionInscription.scss";
 const LoginForm = () => (
     <>
         <form id="login-form" action="" method="post" role="form" className="active-form">
-            <p>Connecte-toi vite afin de reprendre ton chef-d'œuvre.</p>
-            <div className="mb-4">
+            <div className="Paragraphe1 p-16">
+                <p>Connecte-toi vite afin de reprendre ton chef-d'œuvre.</p>
+            </div>
+            <div className="pseudo mb-4">
                 <input type="text" name="username" id="username" tabIndex="1" className="form-input" placeholder="Pseudo / Adresse Mail" />
             </div>
-            <div className="mb-4">
+            <div className="motdepasse mb-4">
                 <input type="password" name="password" id="password" tabIndex="2" className="form-input" placeholder="Mot de passe" />
             </div>
-            <div className="mb-4">
-                <button type="submit" name="login-submit" id="login-submit" tabIndex="4" className="btn btn-login">
-                    Se connecter
+            <div className="btnconnexion m-12">
+                <button type="submit" name="login-submit" id="login-submit" tabIndex="3" className="btn btn-login">
+                    <b>Se connecter</b>
                 </button>
             </div>
         </form>
@@ -28,7 +30,9 @@ const RegisterForm = () => (
             <p>Laissez votre créativitez s’exprimer avec pluma</p>
         </div>
         <form id="register-form" action="" method="post" role="form" className="active-form">
-            <p>Laisse ta plume te guider en rejoignant Pluma. </p>
+            <div className="Paragraphe1 p-14 ">
+                <p>Laisse ta plume te guider en rejoignant Pluma. </p>
+            </div>
             <div className="mb-4">
                 <input type="text" name="username" id="username" tabIndex="1" className="form-input" placeholder="Pseudo" />
             </div>
