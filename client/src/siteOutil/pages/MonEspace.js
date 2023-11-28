@@ -1,18 +1,10 @@
 import ElementListeProjets from "../components/elementListeProjets/elementListeProjets";
 import "../styles/StyleMonEspace.scss"
 import {useState} from "react";
+import useFetchData from "../components/operationsDonnees";
 
 const MonEspace = () => {
-    const listeProjet = [
-        { id: 1, nom:"projet1" },
-        { id: 2, nom:"projet2" },
-        { id: 3, nom:"projet3" },
-        { id: 4, nom:"projet4" },
-        { id: 5, nom:"projet5" },
-        { id: 6, nom:"projet6" },
-        { id: 7, nom:"projet7" },
-        { id: 8, nom:"projet8" }
-    ];
+    const { data: listeProjet, loading, error } = useFetchData('http://localhost:3001/api/read/projet');
 
     const listeRecents = [
         { id: 1 },
@@ -29,12 +21,12 @@ const MonEspace = () => {
         { id: 5 },
         { id: 7 },
         { id: 8 },
-        { id: 5 },
-        { id: 7 },
-        { id: 8 },
-        { id: 5 },
-        { id: 7 },
-        { id: 8 }
+        { id: 9 },
+        { id: 10 },
+        { id: 11 },
+        { id: 12 },
+        { id: 13 },
+        { id: 14 }
     ];
 
     const [activeIndex, setActiveIndex] = useState(0);
@@ -54,7 +46,6 @@ const MonEspace = () => {
 
     const calcWidth = (index) => {
         let result = `calc(calc(10vw + calc((100% - 50vw) / 4)) * ${index})`
-        console.log(result)
         return result;
     };
 
@@ -75,7 +66,8 @@ const MonEspace = () => {
                     {listeRecents.map((projet) => (
                         <ElementListeProjets
                             key={projet.id}
-                            id={projet.id}
+                            titre={projet.id}
+                            statut="statut"
                         />
                     ))}
                 </div>
@@ -85,10 +77,10 @@ const MonEspace = () => {
                 <button onClick={handlePrev} className="arrow-button left-arrow">←</button>
                 <div className="liste-favoris" style={{ transform: `translateX(${calcWidth(-activeIndex)})` }}>
                     {listeFavoris.map((projet, index) => (
-                        <div className={`element ${index < activeIndex || index >= activeIndex + 5 ? 'element-hidden' : ''}`}>
+                        <div key={projet.id} className={`element ${index < activeIndex || index >= activeIndex + 5 ? 'element-hidden' : ''}`}>
                             <ElementListeProjets
-                                key={projet.id}
-                                id={projet.id}
+                                titre={projet.id}
+                                statut="statut"
                             />
                         </div>
                     ))}
@@ -100,8 +92,10 @@ const MonEspace = () => {
                 <div className="liste-globale">
                     {listeProjet.map((projet) => (
                         <ElementListeProjets
-                            key={projet.id}
-                            id={projet.id}
+                            key={projet.id_projet}
+                            id={projet.id_projet}
+                            titre={projet.titre}
+                            statut={projet.id_statut}
                         />
                     ))}
                 </div>
