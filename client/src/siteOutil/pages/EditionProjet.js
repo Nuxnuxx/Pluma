@@ -68,13 +68,16 @@ export default function EditionProjet() {
         setReactFlowInstance(reactFlowInstance);
     }, [setReactFlowInstance]);
 
-
     const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), [setEdges]);
 
     const navigate = useNavigate();
-    const onNodeDoubleClickHandler = (id) => {
-        console.log(id);
-        navigate(`./${id}`);
+
+    const onNodeDoubleClickHandler = (id, type) => {
+        if(type != null){
+            if (type.type === 'chapitre') {
+                navigate(`./${type.data.id}`);
+            }
+        }
     };
 
     const onEdgeUpdateStart = useCallback(() => {

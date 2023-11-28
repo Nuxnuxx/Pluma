@@ -12,6 +12,7 @@ const ChapitreNodeComponent = (id, count, reactFlowInstance, reactFlowBounds, ev
         className: 'chapitre-node',
         position,
         data: {
+            id,
             label: (
                 <div onDoubleClick={() => onNodeDoubleClick(id)}>
                     <p>{`chapitre ${count} : "nomChapitre"`}</p>
