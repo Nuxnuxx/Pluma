@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import {Link, useLocation, useNavigate} from "react-router-dom"
 import './sidebar.scss';
-import useFetchData from "../operationsDonnees";
+import UseFetchData from "../operationsDonnees";
+import apiUrl from "../../../config";
 
 const Sidebar = ({ onRechercheChange }) => {
-    const { data: listeProjet } = useFetchData('http://localhost:3001/api/readTable/projet');
+    const { data: listeProjet, loading, error } = UseFetchData(`${apiUrl}/readTable/projet`);
 
     const [isProjectsOpen, setIsProjectsOpen] = useState(false);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -59,6 +60,16 @@ const Sidebar = ({ onRechercheChange }) => {
             window.removeEventListener('resize', handleResize);
         };
     }, [location.pathname]);
+
+
+    if (loading) {
+        return <div className="chargement">Chargement en cours...</div>;
+    }
+
+    if (error) {
+        navigate('/404', { replace: true });
+        return null;
+    }
 
     return (
         <div className={`sidebar ${isSidebarOpen ? 'close' : ''}`}>

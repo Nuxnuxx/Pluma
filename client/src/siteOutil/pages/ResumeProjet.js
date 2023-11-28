@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Link, useParams, useNavigate} from "react-router-dom"
 import "../styles/StyleMonEspace.scss"
 import "../styles/StyleResumeProjet.scss"
 import TexteEditable from "../components/texteEditable/texteEditable";
 import ListeGenres from "../components/ListeGenres/ListeGenres";
-import useFetchData from "../components/operationsDonnees";
+import UseFetchData from "../components/operationsDonnees";
+import apiUrl from "../../config";
 
 const ResumeProjet = () => {
 
@@ -12,71 +13,65 @@ const ResumeProjet = () => {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const isValidId = /^\d+$/.test(id);
+    const { data: projet, loading, error } = UseFetchData(`${apiUrl}/readElement/projet/${id}`, true);
 
-        if (!isValidId) {
-            navigate('/404');
-        }
-    }, [id, navigate]);
+    const [etatProjet, setEtatProjet] = useState("Non débuté");
 
-    const { data: projet } = useFetchData(`http://localhost:3001/api/readElement/projet/${id}`, true);
-
-    const [etatProjet, setEtatProjet] = useState(projet?.id_statut);
+    /*
     const [titre, setTitre] = useState(projet?.titre);
-
-
-
-    const handleEtatChange = (nouvelEtat) => {
-        setEtatProjet(nouvelEtat);
-    };
 
     const handleTitreSave = (nouveauTitre, idInput) => {
         if (idInput == "titreProjet"){
             setTitre(nouveauTitre);
         }
+    };*/
+
+    const handleEtatChange = (nouvelEtat) => {
+        setEtatProjet(nouvelEtat);
     };
 
-    if (projet) {
-        return (
-            <div className="mon-espace">
-                <div className="resume-projet">
-                    <div className="couverture">{projet.titre}</div>
+    if (loading) {
+        return <div className="chargement">Chargement en cours...</div>;
+    }
 
-                    <div className="info-projet">
-                        <div className="titre">
-                            {/*<TexteEditable initialValeur={projet.titre} onSave={handleTitreSave} idInput={"titreProjet"} valeurParDefaut={"Projet sans titre"} />*/}
-                            <div className="titre">{projet.titre}</div>
-                        </div>
-                        <p>Date de création: {projet.date_creation}</p>
-                        <ListeGenres />
+    if (error || !projet) {
+        navigate('/404', { replace: true });
+        return null;
+    }
 
-                        <label>État du projet:</label>
-                        <select value={etatProjet} onChange={(e) => handleEtatChange(e.target.value)}>
-                            <option value="non_debute">Non débuté</option>
-                            <option value="en_cours">En cours</option>
-                            <option value="termine">Terminé</option>
-                        </select>
+    return (
+        <div className="mon-espace">
+            <div className="resume-projet">
+                <div className="couverture">{projet.titre}</div>
+
+                <div className="info-projet">
+                    <div className="titre">
+                        {/*<TexteEditable initialValeur={projet.titre} onSave={handleTitreSave} idInput={"titreProjet"} valeurParDefaut={"Projet sans titre"} />*/}
+                        <div className="titre">{projet.titre}</div>
                     </div>
-                </div>
-                <div className="paragraphe-resume">
-                    {/*<TexteEditable initialValeur={projet.description} onSave={handleTitreSave} inputType="textarea" valeurParDefaut={"Ajouter une description ici..."} />*/}
-                    <div className="description">{projet.description}</div>
-                </div>
+                    <p>Date de création: {projet.date_creation}</p>
+                    <ListeGenres />
 
-                <Link to={`./edition`}>
-                    <button className="editer">
-                        Éditer
-                    </button>
-                </Link>
+                    <label>État du projet:</label>
+                    <select value={etatProjet} onChange={(e) => handleEtatChange(e.target.value)}>
+                        <option value="non_debute">Non débuté</option>
+                        <option value="en_cours">En cours</option>
+                        <option value="termine">Terminé</option>
+                    </select>
+                </div>
             </div>
-        );
-    }
-    else {
-        return (
-            <div>chargement en cours...</div>
-        );
-    }
+            <div className="paragraphe-resume">
+                {/*<TexteEditable initialValeur={projet.description} onSave={handleTitreSave} inputType="textarea" valeurParDefaut={"Ajouter une description ici..."} />*/}
+                <div className="description">{projet.description}</div>
+            </div>
+
+            <Link to={`./edition`}>
+                <button className="editer">
+                    Éditer
+                </button>
+            </Link>
+        </div>
+    );
 };
 
 export default ResumeProjet;

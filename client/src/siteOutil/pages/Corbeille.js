@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import "../styles/StyleMonEspace.scss"
 import "../styles/StyleCorbeille.scss"
-import ElementListeProjets from "../components/elementListeProjets/elementListeProjets";
+import UseFetchData from "../components/operationsDonnees";
+import apiUrl from "../../config";
+import {useNavigate} from "react-router-dom";
 
 const Corbeille = () => {
-    const elementsDansCorbeille= [
-        { id: 1 },
-        { id: 2 },
-        { id: 3 },
-        { id: 4 },
-        { id: 5 }
-    ];
+    const { data: projetsDansCorbeille, loading, error } = UseFetchData(`${apiUrl}/readTable/projet`);
+
+    const navigate = useNavigate();
 
     const onDelete = (elementId) => {
         console.log("Suppresion de l'élément " + elementId);
@@ -30,27 +28,36 @@ const Corbeille = () => {
         );
     };
 
+    if (loading) {
+        return <div className="chargement">Chargement en cours...</div>;
+    }
+
+    if (error) {
+        navigate('/404', { replace: true });
+        return null;
+    }
+
     return (
         <div className="mon-espace">
             <div className="corbeille">
                 <h1 className="titre-general">Corbeille</h1>
-                {elementsDansCorbeille.length === 0 ? (
+                {projetsDansCorbeille.length === 0 ? (
                     <p>Aucun élément dans la corbeille.</p>
                 ) : (
                     <ul>
-                        {elementsDansCorbeille.map((element) => (
-                            <li key={element.id} className={expandedItems.includes(element.id) ? 'expanded' : ''}
-                                onClick={() => toggleExpansion(element.id)}>
+                        {projetsDansCorbeille.map((projet, index) => (
+                            <li key={index} className={expandedItems.includes(projet.id_projet) ? 'expanded' : ''}
+                                onClick={() => toggleExpansion(projet.id_projet)}>
                                 <div className="header-element" >
-                                    <span>Projet {element.id}</span>
+                                    <span>{projet.titre}</span>
                                     <div className="boutons">
-                                        <button className="bouton bouton-restaurer" onClick={() => onRestore(element.id)}>Restaurer</button>
-                                        <button className="bouton bouton-supprimer" onClick={() => onDelete(element.id)}>Supprimer</button>
+                                        <button className="bouton bouton-restaurer" onClick={() => onRestore(projet.id_projet)}>Restaurer</button>
+                                        <button className="bouton bouton-supprimer" onClick={() => onDelete(projet.id_projet)}>Supprimer</button>
                                     </div>
                                 </div>
                                 <div className="details-element">
-                                    <ElementListeProjets id={element.id} color="blue" onClick={() => {}} />
-                                    <p>Informations supplémentaires...</p>
+                                    <div>{projet.couverture}</div>
+                                    <p>{projet.description}</p>
                                 </div>
                             </li>
                         ))}

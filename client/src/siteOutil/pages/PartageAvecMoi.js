@@ -1,12 +1,23 @@
 import "../styles/StyleMonEspace.scss"
 import ElementListeProjets from "../components/elementListeProjets/elementListeProjets";
+import UseFetchData from "../components/operationsDonnees";
+import apiUrl from "../../config";
+import React from "react";
+import {useNavigate} from "react-router-dom";
 
 const PartageAvecMoi = () => {
-    const projetsPartages = [
-        { id: 1 },
-        { id: 2 },
-        { id: 3 }
-    ];
+    const { data: projetsPartages, loading, error } = UseFetchData(`${apiUrl}/readTable/projet`);
+
+    const navigate = useNavigate();
+
+    if (loading) {
+        return <div className="chargement">Chargement en cours...</div>;
+    }
+
+    if (error) {
+        navigate('/404', { replace: true });
+        return null;
+    }
 
     return (
         <div className="mon-espace">
@@ -14,10 +25,12 @@ const PartageAvecMoi = () => {
             <h2 className="titre-section">Projets</h2>
             <div className="section">
                 <div className="liste-globale">
-                    {projetsPartages.map((projet) => (
+                    {projetsPartages.map((projet, index) => (
                         <ElementListeProjets
-                            key={projet.id}
-                            id={projet.id}
+                            key={index}
+                            id={projet.id_projet}
+                            titre={projet.titre}
+                            statut={projet.id_statut}
                         />
                     ))}
                 </div>

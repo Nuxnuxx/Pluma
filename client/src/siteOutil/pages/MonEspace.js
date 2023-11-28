@@ -1,14 +1,18 @@
 import ElementListeProjets from "../components/elementListeProjets/elementListeProjets";
 import "../styles/StyleMonEspace.scss"
-import {useState} from "react";
-import useFetchData from "../components/operationsDonnees";
+import React, {useState} from "react";
+import UseFetchData from "../components/operationsDonnees";
+import {useNavigate} from "react-router-dom";
+import apiUrl from "../../config";
 
 const MonEspace = () => {
-    const { data: listeProjet } = useFetchData('http://localhost:3001/api/readTable/projet');
+    const navigate = useNavigate();
 
-    const { data: listeRecents } = useFetchData('http://localhost:3001/api/read-projets-recents');
+    const { data: listeProjet, loadingProjet, errorProjet } = UseFetchData(`${apiUrl}/readTable/projet`);
 
-    const { data: listeFavoris } = useFetchData('http://localhost:3001/api/read-projets-favoris');
+    const { data: listeRecents, loadingRecents, errorRecents  } = UseFetchData(`${apiUrl}/read-projets-recents`);
+
+    const { data: listeFavoris, loadingFavoris, errorFavoris  } = UseFetchData(`${apiUrl}/read-projets-favoris`);
 
     const [activeIndex, setActiveIndex] = useState(0);
 
@@ -29,6 +33,14 @@ const MonEspace = () => {
         return`calc(calc(10vw + calc((100% - 50vw) / 4)) * ${index})`
     };
 
+    if (loadingProjet || loadingRecents || loadingFavoris) {
+        return <div className="chargement">Chargement en cours...</div>;
+    }
+
+    if (errorProjet || errorRecents || errorFavoris) {
+        navigate('/404', { replace: true });
+        return null;
+    }
 
     return (
         <div className="mon-espace">
@@ -72,9 +84,9 @@ const MonEspace = () => {
             <h2 className="titre-section">Projets</h2>
             <div className="section">
                 <div className="liste-globale">
-                    {listeProjet.map((projet) => (
+                    {listeProjet.map((projet, index) => (
                         <ElementListeProjets
-                            key={projet.id_projet}
+                            key={index}
                             id={projet.id_projet}
                             titre={projet.titre}
                             statut={projet.id_statut}
