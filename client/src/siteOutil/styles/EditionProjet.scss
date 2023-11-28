@@ -37,8 +37,9 @@
 .chapitre-node{
   border-radius: 0;
   background-color: #ffafa5;
-  padding-block: 50px;
   border: solid 1px white;
+  padding-block: 50px;
+  padding-inline: 10px;
 
   &:focus{
     border: solid #b26b5d;
@@ -65,6 +66,8 @@
     font-style: italic;
     color: #bf5748;
     cursor: text;
+    font-size: 12px;
+    padding: 10px 50px 100px 50px;
   }
 
   p:first-letter{
@@ -80,6 +83,7 @@
   height: 35px;
   width: 35px;
   font-size: 6px;
+  text-align: center;
 }
 
 .lieu-node{
@@ -104,6 +108,7 @@
   border: none;
   background-color: #df331a;
   font-size: 8px;
+  text-align: center;
 
   p{
     margin: 0;
