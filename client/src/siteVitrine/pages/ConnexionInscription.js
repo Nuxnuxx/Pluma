@@ -39,7 +39,7 @@ const RegisterForm = () => (
         </div>
         <form id="register-form" action="" method="post" role="form" className="active-form flex">
             <div className="my-auto">
-                <div className="Paragraphe1 p-14 ">
+                <div className="Paragraphe1 p-14">
                     <p>Laisse ta plume te guider en rejoignant Pluma. </p>
                 </div>
                 <div className="pseudo mb-4">
