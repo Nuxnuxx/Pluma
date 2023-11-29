@@ -226,7 +226,7 @@ export default function EditionProjet() {
                     </ReactFlow>
                     </div>
                 </div>
-            </ReactFlowProvider>}
+            </ReactFlowProvider>
         </div>
     );
 }

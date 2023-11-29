@@ -9,7 +9,7 @@ const PersonnageNodeComponent = (id, count, reactFlowInstance, reactFlowBounds, 
     return {
         id: `dndnode_personnage_${id}`,
         type: 'personnage',
-        className: 'personnages-node',
+        className: 'personnage-node',
         position,
         data: {
             label: (
