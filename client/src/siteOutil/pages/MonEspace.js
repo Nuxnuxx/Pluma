@@ -4,6 +4,7 @@ import React, {useState} from "react";
 import UseFetchData from "../components/operationsDonnees";
 import {useNavigate} from "react-router-dom";
 import apiUrl from "../../config";
+import Chargement from "../components/Chargement/chargement";
 
 const MonEspace = () => {
     const navigate = useNavigate();
@@ -34,7 +35,7 @@ const MonEspace = () => {
     };
 
     if (loadingProjet || loadingRecents || loadingFavoris) {
-        return <div className="chargement">Chargement en cours...</div>;
+        return <Chargement />;
     }
 
     if (errorProjet || errorRecents || errorFavoris) {
