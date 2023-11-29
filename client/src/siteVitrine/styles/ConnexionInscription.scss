@@ -3,8 +3,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  min-height: 90vh;
-  max-height: 100vh;
+  height: 90%;
   z-index: -10;
 
   .panel-login {
@@ -15,7 +14,7 @@
       color: #ffffff;
       position: relative;
       text-align: center;
-      height: 52px;
+      height: 5vw;
 
       a {
         text-decoration: none;
@@ -24,12 +23,12 @@
         padding-block: 15px;
         letter-spacing: 5px;
         font-weight: bold;
-        font-size: 16px;
+        font-size: 0.85vw;
         cursor: pointer;
         transition: all 0.1s linear;
         border-radius: 40px 40px 0 0;
         position: absolute;
-        top: 0;
+        bottom: 0;
         right: 48.5%;
 
         &:last-child{
@@ -46,7 +45,6 @@
 
     .panel-body{
       min-height: 55vh;
-      max-height: 100%;
 
       #login-form{
         background-color: #fc8c79;
