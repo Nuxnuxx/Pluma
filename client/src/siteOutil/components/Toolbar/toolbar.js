@@ -44,7 +44,11 @@ const Toolbar = ({allOptions = true}) => {
                     </>
                 )}
                 <div className="dndnode personnage mb-6">
-                    <img src="/assets/toolbar/personnage.png" alt="Icone personnage" onDragStart={(event) => onDragStart(event, 'personnage')} draggable />
+                    <img src="/assets/toolbar/personnage.png" alt="Icone personnage"/>
+                    <ul>
+                        <li><img src="/assets/toolbar/personnage.png" alt="nomPerso" onDragStart={(event) => onDragStart(event, 'personnage')} draggable /></li>
+                        <li><img src="/assets/toolbar/personnage.png" alt="nomPerso" onDragStart={(event) => onDragStart(event, 'personnage')} draggable /></li>
+                    </ul>
                 </div>
                 <div className="dndnode lieu mb-6">
                     <img src="/assets/toolbar/lieu.png" alt="Icone lieu" onDragStart={(event) => onDragStart(event, 'lieu')} draggable />

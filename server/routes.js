@@ -66,10 +66,6 @@ router.get('/readElement/projet/:id', async (req, res) => {
   }
 });
 
-
-
-
-
 router.put('/update/:table/:id', async (req, res) => {
   const nomTable = req.params.table;
 
