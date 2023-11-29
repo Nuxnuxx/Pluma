@@ -3,20 +3,22 @@ import "../styles/ConnexionInscription.scss";
 
 const LoginForm = () => (
     <>
-        <form id="login-form" action="" method="post" role="form" className="active-form">
-            <div className="Paragraphe1 p-20">
-                <p>Connecte-toi vite afin de reprendre ton chef-d'œuvre.</p>
-            </div>
-            <div className="pseudo mb-4">
-                <input type="text" name="username" id="username" tabIndex="1" className="form-input" placeholder="Pseudo / Adresse Mail" />
-            </div>
-            <div className="motdepasse mb-4">
-                <input type="password" name="password" id="password" tabIndex="2" className="form-input" placeholder="Mot de passe" />
-            </div>
-            <div className="btnconnexion m-16">
-                <button type="submit" name="login-submit" id="login-submit" tabIndex="3" className="btn btn-login">
-                    <b>Se connecter</b>
-                </button>
+        <form id="login-form" action="" method="post" role="form" className="active-form flex">
+            <div className="my-auto">
+                <div className="Paragraphe1 p-10">
+                    <p>Connecte-toi vite afin de reprendre ton chef-d'œuvre.</p>
+                </div>
+                <div className="pseudo mb-4">
+                    <input type="text" name="username" id="username" tabIndex="1" className="form-input" placeholder="Pseudo / Adresse Mail" />
+                </div>
+                <div className="motdepasse mb-4">
+                    <input type="password" name="password" id="password" tabIndex="2" className="form-input" placeholder="Mot de passe" />
+                </div>
+                <div className="btnconnexion m-16">
+                    <button type="submit" name="login-submit" id="login-submit" tabIndex="3" className="btn btn-login">
+                        <b>Se connecter</b>
+                    </button>
+                </div>
             </div>
         </form>
         <div className="sloganconnexion bg-white w-full login-tips flex items-center">
@@ -35,26 +37,28 @@ const RegisterForm = () => (
                 <b>Laissez votre créativitez s’exprimer avec pluma</b>
             </span>
         </div>
-        <form id="register-form" action="" method="post" role="form" className="active-form">
-            <div className="Paragraphe1 p-14 ">
-                <p>Laisse ta plume te guider en rejoignant Pluma. </p>
-            </div>
-            <div className="pseudo mb-4">
-                <input type="text" name="username" id="username" tabIndex="1" className="form-input" placeholder="Pseudo" />
-            </div>
-            <div className="email mb-4">
-                <input type="email" name="email" id="email" tabIndex="1" className="form-input" placeholder="Adresse Mail" />
-            </div>
-            <div className="motdepasse mb-4">
-                <input type="password" name="password" id="password" tabIndex="2" className="form-input" placeholder="Mot de passe" />
-            </div>
-            <div className="motdepasse mb-4">
-                <input type="password" name="confirm-password" id="confirm-password" tabIndex="2" className="form-input" placeholder="Confirmation du mot de passe" />
-            </div>
-            <div className="btninscription m-11">
-                <button type="submit" name="register-submit" id="register-submit" tabIndex="4" className="btn btn-register">
-                    <b>Nous rejoindre</b>
-                </button>
+        <form id="register-form" action="" method="post" role="form" className="active-form flex">
+            <div className="my-auto">
+                <div className="Paragraphe1 p-14 ">
+                    <p>Laisse ta plume te guider en rejoignant Pluma. </p>
+                </div>
+                <div className="pseudo mb-4">
+                    <input type="text" name="username" id="username" tabIndex="1" className="form-input" placeholder="Pseudo" />
+                </div>
+                <div className="email mb-4">
+                    <input type="email" name="email" id="email" tabIndex="1" className="form-input" placeholder="Adresse Mail" />
+                </div>
+                <div className="motdepasse mb-4">
+                    <input type="password" name="password" id="password" tabIndex="2" className="form-input" placeholder="Mot de passe" />
+                </div>
+                <div className="motdepasse mb-4">
+                    <input type="password" name="confirm-password" id="confirm-password" tabIndex="2" className="form-input" placeholder="Confirmation du mot de passe" />
+                </div>
+                <div className="btninscription m-11">
+                    <button type="submit" name="register-submit" id="register-submit" tabIndex="4" className="btn btn-register">
+                        <b>Nous rejoindre</b>
+                    </button>
+                </div>
             </div>
         </form>
     </>

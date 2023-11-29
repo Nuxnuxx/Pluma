@@ -47,7 +47,8 @@
     }
 
     .panel-body{
-      max-height: 60vh;
+      min-height: 55vh;
+      max-height: 100%;
 
       #login-form{
         background-color: #fc8c79;
@@ -360,6 +361,5 @@
   width: 85% ;
   height: auto;
   border: 2px;
-  solid: #bf5748;
-  borderRadius: 8px;
+  border-radius: 8px;
 }

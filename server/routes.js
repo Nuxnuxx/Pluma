@@ -38,7 +38,7 @@ router.get('/read-projets-recents', async (req, res) => {
     res.json({ success: true, data: result });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ success: false, error: 'Internal Server Error' });
+    res.status(500).json({ success: false, error: 'Internal Server Error1' });
   }
 });
 
