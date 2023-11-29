@@ -63,7 +63,7 @@ const Sidebar = ({ onRechercheChange }) => {
 
 
     if (loading) {
-        return <div className="chargement">Chargement en cours...</div>;
+        return null;
     }
 
     if (error) {

@@ -9,11 +9,11 @@ import Chargement from "../components/Chargement/chargement";
 const MonEspace = () => {
     const navigate = useNavigate();
 
-    const { data: listeProjet, loadingProjet, errorProjet } = UseFetchData(`${apiUrl}/readTable/projet`);
+    const { data: listeProjet, loading:loadingProjet, errorProjet } = UseFetchData(`${apiUrl}/readTable/projet`);
 
-    const { data: listeRecents, loadingRecents, errorRecents  } = UseFetchData(`${apiUrl}/read-projets-recents`);
+    const { data: listeRecents, loading:loadingRecents, errorRecents  } = UseFetchData(`${apiUrl}/read-projets-recents`);
 
-    const { data: listeFavoris, loadingFavoris, errorFavoris  } = UseFetchData(`${apiUrl}/read-projets-favoris`);
+    const { data: listeFavoris, loading:loadingFavoris, errorFavoris  } = UseFetchData(`${apiUrl}/read-projets-favoris`);
 
     const [activeIndex, setActiveIndex] = useState(0);
 
@@ -35,7 +35,7 @@ const MonEspace = () => {
     };
 
     if (loadingProjet || loadingRecents || loadingFavoris) {
-        return <Chargement />;
+        return <Chargement/>;
     }
 
     if (errorProjet || errorRecents || errorFavoris) {
