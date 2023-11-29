@@ -17,15 +17,14 @@ import {useNavigate} from "react-router-dom";
 const initialNodes = [];
 const initialEdges = [];
 
-/*
 const nodeTypes = {
-    acte: ActeNodeComponent,
-    chapitre: ChapitreNodeComponent,
-    personnage: PersonnageNodeComponent,
-    lieu: LieuNodeComponent,
-    evenement: EvenementNodeComponent,
-    blocnote: BlocNoteNodeComponent,
-}; */
+    acte: null,
+    chapitre: null,
+    personnage: null,
+    lieu: null,
+    evenement: null,
+    blocnote: null
+};
 
 const edgeTypes = {
     floating: FloatingEdge,
@@ -69,13 +68,16 @@ export default function EditionProjet() {
         setReactFlowInstance(reactFlowInstance);
     }, [setReactFlowInstance]);
 
-
     const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), [setEdges]);
 
     const navigate = useNavigate();
-    const onNodeDoubleClickHandler = (id) => {
-        console.log(id);
-        // navigate(`./${id}`);
+
+    const onNodeDoubleClickHandler = (id, type) => {
+        if(type != null){
+            if (type.type === 'chapitre') {
+                navigate(`./${type.data.id}`);
+            }
+        }
     };
 
     const onEdgeUpdateStart = useCallback(() => {
@@ -144,12 +146,13 @@ export default function EditionProjet() {
     const onDrop = useCallback((event) => {
         event.preventDefault();
 
-        const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
         const type = event.dataTransfer.getData('application/reactflow');
 
-        if (!type) {
+        if (typeof type === 'undefined' || !type) {
             return;
         }
+
+        const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
 
         const count = idCounters[type];
 
@@ -188,41 +191,41 @@ export default function EditionProjet() {
     return (
         <div className="dndflow">
             <ReactFlowProvider>
-                    <div className="reactflow-wrapper" ref={reactFlowWrapper}>
-                        <div style={{ width: '100%', height: '100%' }}>
-                        <ReactFlow
-                            ref={ref}
-                            onInit={onInit}
-                            nodes={nodes}
-                            edges={edges}
-                           // nodeTypes={nodeTypes}
-                            onNodesChange={onNodesChange}
-                            onNodeDoubleClick={onNodeDoubleClickHandler}
-                            onEdgesChange={onEdgesChange}
-                            onEdgeUpdate={onEdgeUpdate}
-                            onEdgeUpdateStart={onEdgeUpdateStart}
-                            onEdgeUpdateEnd={onEdgeUpdateEnd}
-                            edgeTypes={edgeTypes}
-                            defaultEdgeOptions={EdgeOptions}
-                            onConnect={onConnect}
-                            onDrop={onDrop}
-                            onDragOver={onDragOver}
-                            onPaneClick={onPaneClick}
-                            onNodeContextMenu={onNodeContextMenu}
-                            onEdgeContextMenu={onEdgeContextMenu}
-                            connectionLineComponent={CustomConnectionLine}
-                            connectionLineStyle={connectionLineStyle}
-                            attributionPosition="bottom-left"
-                            fitView
-                        >
-                            <Toolbar />
-                            <Controls position="top-right" />
-                            <MiniMap />
-                            <Background variant="dots" gap={10} size={0.5} />
-                            {menu && <ContextMenu onClick={onPaneClick} onDelete={handleNodeDelete} {...menu} />}
-                        </ReactFlow>
-                        </div>
+                <div className="reactflow-wrapper" ref={reactFlowWrapper}>
+                    <div style={{ width: '100%', height: '100%' }}>
+                    <ReactFlow
+                        ref={ref}
+                        onInit={onInit}
+                        nodes={nodes}
+                        edges={edges}
+                        nodeTypes={nodeTypes}
+                        onNodesChange={onNodesChange}
+                        onNodeDoubleClick={onNodeDoubleClickHandler}
+                        onEdgesChange={onEdgesChange}
+                        onEdgeUpdate={onEdgeUpdate}
+                        onEdgeUpdateStart={onEdgeUpdateStart}
+                        onEdgeUpdateEnd={onEdgeUpdateEnd}
+                        edgeTypes={edgeTypes}
+                        defaultEdgeOptions={EdgeOptions}
+                        onConnect={onConnect}
+                        onDrop={onDrop}
+                        onDragOver={onDragOver}
+                        onPaneClick={onPaneClick}
+                        onNodeContextMenu={onNodeContextMenu}
+                        onEdgeContextMenu={onEdgeContextMenu}
+                        connectionLineComponent={CustomConnectionLine}
+                        connectionLineStyle={connectionLineStyle}
+                        attributionPosition="bottom-left"
+                        fitView
+                    >
+                        <Toolbar />
+                        <Controls position="top-right" />
+                        <MiniMap />
+                        <Background variant="dots" gap={10} size={0.5} />
+                        {menu && <ContextMenu onClick={onPaneClick} onDelete={handleNodeDelete} {...menu} />}
+                    </ReactFlow>
                     </div>
+                </div>
             </ReactFlowProvider>}
         </div>
     );
