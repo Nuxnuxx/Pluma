@@ -38,7 +38,11 @@
       z-index: 1;
 
       &:hover {
-        color: #cccccc;
+        color: #ffafa5;
+      }
+
+      &.right-arrow {
+        transform: rotate(180deg);
       }
     }
 
@@ -86,8 +90,9 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    border: 1px solid #34974d;
-    background-color: #3aa856;
+    border: 1px solid #FC8C79;
+    border-radius: 20px;
+    background-color: #FC8C79;
     overflow: hidden;
     margin-left: auto;
     margin-right: 4em;
@@ -112,7 +117,8 @@
     right: 0;
     height: 100%;
     width: 39px;
-    background-color: #34974d;
+    background-color: #FFF5E0;
+    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -120,11 +126,11 @@
 
   .button .svg {
     width: 30px;
-    stroke: #fff;
+    stroke: #ffafa5;
   }
 
   .button:hover {
-    background: #34974d;
+    background: #FC8C79;
   }
 
   .button:hover .button__text {
@@ -133,13 +139,14 @@
 
   .button:hover .button__icon {
     width: 100%;
+    border-radius: 0;
   }
 
   .button:active .button__icon {
-    background-color: #2e8644;
+    background-color: #cc7066;
   }
 
   .button:active {
-    border: 1px solid #2e8644;
+    border: 1px solid #cc7066;
   }
 }

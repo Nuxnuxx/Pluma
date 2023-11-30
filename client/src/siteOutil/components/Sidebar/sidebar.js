@@ -5,7 +5,7 @@ import UseFetchData from "../operationsDonnees";
 import apiUrl from "../../../config";
 
 const Sidebar = ({ onRechercheChange }) => {
-    const { data: listeProjet, loading, error } = UseFetchData(`${apiUrl}/readTable/projet`);
+    const { data: listeProjet, loading: loading, error: error } = UseFetchData(`${apiUrl}/readTable/projet`);
 
     const [isProjectsOpen, setIsProjectsOpen] = useState(false);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);

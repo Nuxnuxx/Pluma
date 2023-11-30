@@ -6,9 +6,10 @@ import React from "react";
 import {useNavigate} from "react-router-dom";
 
 const PartageAvecMoi = () => {
-    const { data: projetsPartages, loading, error } = UseFetchData(`${apiUrl}/readTable/projet`);
+    const { data: projetsPartages, loading: loading, error: error } = UseFetchData(`${apiUrl}/readTable/projet`);
 
     const navigate = useNavigate();
+
 
     if (loading) {
         return <div className="chargement">Chargement en cours...</div>;

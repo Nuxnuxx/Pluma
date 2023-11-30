@@ -16,8 +16,7 @@ const EditableText = ({ initialValeur, onSave, inputType = 'input', idInput = ""
         if (editable) {
             inputRef.current.focus();
         }
-    }, [editable]);
-
+    }, [editable, valeur]);
 
     const handleTextClick = () => {
         setEditable(true);
@@ -29,7 +28,7 @@ const EditableText = ({ initialValeur, onSave, inputType = 'input', idInput = ""
 
     const handleTextBlur = () => {
         if(valeurParDefaut != null){
-            let nouvelleValeur = valeur.trim() === '' ? valeurParDefaut : valeur.trim(); //Si on vide le texte, il est mis à une valeur par défaut
+            let nouvelleValeur =  !valeur || valeur.trim() === '' ? valeurParDefaut : valeur.trim();
             onSave(nouvelleValeur, idInput)
             setValeur(nouvelleValeur);
             setEditable(false);
@@ -41,6 +40,7 @@ const EditableText = ({ initialValeur, onSave, inputType = 'input', idInput = ""
             {inputType === 'textarea' ? (
                 editable ? (
                     <textarea
+                        className="editable-textarea"
                         value={valeur}
                         onChange={handleTextChange}
                         onBlur={handleTextBlur}

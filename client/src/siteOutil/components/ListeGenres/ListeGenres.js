@@ -1,44 +1,90 @@
-import React, { useState } from 'react';
+import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
 import './ListeGenres.scss';
+import UseFetchData from "../operationsDonnees";
+import apiUrl from "../../../config";
+import {useNavigate} from "react-router-dom";
 
 const ListeGenres = () => {
     const [selectedGenres, setSelectedGenres] = useState([]);
-    const [selectedOption, setSelectedOption] = useState('');
+    const [selectedGenre, setSelectedGenre] = useState('');
+    const [menuOuvert, setMenuOuvert] = useState(false);
+    const [position, setPosition] = useState({left: 0 });
+    const menuSelectionRef = useRef(null);
+    const boutonSelectionRef = useRef(null);
 
-    const allGenres = [
-        'Fantasy',
-        'Science-Fiction',
-        'Fantastique',
-        'Aventure',
-        'Historique',
-        'Thriller',
-        'Horreur',
-        'Ceci est un texte vraiment très long pour effectuer le test',
-        'Ceci est un autre texte vraiment très long pour effectuer le test',
-        'Ceci est encore un autre texte vraiment très long pour effectuer le test'
-];
+    const navigate = useNavigate();
 
-    // Fonction appelée lorsqu'un mot clé est sélectionné
+    const { data: listeGenres, loading: loading, error: error } = UseFetchData(`${apiUrl}/readTable/genre`);
+
+
+
+    const updatePosition = () => {
+        if (menuSelectionRef.current) {
+            const rect = menuSelectionRef.current.getBoundingClientRect();
+            const rightEdgeDistance = window.innerWidth - rect.right;
+
+            setPosition({
+                left: rightEdgeDistance <= 0 ? rightEdgeDistance : 'auto',
+            });
+        }
+    };
+
+    useLayoutEffect(() => {
+        updatePosition();
+
+        window.addEventListener('resize', updatePosition);
+
+        return () => {
+            window.removeEventListener('resize', updatePosition);
+        };
+    }, [menuOuvert]);
+
+
+
+    const handleClickOutside = (e) => {
+        if (boutonSelectionRef.current && !boutonSelectionRef.current.contains(e.target)) {
+            setMenuOuvert(false);
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener('click', handleClickOutside);
+
+        return () => {
+            window.removeEventListener('click', handleClickOutside);
+        };
+    }, [menuOuvert]);
+
+
+
     const handleGenresSelect = (genre) => {
-        // Vérifie si le mot clé est déjà sélectionné
         if (!selectedGenres.includes(genre)) {
-            // Ajoute le mot clé à la liste des sélectionnés
             setSelectedGenres([...selectedGenres, genre]);
         }
 
-        setSelectedOption('');
+        setMenuOuvert(false);
+        setSelectedGenre('');
     };
 
-    // Fonction appelée lorsqu'un mot clé est supprimé
     const handleGenreRemove = (genre) => {
-        // Filtrer les genres pour obtenir une nouvelle liste sans le genre à supprimer
         const updatedGenres = selectedGenres.filter((selectedGenre) => selectedGenre !== genre);
         setSelectedGenres(updatedGenres);
     };
 
+
+
+    if (loading) {
+        return <div className="chargement">Chargement en cours...</div>;
+    }
+
+    if (error || !listeGenres) {
+        navigate('/404', { replace: true });
+        return null;
+    }
+
     return (
         <div className="genres">
-            <h2>Genres :</h2>
+            <label className="label-container">Genres:</label>
             <ul className="liste-selection">
                 {selectedGenres.map((genre, index) => (
                     <li className="genre-ajoute" onClick={() => handleGenreRemove(genre)} key={index}>
@@ -49,15 +95,15 @@ const ListeGenres = () => {
                     </li>
                 ))}
                 <li>
-                    <div className="select-personnalise">
-                        <select value={selectedOption} onChange={(e) => handleGenresSelect(e.target.value)}>
-                            <option className="option-defaut" value=""></option>
-                            {allGenres.map((genre, index) => (
-                                <option key={index} value={genre}>
-                                    {genre}
-                                </option>
+                    <div className={`select-personnalise`}>
+                        <div className="bouton-selection" onClick={() => setMenuOuvert(!menuOuvert)} ref={boutonSelectionRef}></div>
+                        <ul className={`genres ${menuOuvert ? 'open' : ''}`} ref={menuSelectionRef} style={{ ...position }}>
+                            {listeGenres.map((genre, index) => (
+                                <li key={index} className={`genre ${selectedGenres.includes(genre.nom_genre) ? 'genre-selectionne' : ''}`} onClick={() => handleGenresSelect(genre.nom_genre)}>
+                                    {genre.nom_genre}
+                                </li>
                             ))}
-                        </select>
+                        </ul>
                     </div>
                 </li>
             </ul>

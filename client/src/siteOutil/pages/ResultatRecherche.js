@@ -1,26 +1,20 @@
 import React from 'react';
 import ElementListeProjets from "../components/elementListeProjets/elementListeProjets";
 import {useOutletContext} from "react-router-dom";
+import UseFetchData from "../components/operationsDonnees";
+import apiUrl from "../../config";
 
 const ResultatRecherche = () => {
-    const [recherche, setRecherche] = useOutletContext();
-    const listeProjet = [
-        { id: 1, nom: "projet1" },
-        { id: 2, nom: "projet2" },
-        { id: 3, nom: "projet3" },
-        { id: 4, nom: "projet4" },
-        { id: 5, nom: "projet5" },
-        { id: 6, nom: "projet6" },
-        { id: 7, nom: "projet7" },
-        { id: 8, nom: "projet8" }
-    ];
+    const [recherche] = useOutletContext();
+
+    const { data: listeProjet, loading:loading, error: error } = UseFetchData(`${apiUrl}/readTable/projet`);
 
     // Vérifiez si recherche est défini avant de filtrer la liste
     const resultatsFiltres = recherche
         ? listeProjet.filter(item =>
-            item.nom.toLowerCase().includes(recherche.toLowerCase())
+            item.titre.toLowerCase().includes(recherche.toLowerCase())
         )
-        : [];
+        : listeProjet;
 
     return (
         <div className="mon-espace">
@@ -29,8 +23,13 @@ const ResultatRecherche = () => {
             <div className="section">
                 <div className="liste-globale">
                     {resultatsFiltres.length > 0 ? (
-                        resultatsFiltres.map(projet => (
-                            <ElementListeProjets key={projet.id} id={projet.id} />
+                        resultatsFiltres.map((projet, index) => (
+                            <ElementListeProjets
+                                key={index}
+                                id={projet.id_projet}
+                                titre={projet.titre}
+                                statut={projet.id_statut}
+                            />
                         ))
                     ) : (
                         <p>Aucun résultat trouvé.</p>

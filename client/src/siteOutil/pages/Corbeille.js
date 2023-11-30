@@ -6,7 +6,7 @@ import apiUrl from "../../config";
 import {useNavigate} from "react-router-dom";
 
 const Corbeille = () => {
-    const { data: projetsDansCorbeille, loading, error } = UseFetchData(`${apiUrl}/readTable/projet`);
+    const { data: projetsDansCorbeille, loading: loading, error: error } = UseFetchData(`${apiUrl}/readTable/projet`);
 
     const navigate = useNavigate();
 
