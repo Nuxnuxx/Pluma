@@ -42,10 +42,12 @@ const Sidebar = ({ onRechercheChange }) => {
     useEffect(() => {
         const handleResize = () => {
             const sidebarElement = document.querySelector('.sidebar');
-            const isSidebarClose = sidebarElement.classList.contains('close');
+            if (sidebarElement) {
+                const isSidebarClose = sidebarElement.classList.contains('close');
 
-            if (window.innerWidth < 768 && !isSidebarClose) {
-                toggleSidebar();
+                if (window.innerWidth < 768 && !isSidebarClose) {
+                    toggleSidebar();
+                }
             }
         };
 

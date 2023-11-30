@@ -9,10 +9,15 @@ const EditableText = ({ initialValeur, onSave, inputType = 'input', idInput = ""
     const textRef = useRef(null);
 
     useEffect(() => {
+        setValeur(initialValeur);
+    }, [initialValeur]);
+
+    useEffect(() => {
         if (editable) {
             inputRef.current.focus();
         }
     }, [editable]);
+
 
     const handleTextClick = () => {
         setEditable(true);
