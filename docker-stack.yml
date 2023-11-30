@@ -34,8 +34,7 @@ services:
       - neo4j-network
 
   server:
-    build:
-      context: ./server
+    image: 192.168.1.69:5000/pluma-server:latest
     deploy:
       replicas: 3
     ports: 
@@ -46,8 +45,7 @@ services:
       - mariadb-network
       
   client:
-    build:
-      context: ./client
+    image: 192.168.1.69:5000/pluma-client:latest
     deploy:
       replicas: 3
     depends_on:
