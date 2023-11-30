@@ -1,0 +1,78 @@
+version: "3.7"
+
+services:
+  mariadb:
+    image: mariadb:latest
+    deploy:
+      replicas: 3
+    env_file:
+      - ../../bdd/mariadb.env
+    ports:
+      - 3307:3306
+    networks:
+      - mariadb-network
+
+  adminer:
+    image: adminer:latest
+    deploy:
+      replicas: 3
+    ports:
+      - 8080:8080
+    networks:
+      - mariadb-network
+
+  neo:
+    image: neo4j:5.13.0-enterprise-bullseye
+    deploy:
+      replicas: 3
+    ports: 
+      - 7474:7474
+      - 7687:7687
+    env_file:
+      - ../../bdd/env.neo4j
+    networks:
+      - neo4j-network
+
+  server:
+    build:
+      context: ./server
+    deploy:
+      replicas: 3
+    ports: 
+      - 3001:3001
+    env_file: ./server/.env
+    networks:
+      - neo4j-network
+      - mariadb-network
+      
+  client:
+    build:
+      context: ./client
+    deploy:
+      replicas: 3
+    depends_on:
+      - server
+    ports:
+      - 3000:3000
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+    networks:
+      - neo4j-network
+      - mariadb-network
+      - pluma-network
+      
+  portainer:
+    image: portainer/portainer-ce
+    deploy:
+      replicas: 3
+    ports:
+      - 9000:9000
+    networks:
+      - mariadb-network
+      - neo4j-network
+      - pluma-network
+    
+networks:
+  neo4j-network:
+  mariadb-network:
+  pluma-network:
