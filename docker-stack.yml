@@ -4,7 +4,7 @@ services:
   mariadb:
     image: mariadb:latest
     deploy:
-      replicas: 3
+      replicas: 6
     env_file:
       - ../../bdd/mariadb.env
     ports:
@@ -15,7 +15,7 @@ services:
   adminer:
     image: adminer:latest
     deploy:
-      replicas: 3
+      replicas: 6
     ports:
       - 8080:8080
     networks:
@@ -24,7 +24,7 @@ services:
   neo:
     image: neo4j:5.13.0-enterprise-bullseye
     deploy:
-      replicas: 3
+      replicas: 6
     ports: 
       - 7474:7474
       - 7687:7687
@@ -36,7 +36,7 @@ services:
   server:
     image: 192.168.1.69:5000/pluma-server:latest
     deploy:
-      replicas: 3
+      replicas: 6
     ports: 
       - 3001:3001
     env_file: ./server/.env
@@ -47,7 +47,7 @@ services:
   client:
     image: 192.168.1.69:5000/pluma-client:latest
     deploy:
-      replicas: 3
+      replicas: 6
     depends_on:
       - server
     ports:
@@ -62,7 +62,7 @@ services:
   portainer:
     image: portainer/portainer-ce
     deploy:
-      replicas: 3
+      replicas: 6
     ports:
       - 9000:9000
     networks:
