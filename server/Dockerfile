@@ -13,6 +13,9 @@ RUN npm install mariadb
 RUN npm i -g nodemon
 RUN npm i
 
+# Install MariaDB client
+RUN apk --no-cache add mariadb-client
+
 EXPOSE 3001
 
 CMD ["npm","start"]
