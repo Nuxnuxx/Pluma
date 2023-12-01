@@ -1,4 +1,4 @@
-#Fichier permettant de notre stack Pluma
+#Fichier permettant de créer notre stack Pluma
 version: "3.7"
 
 services:
