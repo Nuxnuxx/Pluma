@@ -1,24 +1,105 @@
 import ElementListeProjets from "../components/elementListeProjets/elementListeProjets";
 import "../styles/StyleMonEspace.scss"
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import UseFetchData from "../components/operationsDonnees";
 import {useNavigate} from "react-router-dom";
 import apiUrl from "../../config";
 import Chargement from "../components/Chargement/chargement";
 import PopupCreationProjet from "../components/PopupCreationProjet/PopupCreationProjet";
+import anime from "animejs";
 
 const MonEspace = () => {
     const navigate = useNavigate();
 
-    const { data: listeProjet, loading:loadingProjet, error: errorProjet } = UseFetchData(`${apiUrl}/readTable/projet`);
+    let { data: donneesProjet, loading:loadingProjet, error: errorProjet } = UseFetchData(`${apiUrl}/readTable/projet`);
 
     const { data: listeRecents, loading:loadingRecents, error: errorRecents  } = UseFetchData(`${apiUrl}/read-projets-recents`);
-
-    const { data: listeFavoris, loading:loadingFavoris, error: errorFavoris  } = UseFetchData(`${apiUrl}/read-projets-favoris`);
 
     const [activeIndex, setActiveIndex] = useState(0);
 
     const [isPopupVisible, setPopupVisibility] = useState(false);
+
+
+    const [listeProjet, setListeProjet] = useState([]);
+
+    const [listeFavoris, setListeFavoris] = useState([]);
+
+    const [idFavoris, setIdFavoris] = useState({});
+
+    const [listeFavorisPrev, setListeFavorisPrev] = useState([]);
+
+
+
+    useEffect(() => {
+        if (donneesProjet) {
+            setListeProjet(donneesProjet);
+        }
+    }, [donneesProjet]);
+
+    useEffect(() => {
+        if (listeProjet) {
+            const favoris = listeProjet.filter(projet => projet.favori === 1);
+            setListeFavorisPrev(listeFavoris);
+            setListeFavoris(favoris);
+
+            // Initialiser idFavoris avec l'état de chaque projet au départ
+            const initialIdFavoris = listeProjet.reduce((acc, projet) => {
+                acc[projet.id_projet] = projet.favori === 1;
+                return acc;
+            }, {});
+
+            setIdFavoris(initialIdFavoris);
+        }
+    }, [listeProjet]);
+
+    useEffect(() => {
+        if (listeFavoris) {
+            if (listeFavoris.length < listeFavorisPrev.length){
+                handlePrev()
+            }
+        }
+
+        const favorisContainer = document.querySelector('.liste-favoris');
+
+        if (favorisContainer) {
+            const addedElement = [...listeFavoris].find(newProjet => !listeFavorisPrev.some(oldProjet => oldProjet.id_projet === newProjet.id_projet));
+
+            if (addedElement) {
+                const addedElementNode = favorisContainer.querySelector(`.element-${addedElement.id_projet}`);
+
+                if (addedElementNode) {
+                    anime({
+                        targets: addedElementNode,
+                        translateY: [-40, 0],
+                        easing: 'easeInOutQuad',
+                        duration: 500,
+                    });
+                }
+            }
+        }
+    }, [listeFavoris]);
+
+    const toggleFavori = (id) => {
+        setIdFavoris((prevFavoris) => {
+            const newFavoris = { ...prevFavoris, [id]: !prevFavoris[id] };
+            mettreAJourFavoris(id, newFavoris[id]);
+            return newFavoris;
+        });
+    };
+
+    const mettreAJourFavoris = (id, etat) => {
+        const listeTemporaire = [...listeProjet];
+
+        const index = listeTemporaire.findIndex(projet => projet.id_projet === id);
+
+        const nouvelleValeurFavori = etat ? 1 : 0;
+
+        if (index !== -1) {
+            listeTemporaire[index] = { ...listeTemporaire[index], favori: nouvelleValeurFavori };
+        }
+
+        setListeProjet(listeTemporaire);
+    };
 
     const FlecheTriangle = () => (
         <svg
@@ -71,11 +152,11 @@ const MonEspace = () => {
         return`calc(calc(10vw + calc((100% - 50vw) / 4)) * ${index})`
     };
 
-    if (loadingProjet || loadingRecents || loadingFavoris) {
+    if (loadingProjet || loadingRecents) {
         return <Chargement/>;
     }
 
-    if (errorProjet || errorRecents || errorFavoris) {
+    if (errorProjet || errorRecents) {
         navigate('/404', { replace: true });
         return null;
     }
@@ -97,42 +178,51 @@ const MonEspace = () => {
             )}
             <h2 className="titre-section">Consultés récemment</h2>
             <div className="section">
-                <div className="liste-recents">
+                <div className="liste-recents" style={{ transform: `translateX(${calcWidth(0)})` }}>
                     {listeRecents.map((projet, index) => (
+                        <div key={index} className={`element ${index >= 5 ? 'element-hidden' : ''}`}>
                         <ElementListeProjets
                             key={index}
-                            id={projet.id_projet}
+                            id={`${projet.id_projet}`}
                             titre={projet.titre}
                             statut={projet.id_statut}
+                            favori={idFavoris[projet.id_projet] || false}
+                            toggleFavori={() => toggleFavori(projet.id_projet)}
                         />
+                        </div>
                     ))}
                 </div>
             </div>
             <h2 className="titre-section">Favoris</h2>
             <div className="section">
-                <button onClick={handlePrev} className="arrow-button left-arrow"><FlecheTriangle /></button>
-                <div className="liste-favoris" style={{ transform: `translateX(${calcWidth(-activeIndex)})` }}>
+                <button onClick={handlePrev} className="arrow-button left-arrow" style={{ visibility: listeFavoris.length > 5 ? 'visible' : 'hidden' }}><FlecheTriangle /></button>
+                <div className="liste-favoris" style={{ transform:`translateX(${calcWidth(-activeIndex)})` }}>
                     {listeFavoris.map((projet, index) => (
-                        <div key={index} className={`element ${index < activeIndex || index >= activeIndex + 5 ? 'element-hidden' : ''}`}>
+                        <div key={index} className={`element element-${projet.id_projet} ${index < activeIndex || index >= activeIndex + 5 ? 'element-hidden' : ''}`}>
                             <ElementListeProjets
-                                id={projet.id_projet}
+                                key={index}
+                                id={`${projet.id_projet}`}
                                 titre={projet.titre}
                                 statut={projet.id_statut}
+                                favori={idFavoris[projet.id_projet] || false}
+                                toggleFavori={() => toggleFavori(projet.id_projet)}
                             />
                         </div>
                     ))}
                 </div>
-                <button onClick={handleNext} className="arrow-button right-arrow"><FlecheTriangle /></button>
+                <button onClick={handleNext} className="arrow-button right-arrow" style={{ visibility: listeFavoris.length > 5 ? 'visible' : 'hidden'}}><FlecheTriangle /></button>
             </div>
             <h2 className="titre-section">Projets</h2>
             <div className="section">
-                <div className="liste-globale">
+                <div className="liste-globale" style={{ transform: `translateX(${calcWidth(0)})` }}>
                     {listeProjet.map((projet, index) => (
                         <ElementListeProjets
                             key={index}
-                            id={projet.id_projet}
+                            id={`${projet.id_projet}`}
                             titre={projet.titre}
                             statut={projet.id_statut}
+                            favori={idFavoris[projet.id_projet] || false}
+                            toggleFavori={() => toggleFavori(projet.id_projet)}
                         />
                     ))}
                 </div>
