@@ -52,7 +52,7 @@ const PlumaPremium = () => {
                             <li>Exportation des histoires</li>
                             <li>Correcteur d’orthographe et de grammaire</li>
                             <li>Plus de 50 polices d’écritures différentes</li>
-                            <li>Panel d’images prédéfni pour les avatars des personnages et les lieux</li>
+                            <li>Panel d’images prédéfini pour les avatars des personnages et les lieux</li>
                             <li>Accès au résumé par IA</li>
                             <li>Génération d'images par IA pour les avatars des personnages et les lieux</li>
                         </ul>
@@ -72,7 +72,7 @@ const PlumaPremium = () => {
                             <li>Exportation des histoires</li>
                             <li>Correcteur d’orthographe et de grammaire</li>
                             <li>10 polices d’écritures différentes</li>
-                            <li>Panel d’images prédéfni pour les avatars des personnages et les lieux</li>
+                            <li>Panel d’images prédéfini pour les avatars des personnages et les lieux</li>
                             <li>Accès au résumé par IA</li>
                         </ul>
                         <button className="pricingTable-firstTable_table__getstart">Essayez Maintenant !</button>
