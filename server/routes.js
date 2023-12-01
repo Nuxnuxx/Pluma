@@ -40,7 +40,7 @@ router.get('/readTable/:table', async (req, res) => {
 // Route pour récupérer les projets récents
 router.get('/read-projets-recents', async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM projet ORDER BY derniere_consultation DESC');
+    const result = await pool.query('SELECT * FROM projet ORDER BY derniere_consultation DESC LIMIT 5');
     res.json({ success: true, data: result });
   } catch (error) {
     console.error(error);
