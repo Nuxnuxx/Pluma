@@ -1,7 +1,13 @@
 const express = require('express');
 const pool = require('./models/db');
-
+const authController = require('./controllers/authController');
 const router = express.Router();
+
+// Route pour l'authentification
+router.post('/login', authController.login);
+
+// Route pour l'inscription
+router.post('/register', authController.register);
 
 // Routes pour le CRUD
 router.post('/create/:table', async (req, res) => {

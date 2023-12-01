@@ -6,6 +6,7 @@ const pool = mariadb.createPool({
      user:"anais", 
      password: "dev",
      database : "pluma",
+     connectionLimit: 5
 });
 
 module.exports = {
