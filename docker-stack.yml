@@ -1,7 +1,7 @@
+#Fichier permettant de notre stack Pluma
 version: "3.7"
 
 services:
-
   server:
     image: 192.168.1.69:5000/pluma-server:latest
     deploy:
