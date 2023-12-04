@@ -14,4 +14,7 @@ RUN npm i
 #RUN npm install node-sass
 EXPOSE 3000
 
+# Passage en user node
+USER node
+
 CMD ["npm","start"]
