@@ -1,0 +1,19 @@
+#Fichier permettant de créer notre service client
+version: "3.7"
+
+services:
+ client:
+    image: 192.168.1.69:5000/pluma-client:latest
+    deploy:
+      replicas: 6
+    depends_on:
+      - server
+    ports:
+      - 3000:3000
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+    networks:
+      - pluma-network
+
+networks:
+  pluma-network:
