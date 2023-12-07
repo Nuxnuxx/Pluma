@@ -12,7 +12,6 @@ WORKDIR /app
 
 # Installing dependencies.
 RUN npm install cors
-RUN npm install mariadb
 RUN npm i -g nodemon
 RUN npm i
 
@@ -20,8 +19,5 @@ RUN npm i
 RUN apk --no-cache add mariadb-client
 
 EXPOSE 3001
-
-# Passage en user node
-USER node
 
 CMD ["dumb-init","npm","start"]
