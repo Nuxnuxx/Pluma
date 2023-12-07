@@ -1,4 +1,4 @@
-#Fichier permettant de créer notre service client
+#Fichier permettant de créer notre service server
 version: "3.7"
 
 services:
