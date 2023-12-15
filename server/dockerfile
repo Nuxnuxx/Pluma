@@ -4,20 +4,15 @@ FROM node:15.1-alpine
 # Ajout de dumb init pour le PID 1
 RUN apk add dumb-init
 
-# Create App Directory
-COPY . /app
-
-# Working directory be app
 WORKDIR /app
 
-# Installing dependencies.
-RUN npm install cors
-RUN npm i -g nodemon
-RUN npm i
+# Create App Directory
+COPY ./package*.json /app/
+COPY /src/ /app
 
-# Install MariaDB client
-RUN apk --no-cache add mariadb-client
+# Installing dependencies.
+RUN npm i
 
 EXPOSE 3001
 
-CMD ["dumb-init","npm","start"]
+CMD ["dumb-init","npm","run","prod"]
