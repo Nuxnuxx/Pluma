@@ -1,17 +1,42 @@
 # Dockerfile for React client
-FROM node:16-alpine
+#FROM node:16-alpine
 
 # Working directory be app
-WORKDIR /app
+#WORKDIR /app
 
 # copy local files to app folder
-COPY . /app/
+#COPY . /app/
 
 # Installing dependencies, you'll most likely see warnings, you can ignore
 # most of these.
-RUN npm i
+#RUN npm i
 
 #RUN npm install node-sass
+#EXPOSE 3000
+
+#CMD ["npm","start"]
+
+
+# Build Stage
+FROM node:16-alpine AS build
+
+WORKDIR /app
+
+COPY . /app/
+
+RUN npm install
+RUN npm run build
+
+# Production Stage
+FROM nginx:alpine
+
+WORKDIR /usr/share/nginx/html
+
+COPY --from=build /app/build /usr/share/nginx/html
+
+# Configuration de Nginx pour éviter l'accès à l'arborescence
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 EXPOSE 3000
 
-CMD ["npm","start"]
+CMD ["nginx", "-g", "daemon off;"]
