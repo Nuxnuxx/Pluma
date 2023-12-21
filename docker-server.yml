@@ -9,8 +9,3 @@ services:
     ports: 
       - 3001:3001
     env_file: ./server/.env
-    networks:
-      - pluma-network
-
-  networks:
-    pluma-network:
