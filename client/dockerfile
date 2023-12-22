@@ -3,7 +3,7 @@ FROM node:18-alpine AS build-stage
 
 
 # Working directory be app
-#WORKDIR /app
+WORKDIR /app
 
 # copy local files to app folder
 
@@ -16,7 +16,7 @@ COPY ./public/ /app/public/
 
 # Installing dependencies, you'll most likely see warnings, you can ignore
 # most of these.
-#RUN npm i
+RUN npm i
 
 
 RUN npm run build
