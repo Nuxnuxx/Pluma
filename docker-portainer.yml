@@ -8,8 +8,3 @@ services:
       replicas: 6
     ports:
       - 9000:9000
-    networks:
-      - pluma-network
-    
-networks:
-  pluma-network:
