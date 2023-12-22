@@ -1,8 +1,9 @@
 # Dockerfile for React client
+
 FROM node:18-alpine AS build-stage
 
 # Working directory be app
-WORKDIR /app
+#WORKDIR /app
 
 # copy local files to app folder
 COPY ./package*.json /app/
@@ -11,10 +12,10 @@ COPY ./tailwind.config.js /app/
 COPY ./src/ /app/src/
 COPY ./public/ /app/public/
 
+
 # Installing dependencies, you'll most likely see warnings, you can ignore
 # most of these.
-RUN npm i
-
+#RUN npm i
 RUN npm run build
 
 FROM nginx:1.24.0-alpine as production-stage
